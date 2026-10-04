@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="ms" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/logo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Kalendar Malaysia PRO - Kalendar Kuda Digital, Cuti Umum, Cuti Sekolah, Jadual Gaji & Pencen Penjawat Awam, Tarikh Hijrah & Lunar." />
+    <meta name="theme-color" content="#0f172a" />
+    <title>Kalendar Malaysia PRO 2026 - Kalendar Kuda & Cuti Umum</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800;900&family=Noto+Serif+SC:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <!-- Top Navigation Bar -->
+      <header class="top-nav">
+        <div class="brand">
+          <img src="/logo.png" alt="Logo Kalendar Malaysia" class="brand-logo" />
+          <div class="brand-text">
+            <h1 class="brand-title">KALENDAR MALAYSIA <span class="badge-pro">PRO</span></h1>
+            <p class="brand-subtitle">Cuti Umum • Cuti Sekolah • Jadual Gaji • Hijrah & Lunar</p>
+          </div>
+        </div>
+
+        <div class="nav-controls">
+          <!-- State / Region Filter -->
+          <div class="control-group">
+            <label for="stateFilter" class="control-label">Negeri:</label>
+            <select id="stateFilter" class="select-input">
+              <option value="ALL">Semua Negeri (Malaysia)</option>
+              <option value="JHR">Johor</option>
+              <option value="KDH">Kedah</option>
+              <option value="KTN">Kelantan</option>
+              <option value="KL">Kuala Lumpur</option>
+              <option value="LBU">Labuan</option>
+              <option value="MLK">Melaka</option>
+              <option value="NSN">Negeri Sembilan</option>
+              <option value="PHG">Pahang</option>
+              <option value="PNG">Pulau Pinang</option>
+              <option value="PRK">Perak</option>
+              <option value="PLS">Perlis</option>
+              <option value="PJY">Putrajaya</option>
+              <option value="SBH">Sabah</option>
+              <option value="SRW">Sarawak</option>
+              <option value="SGR">Selangor</option>
+              <option value="TRG">Terengganu</option>
+            </select>
+          </div>
+
+          <!-- Language Selector -->
+          <div class="control-group">
+            <select id="langSelect" class="select-input">
+              <option value="ms">Bahasa Melayu</option>
+              <option value="en">English</option>
+              <option value="zh_cn">中文 (简体)</option>
+            </select>
+          </div>
+
+          <!-- Theme Toggle -->
+          <div class="theme-switcher">
+            <button id="themeKuda" class="theme-btn" title="Mod Kalendar Kuda Retro">🐴 Kuda</button>
+            <button id="themeDark" class="theme-btn active" title="Mod Gelap">🌙 Gelap</button>
+            <button id="themeLight" class="theme-btn" title="Mod Cerah">☀️ Cerah</button>
+          </div>
+        </div>
+      </header>
+
+      <!-- Main Navigation Tabs -->
+      <nav class="main-tabs">
+        <button class="tab-btn active" data-tab="calendar">
+          <span class="tab-icon">📅</span>
+          <span class="tab-text">Kalendar Bulanan</span>
+        </button>
+        <button class="tab-btn" data-tab="longweekend">
+          <span class="tab-icon">🏖️</span>
+          <span class="tab-text">Cuti Panjang (Long Weekend)</span>
+        </button>
+        <button class="tab-btn" data-tab="school">
+          <span class="tab-icon">🎒</span>
+          <span class="tab-text">Cuti Sekolah (KPM)</span>
+        </button>
+        <button class="tab-btn" data-tab="salary">
+          <span class="tab-icon">💵</span>
+          <span class="tab-text">Jadual Gaji & Pencen</span>
+        </button>
+        <button class="tab-btn" data-tab="notes">
+          <span class="tab-icon">📝</span>
+          <span class="tab-text">Nota & Acara Saya</span>
+        </button>
+      </nav>
+
+      <!-- Main Content Area -->
+      <main class="content-area">
+        <!-- TAB 1: CALENDAR VIEW -->
+        <section id="calendarView" class="tab-content active">
+          <!-- Calendar Toolbar -->
+          <div class="calendar-toolbar">
+            <div class="month-nav">
+              <button id="prevMonthBtn" class="btn-icon" aria-label="Bulan Sebelumnya">◀</button>
+              <div class="current-month-heading">
+                <h2 id="currentMonthYear">Januari 2026</h2>
+                <span id="currentHijriTitle" class="hijri-badge">Rejab - Syaaban 1447</span>
+              </div>
+              <button id="nextMonthBtn" class="btn-icon" aria-label="Bulan Seterusnya">▶</button>
+              <button id="todayBtn" class="btn-today">Hari Ini</button>
+            </div>
+
+            <!-- Year Picker -->
+            <div class="year-pills">
+              <button class="year-pill" data-year="2024">2024</button>
+              <button class="year-pill" data-year="2025">2025</button>
+              <button class="year-pill active" data-year="2026">2026</button>
+              <button class="year-pill" data-year="2027">2027</button>
+            </div>
+
+            <!-- Layout & Horse Feature Controls -->
+            <div class="view-controls">
+              <div class="layout-toggle-group">
+                <button id="viewKudaBtn" class="toggle-mode-btn active" title="Paparan Tradisional Kalendar Kuda (Seperti Gambar Asal)">🐴 Kalendar Kuda</button>
+                <button id="viewGridBtn" class="toggle-mode-btn" title="Paparan Grid Bulanan Standard">📅 Grid Moden</button>
+              </div>
+              <label class="toggle-horse-label" title="Tunjuk ikon joki lumba kuda pada hujung minggu">
+                <input type="checkbox" id="toggleHorseRace" checked />
+                <span>🏇 Lumba Kuda</span>
+              </label>
+            </div>
+
+            <!-- Search Bar -->
+            <div class="search-box">
+              <input type="text" id="holidaySearchInput" placeholder="Cari cuti (contoh: Raya, Merdeka)..." />
+              <button id="searchClearBtn" class="search-clear-btn" style="display:none;">✕</button>
+            </div>
+          </div>
+
+          <!-- Quick Month Jump Bar -->
+          <div class="month-pills" id="monthPillsContainer">
+            <!-- Populated dynamically via JS -->
+          </div>
+
+          <!-- Legend Bar -->
+          <div class="legend-bar">
+            <span class="legend-item"><span class="legend-dot national"></span> Cuti Umum Kebangsaan</span>
+            <span class="legend-item"><span class="legend-dot state"></span> Cuti Negeri</span>
+            <span class="legend-item"><span class="legend-dot payday"></span> 💵 Hari Gaji Penjawat Awam</span>
+            <span class="legend-item"><span class="legend-dot school"></span> 🎒 Cuti Sekolah</span>
+            <span class="legend-item"><span class="legend-dot horse"></span> 🏇 Hari Lumba Kuda (Weekend Fixtures)</span>
+          </div>
+
+          <!-- Monthly Grid / Kalendar Kuda Container -->
+          <div class="calendar-wrapper" id="calendarWrapper">
+            <!-- Populated dynamically via JS according to selected view mode -->
+            <div id="calendarContentArea"></div>
+          </div>
+
+          <!-- 12 Chinese Zodiac Animals Bar (Authentic Kalendar Kuda Footer) -->
+          <div class="zodiac-section" id="zodiacSection">
+            <div class="zodiac-section-title">
+              <span class="zodiac-title-icon">🏮</span>
+              <span>Jadual 12 Zodiak Cina & Umur (<span id="zodiacYearLabel">Tahun Kuda 2026</span>)</span>
+            </div>
+            <div class="zodiac-scroll-container" id="zodiacScrollContainer">
+              <!-- Populated dynamically via JS -->
+            </div>
+          </div>
+        </section>
+
+        <!-- TAB 2: LONG WEEKEND PLANNER -->
+        <section id="longweekendView" class="tab-content">
+          <div class="section-header">
+            <h2>🏖️ Perancang Cuti Panjang (Long Weekend) <span id="lwYearTitle">2026</span></h2>
+            <p class="section-desc">Rancang percutian anda lebih awal dengan panduan cuti hujung minggu bersambung di Malaysia.</p>
+          </div>
+          <div id="longWeekendList" class="long-weekend-grid">
+            <!-- Dynamic content -->
+          </div>
+        </section>
+
+        <!-- TAB 3: SCHOOL HOLIDAYS -->
+        <section id="schoolView" class="tab-content">
+          <div class="section-header">
+            <h2>🎒 Takwim Cuti Sekolah KPM <span id="schoolYearTitle">2026</span></h2>
+            <p class="section-desc">Jadual penggal dan cuti persekolahan mengikut Kumpulan A dan Kumpulan B.</p>
+            <div class="group-switcher">
+              <button id="btnGroupA" class="group-btn active">Kumpulan A (Johor, Kedah, Kelantan, Terengganu)</button>
+              <button id="btnGroupB" class="group-btn">Kumpulan B (KL, Selangor, Melaka, Penang dll.)</button>
+            </div>
+          </div>
+          <div id="schoolHolidaysList" class="school-holiday-grid">
+            <!-- Dynamic content -->
+          </div>
+        </section>
+
+        <!-- TAB 4: PAY & PENSION SCHEDULE -->
+        <section id="salaryView" class="tab-content">
+          <div class="section-header">
+            <h2>💵 Jadual Tarikh Pembayaran Gaji & Pencen Penjawat Awam</h2>
+            <p class="section-desc">Berdasarkan Surat Pekeliling Akauntan Negara Malaysia (SPANM).</p>
+            <div id="nextPaydayCard" class="next-payday-banner">
+              <!-- Dynamic countdown -->
+            </div>
+          </div>
+          <div class="salary-tables-container">
+            <div class="salary-card">
+              <h3>💳 Jadual Gaji Kakitangan Awam</h3>
+              <div class="table-responsive">
+                <table class="data-table" id="payTable">
+                  <thead>
+                    <tr>
+                      <th>Bulan</th>
+                      <th>Tarikh Gaji</th>
+                      <th>Hari</th>
+                      <th>Catatan Perayaan</th>
+                    </tr>
+                  </thead>
+                  <tbody></tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="salary-card">
+              <h3>🏛️ Jadual Pembayaran Pencen Pesara</h3>
+              <div class="table-responsive">
+                <table class="data-table" id="pensionTable">
+                  <thead>
+                    <tr>
+                      <th>Bulan</th>
+                      <th>Tarikh Bayaran</th>
+                      <th>Hari</th>
+                      <th>Catatan</th>
+                    </tr>
+                  </thead>
+                  <tbody></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- TAB 5: MY NOTES & EVENTS -->
+        <section id="notesView" class="tab-content">
+          <div class="section-header">
+            <h2>📝 Nota & Acara Peribadi Saya</h2>
+            <p class="section-desc">Simpan peringatan penting, hari lahir, atau perancangan cuti peribadi anda di sini.</p>
+          </div>
+          <div class="notes-manager">
+            <form id="addNoteForm" class="add-note-form">
+              <div class="form-row">
+                <input type="date" id="noteDate" required class="input-field" />
+                <input type="text" id="noteTitle" placeholder="Tajuk Acara / Peringatan..." required class="input-field grow" />
+                <select id="noteCategory" class="select-input">
+                  <option value="personal">Peribadi / Keluarga</option>
+                  <option value="work">Kerja / Mesyuarat</option>
+                  <option value="holiday">Percutian / Cuti</option>
+                  <option value="bill">Bil & Kewangan</option>
+                </select>
+                <button type="submit" class="btn-primary">+ Tambah Acara</button>
+              </div>
+            </form>
+            <div id="userEventsList" class="user-events-grid">
+              <!-- Dynamic content -->
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <!-- DAY DETAILS MODAL -->
+      <div id="dayModal" class="modal-backdrop" style="display:none;">
+        <div class="modal-card">
+          <div class="modal-header">
+            <div class="modal-title-wrap">
+              <span id="modalDateNumber" class="modal-date-num">01</span>
+              <div>
+                <h3 id="modalFullDate" class="modal-full-date">Khamis, 1 Januari 2026</h3>
+                <div class="modal-multi-calendar">
+                  <span id="modalHijriDate" class="tag hijri">11 Rejab 1447</span>
+                  <span id="modalLunarDate" class="tag lunar">十一月十三 (Tahun Ular)</span>
+                  <span id="modalTamilDate" class="tag tamil">17 மார்கழி</span>
+                </div>
+              </div>
+            </div>
+            <button id="modalCloseBtn" class="modal-close" aria-label="Tutup Modal">&times;</button>
+          </div>
+
+          <div class="modal-body">
+            <!-- Holidays / Festivals in this day -->
+            <div class="modal-section">
+              <h4 class="section-subtitle">🎈 Cuti & Sambutan Perayaan</h4>
+              <div id="modalHolidaysList" class="modal-holidays-list">
+                <!-- Holidays injected here -->
+              </div>
+            </div>
+
+            <!-- Payday info if applicable -->
+            <div id="modalPaydaySection" class="modal-section alert-box" style="display:none;">
+              <span class="alert-icon">💵</span>
+              <div>
+                <strong id="modalPaydayTitle">Hari Pembayaran Gaji</strong>
+                <p id="modalPaydayDesc">Gaji kakitangan awam dibayar pada hari ini.</p>
+              </div>
+            </div>
+
+            <!-- Personal Events for this day -->
+            <div class="modal-section">
+              <h4 class="section-subtitle">📝 Acara / Peringatan Anda</h4>
+              <div id="modalUserEventsList" class="modal-user-events">
+                <!-- Notes injected here -->
+              </div>
+              <div class="modal-quick-add">
+                <input type="text" id="modalQuickNoteInput" placeholder="Tambah nota untuk hari ini..." class="input-field grow" />
+                <button id="modalQuickAddBtn" class="btn-secondary">Tambah</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal-footer">
+            <button id="modalExportIcalBtn" class="btn-outline">📥 Muat Turun Kalendar (.ics)</button>
+            <button id="modalDoneBtn" class="btn-primary">Tutup</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <footer class="app-footer">
+        <p>© 2026 Kalendar Malaysia PRO Web App • Dikuasakan oleh Data Asal & Sifar Iklan</p>
+      </footer>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
