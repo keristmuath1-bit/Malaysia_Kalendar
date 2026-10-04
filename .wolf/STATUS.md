@@ -22,6 +22,7 @@ budget_tokens: 1000
 - **Day Number Legibility:** Enlarged day labels (`2.35rem`, 900 font-weight) for effortless reading.
 - **Column Alignment:** Sunday-to-Saturday columns matching physical Kalendar Kuda with accurate week numbering (Week 45-49 for Nov 2026).
 - **URL Params Support:** Support `?month=11&year=2026&theme=kuda` for direct navigation and testing.
+- **Git & GitHub Repository:** Repository initialized, complete source committed and pushed to `https://github.com/keristmuath1-bit/Malaysia_Kalendar` on branch `main`.
 
 ---
 
