@@ -1,7 +1,7 @@
 # 🧭 PROJECT FLOW & LIVING ARCHITECTURE: Kalendar Malaysia Web App
 
-> **Status Semasa:** ✅ FASA AKTIF SELESAI (STABIL & DEV-READY)  
-> **Tarikh Kemas Kini Terakhir:** 2026-10-04  
+> **Status Semasa:** ✅ MILESTONE 2.5: OPTIMASI MOBILE & ZODIAK MINIMALIST SELESAI (STABIL & PRODUCTION-READY)  
+> **Tarikh Kemas Kini Terakhir:** 2026-10-05  
 > **Direktori Projek:** `/Users/halimroslan/.gemini/antigravity-ide/scratch/malaysia-calendar-web`  
 > **Fail Rujukan Utama:** [`index.html`](file:///Users/halimroslan/.gemini/antigravity-ide/scratch/malaysia-calendar-web/index.html), [`src/main.js`](file:///Users/halimroslan/.gemini/antigravity-ide/scratch/malaysia-calendar-web/src/main.js), [`src/style.css`](file:///Users/halimroslan/.gemini/antigravity-ide/scratch/malaysia-calendar-web/src/style.css)
 
@@ -25,8 +25,9 @@ Kalendar Malaysia Web App merupakan versi web moden, bebas iklan, dan pantas bag
 | **Fasa 7** | Petak Kuning Cuti Sekolah KPM | ✅ Selesai | Latar belakang petak kuning (`#fff59d`/`#fff275`) untuk cuti sekolah. |
 | **Fasa 8** | Keterbacaan Nombor Hari (Enlarged) | ✅ Selesai | Saiz nombor dinaikkan ke `2.35rem` (900 weight) untuk kemudahan baca. |
 | **Fasa 9** | Penjajaran Lajur Ahad-Sabtu & Minggu | ✅ Selesai | Lajur Ahad ke Sabtu selaras dengan penomboran minggu fizikal. |
-| **Fasa 10** | Nota / Acara Pengguna & Storan Tempatan | 🔄 Sedang Berjalan | Penambahan modal nota & storan kalendar peribadi. |
-| **Fasa 11** | PWA & Eksport PDF/PNG Cetakan Kalendar | ⏳ Akan Datang | Service Worker offline & eksport layout kalendar dinding A4. |
+| **Fasa 10** | Optimasi Mobile & UX Telefon Pintar | ✅ Selesai | Zero-overflow pill bulan, autohide drawer toolbar, strip zodiak minimalis. |
+| **Fasa 11** | Nota / Acara Pengguna & Storan Tempatan | 🔄 Sedang Berjalan | Penambahan modal nota & storan kalendar peribadi (LocalStorage). |
+| **Fasa 12** | PWA & Eksport PDF/PNG Cetakan Kalendar | ⏳ Akan Datang | Service Worker offline & eksport layout kalendar dinding A4. |
 
 ---
 
@@ -39,14 +40,16 @@ Kalendar Malaysia Web App merupakan versi web moden, bebas iklan, dan pantas bag
   3. **Petak Kuning Cuti Sekolah:** Mana-mana tarikh yang tergolong dalam cuti sekolah (Kumpulan A atau B) WAJIB diwarnakan latar belakang kuning hangat dengan teks kontras tinggi.
   4. **Aset Imej Telus Berkualiti Tinggi:** Semua ilustrasi (kuda lumba, perayaan, gaji) WAJIB mempunyai latar belakang telus (RGBA) dengan sempadan licin tanpa latar belakang putih keras.
   5. **Penjanaan Imej Eksklusif `/chatgpt-page-generator`:** Penjanaan aset grafik baharu hanya dibenarkan melalui Chromium + ChatGPT DALL-E pipeline.
+  6. **Mobile Zero Horizontal Scroll & Anti-Serabut Toolbar:** Pada paparan mudah alih (portrait mobile), keseluruhan grid Kalendar Kuda wajib muat 100% tanpa skrol mendatar, dan kawalan sekunder (tahun, mod grid, lumba kuda, carian) wajib disembunyikan dalam drawer autohide (`#toolbarCollapsible`) untuk mengelakkan kesesakan skrin.
+  7. **Format Zodiak Kuda Tradisional:** Strip 12 Zodiak Cina wajib kekal ultra-minimalis (~90px tinggi, lebar 68px/lajur) dengan tajuk lajur dwi-angka `年 岁  年 岁`, 3 baris grid nombor monospaced, dan kemuncak kuning cerah (`#ffea00`) pada zodiak tahun semasa (Kuda 2026).
 
 ---
 
 ## 4. 📁 Peta Fail & Aset Kritikal
 
-- [`index.html`](file:///Users/halimroslan/.gemini/antigravity-ide/scratch/malaysia-calendar-web/index.html): Struktur markup semantik, bar navigasi, kawalan tema, modal interaktif, dan strip 12 zodiak Cina.
-- [`src/main.js`](file:///Users/halimroslan/.gemini/antigravity-ide/scratch/malaysia-calendar-web/src/main.js): Enjin logik utama (render Kalendar Kuda, Grid Moden, filter cuti negeri, semakan cuti sekolah, jadual gaji, penukaran tema, sokongan URL params).
-- [`src/style.css`](file:///Users/halimroslan/.gemini/antigravity-ide/scratch/malaysia-calendar-web/src/style.css): Sistem reka bentuk lengkap merangkumi tema Kuda Autentik, Mod Gelap, Mod Cerah, kad responsif, dan tipografi multi-skrip.
+- [`index.html`](file:///Users/halimroslan/.gemini/antigravity-ide/scratch/malaysia-calendar-web/index.html): Struktur markup semantik, bar navigasi, kawalan tema, butang togol `#toggleFilterBtn`, drawer `#toolbarCollapsible`, modal interaktif, dan strip 12 zodiak Cina `#zodiacScroll`.
+- [`src/main.js`](file:///Users/halimroslan/.gemini/antigravity-ide/scratch/malaysia-calendar-web/src/main.js): Enjin logik utama (render Kalendar Kuda, Grid Moden, filter cuti negeri, semakan cuti sekolah, jadual gaji, penukaran tema, togol drawer pilihan, render zodiak minimalis tradisional, sokongan URL params).
+- [`src/style.css`](file:///Users/halimroslan/.gemini/antigravity-ide/scratch/malaysia-calendar-web/src/style.css): Sistem reka bentuk lengkap merangkumi tema Kuda Autentik, Mod Gelap, Mod Cerah, kad responsif, drawer autohide mobile, strip zodiak padat, dan tipografi multi-skrip.
 - [`public/festivals/`](file:///Users/halimroslan/.gemini/antigravity-ide/scratch/malaysia-calendar-web/public/festivals/): Direktori 59 aset lencana cuti umum, cuti negeri, dan ilustrasi gaji telus ([`payday.png`](file:///Users/halimroslan/.gemini/antigravity-ide/scratch/malaysia-calendar-web/public/festivals/payday.png)).
 - [`public/horse_racing@2x.png`](file:///Users/halimroslan/.gemini/antigravity-ide/scratch/malaysia-calendar-web/public/horse_racing@2x.png): Aset lumba kuda definisi tinggi dengan latar belakang telus.
 - [`src/data/`](file:///Users/halimroslan/.gemini/antigravity-ide/scratch/malaysia-calendar-web/src/data/): Pangkalan data tempatan JSON (kalendar, perayaan, cuti sekolah KPM KA & KB, jadual gaji & pencen).
@@ -64,6 +67,15 @@ Kalendar Malaysia Web App merupakan versi web moden, bebas iklan, dan pantas bag
 - **2026-10-04 - Keputusan 3: Penjajaran Lajur Minggu Ahad-ke-Sabtu**
   - *Konteks:* Standard Kalendar Kuda memaparkan Ahad sebagai baris pertama (Row 0), menyebabkan minggu ISO Isnin-Ahad mengalihkan tarikh 1 November ke minggu sebelumnya.
   - *Keputusan:* Melaksanakan `getKudaWeekNumber` berasaskan lajur Ahad-ke-Sabtu, menyelaraskan penomboran minggu (Week 45 hingga Week 49) tepat seperti kalendar cetakan fizikal.
+- **2026-10-05 - Keputusan 4: Month Pill `min-width: max-content` & `flex: 0 0 auto`**
+  - *Konteks:* Teks bulan "September" terkeluar daripada sempadan pill kuning pada skrin telefon pintar kerana `flex: 1` memicit elemen sehingga kelebaran 70px.
+  - *Keputusan:* Menggunakan `flex: 0 0 auto`, `min-width: max-content`, dan `padding: 7px 15px` bagi memastikan setiap nama bulan mempunyai ruang simetri tanpa pemotongan teks.
+- **2026-10-05 - Keputusan 5: Toolbar Drawer Autohide untuk Mengurangkan Keserabutan Skrin Mudah Alih**
+  - *Konteks:* Terdapat 4 baris kawalan sekunder (pilihan tahun, toggle layout, checkbox lumba kuda, carian) yang memakan ruang menegak ~175px pada telefon pintar, menolak jadual kalendar ke bawah lipatan skrin (*below the fold*).
+  - *Keputusan:* Membungkus kawalan sekunder ke dalam `#toolbarCollapsible` dengan butang togol `#toggleFilterBtn` (`⚙️ Pilihan ▾`). Di desktop, ia kekal terbuka secara mendatar.
+- **2026-10-05 - Keputusan 6: Strip 12 Zodiak Cina Minimalis Tradisional (Gaya Kalendar Kuda Fizikal)**
+  - *Konteks:* Kad zodiak sebelum ini terlalu besar, mengambil ruang skrin yang luas, dan tidak menyerupai cetakan asal kalendar kuda.
+  - *Keputusan:* Mereka bentuk semula kepada strip mendatar padat berukuran 68px setiap lajur haiwan, mengandungi subheader `年 岁 年 岁`, 3 baris grid 4-sel nombor monospaced (`Year Age | Year Age`), auto-scroll ke Kuda 2026, dan latar belakang kuning terang (`#ffea00`) untuk tahun aktif.
 
 ---
 

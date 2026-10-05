@@ -22,6 +22,15 @@ budget_tokens: 1000
 - **Day Number Legibility:** Enlarged day labels (`2.35rem`, 900 font-weight) for effortless reading.
 - **Column Alignment:** Sunday-to-Saturday columns matching physical Kalendar Kuda with accurate week numbering (Week 45-49 for Nov 2026).
 - **URL Params Support:** Support `?month=11&year=2026&theme=kuda` for direct navigation and testing.
+- **Mobile UI Fixes & Ergonomics:**
+  - **Month Pill Zero-Overflow:** Fixed month selector pills (`min-width: max-content`, `flex: 0 0 auto`, `padding: 7px 15px`). September and all months now display 15px symmetric padding inside active yellow pill border with zero text spill.
+  - **Toolbar Autohide Drawer:** Collapsed secondary controls (`.year-pills`, `.view-controls`, `.search-box`) on mobile inside `#toolbarCollapsible` behind `#toggleFilterBtn` (`⚙️ Pilihan ▾`). Saves ~175px vertical height, bringing the Kalendar Kuda table immediately above the fold. Includes `#filterActiveDot` indicator.
+  - **Minimalist 12 Chinese Zodiac & Ages Strip (Gambar 2):**
+    - Compact ~90px-high horizontal footer strip with 68px-wide animal columns.
+    - Two-column tabular subheaders (`年 岁  年 岁`) and 3 rows of 4-cell monospaced tabular numbers (`Year1 Age1 | Year4 Age4`).
+    - Eye-catching `#ffea00` bright yellow highlight on Horse 2026 (active year).
+    - Auto-scrolls to center the active zodiac on page load.
+    - Distinct papercut iconography for dark vs light/kuda themes.
 - **Responsive UI/UX Multi-Device Architecture:**
   - **Mobile Portrait (360px–540px) 100% Fit (Zero Horizontal Scroll):**
     - Removed min-width constraints (`min-width: 0 !important; width: 100% !important; table-layout: fixed !important;`).

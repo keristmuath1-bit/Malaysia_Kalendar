@@ -23,6 +23,16 @@
 
 ---
 
+## 📱 Milestone 2.5: Optimasi Mobile & Strip Zodiak Tradisional (v1.1.5) — ✅ SELESAI
+- [x] Pembetulan sifar overflow pill bulan (padding 15px simetri, `flex: 0 0 auto`, `min-width: max-content`).
+- [x] Drawer togol autohide kawalan sekunder (`#toggleFilterBtn` & `#toolbarCollapsible`) menjimatkan ~175px ruang menegak mobile.
+- [x] Penunjuk titik aktif `#filterActiveDot` apabila penapis carian atau tahun bukan lalai dipilih.
+- [x] Strip 12 Zodiak & Umur Cina ultra-minimalis (~90px tinggi, lebar 68px/kolum) berasaskan rujukan cetakan Kalendar Kuda sebenar.
+- [x] Grid 3-baris nombor monospaced dwi-kolum (`年 岁 年 岁`), sorotan kuning cerah `#ffea00` pada Kuda 2026, dan auto-centering interaktif.
+- [x] Validasi visual rentas peranti (Mobile 390px, 500px, Tablet 820px, Desktop) dengan sifar ralat konsol.
+
+---
+
 ## 📝 Milestone 3: Produktiviti & Acara Peribadi (v1.2) — 🔄 AKTIF
 - [ ] Sistem catatan nota harian dan senarai peringatan tersimpan di pelayar (LocalStorage).
 - [ ] Pengiraan baki hari (*countdown timer*) ke cuti perayaan terdekat atau hari gaji seterusnya.
