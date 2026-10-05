@@ -150,6 +150,11 @@
           </div>
 
           <!-- Monthly Grid / Kalendar Kuda Container -->
+          <div class="kuda-scroll-hint" id="kudaScrollHint">
+            <span class="hint-arrow">◀</span>
+            <span>Leret ke tepi untuk melihat minggu seterusnya</span>
+            <span class="hint-arrow">▶</span>
+          </div>
           <div class="calendar-wrapper" id="calendarWrapper">
             <!-- Populated dynamically via JS according to selected view mode -->
             <div id="calendarContentArea"></div>
@@ -269,6 +274,7 @@
       <!-- DAY DETAILS MODAL -->
       <div id="dayModal" class="modal-backdrop" style="display:none;">
         <div class="modal-card">
+          <div class="modal-drag-indicator"></div>
           <div class="modal-header">
             <div class="modal-title-wrap">
               <span id="modalDateNumber" class="modal-date-num">01</span>

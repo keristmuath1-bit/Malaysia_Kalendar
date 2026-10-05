@@ -22,6 +22,22 @@ budget_tokens: 1000
 - **Day Number Legibility:** Enlarged day labels (`2.35rem`, 900 font-weight) for effortless reading.
 - **Column Alignment:** Sunday-to-Saturday columns matching physical Kalendar Kuda with accurate week numbering (Week 45-49 for Nov 2026).
 - **URL Params Support:** Support `?month=11&year=2026&theme=kuda` for direct navigation and testing.
+- **Responsive UI/UX Multi-Device Architecture:**
+  - **Mobile (360px–540px):**
+    - Pinned sticky left weekday column (`.kuda-td-weekday` on `left: 0`) with elevation drop shadow during horizontal table swiping.
+    - Mobile bottom-sheet drawer modal with top drag-indicator pill and touch drag-to-dismiss gesture (>80px pull down).
+    - Touch swipe gesture detection for instant month-to-month navigation.
+    - Symmetrical 4-column year pills (2024, 2025, 2026, 2027) and 2-column view toggles without text clipping.
+    - Full-width 3-column theme switcher (🐴 Kuda, 🌙 Gelap, ☀️ Cerah).
+    - Auto-centering active month pills via `scrollIntoView({ inline: 'center' })`.
+    - Horizontal scroll hint (`.kuda-scroll-hint`) with automatic fade-out upon user swipe.
+  - **Tablet (601px–1024px):**
+    - Balanced 2-column adaptive layout for secondary views (Cuti Panjang, Cuti Sekolah, Jadual Gaji & Pencen).
+    - Flexible salary tables container (`minmax(320px, 1fr)`) adapting cleanly to portrait and landscape orientations.
+  - **Desktop (>1024px):**
+    - Spacious multi-column typography, ultra-crisp authentic Kalendar Kuda table, and zero horizontal scroll.
+  - **Touch Ergonomics (`pointer: coarse`):**
+    - Enforced WCAG >=42px touch targets on all interactive buttons, pills, dropdowns, and active cell feedback.
 - **Git & GitHub Repository:** Repository initialized, complete source committed and pushed to `https://github.com/keristmuath1-bit/Malaysia_Kalendar` on branch `main`.
 
 ---

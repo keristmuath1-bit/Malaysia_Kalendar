@@ -143,6 +143,12 @@
   box-sizing: border-box;
 }
 
+html, body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+}
+
 body {
   font-family: var(--font-main);
   background-color: var(--bg-app);
@@ -156,10 +162,47 @@ body {
 #app {
   max-width: 1440px;
   margin: 0 auto;
-  padding: 16px 24px 48px;
+  padding: 16px 24px calc(48px + env(safe-area-inset-bottom, 0px));
   display: flex;
   flex-direction: column;
   gap: 20px;
+}
+
+/* Mobile Scroll Hint for Kalendar Kuda */
+.kuda-scroll-hint {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 6px 14px;
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  background: var(--bg-card);
+  border: 1px dashed var(--border-color);
+  border-radius: var(--radius-full);
+  margin-bottom: 2px;
+  animation: pulseHint 2.4s infinite ease-in-out;
+}
+
+.kuda-scroll-hint .hint-arrow {
+  color: var(--accent-gold);
+  font-size: 0.72rem;
+}
+
+@keyframes pulseHint {
+  0%, 100% { opacity: 0.7; transform: translateY(0); }
+  50% { opacity: 1; transform: translateY(-1px); }
+}
+
+/* Modal Drag Indicator for Mobile Bottom Sheet */
+.modal-drag-indicator {
+  display: none;
+  width: 42px;
+  height: 5px;
+  border-radius: 99px;
+  background: var(--border-color);
+  margin: 10px auto 2px;
 }
 
 /* ==========================================================================
@@ -805,13 +848,17 @@ body {
 
 .kuda-table {
   width: 100%;
-  border-collapse: collapse;
+  border-collapse: separate;
+  border-spacing: 0;
   table-layout: fixed;
   min-width: 760px;
 }
 
 /* Header Row (OCTOBER, WEEK 40, WEEK 41, ...) */
 .kuda-th-corner {
+  position: sticky;
+  left: 0;
+  z-index: 10;
   background: #1f2937;
   color: #f3f4f6;
   font-family: var(--font-num);
@@ -820,8 +867,10 @@ body {
   letter-spacing: 0.08em;
   text-align: center;
   padding: 12px 8px;
-  border: 1px solid var(--border-color);
+  border-right: 2px solid var(--border-color);
+  border-bottom: 2px solid var(--border-color);
   width: 110px;
+  box-shadow: 3px 0 8px rgba(0, 0, 0, 0.12);
 }
 
 [data-theme="kuda"] .kuda-th-corner {
@@ -843,7 +892,8 @@ body {
   letter-spacing: 0.05em;
   text-align: center;
   padding: 10px 6px;
-  border: 1px solid var(--border-color);
+  border-right: 1px solid var(--border-color);
+  border-bottom: 2px solid var(--border-color);
 }
 
 [data-theme="kuda"] .kuda-th-week {
@@ -856,12 +906,17 @@ body {
   color: #334155;
 }
 
-/* Left Weekday Header Pills */
+/* Left Weekday Header Pills (Sticky on mobile & tablet) */
 .kuda-td-weekday {
+  position: sticky;
+  left: 0;
+  z-index: 9;
   padding: 4px;
-  border: 1px solid var(--border-color);
+  border-right: 2px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
   vertical-align: middle;
   background: var(--bg-surface);
+  box-shadow: 3px 0 8px rgba(0, 0, 0, 0.12);
 }
 
 .kuda-weekday-pill {
@@ -945,7 +1000,8 @@ body {
   position: relative;
   height: 98px;
   padding: 4px 6px;
-  border: 1px solid var(--border-color);
+  border-right: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
   background: var(--bg-surface);
   cursor: pointer;
   transition: all var(--transition-fast);
@@ -1668,7 +1724,7 @@ body {
 
 .salary-tables-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 20px;
 }
 
@@ -1983,61 +2039,820 @@ body {
 }
 
 /* ==========================================================================
-   RESPONSIVE DESIGN (MOBILE & TABLET)
+   ADVANCED RESPONSIVE DESIGN (DESKTOP, TABLET & MOBILE)
    ========================================================================== */
 
-@media (max-width: 900px) {
+/* TABLET LANDSCAPE & MEDIUM SCREENS (<= 1024px) */
+@media (max-width: 1024px) {
   #app {
-    padding: 10px 12px 36px;
+    padding: 14px 18px 40px;
+    gap: 16px;
   }
+
   .top-nav {
-    flex-direction: column;
-    align-items: stretch;
+    padding: 14px 18px;
+    gap: 14px;
   }
-  .nav-controls {
-    justify-content: space-between;
+
+  .brand-logo {
+    width: 42px;
+    height: 42px;
   }
-  .calendar-toolbar {
-    flex-direction: column;
-    align-items: stretch;
-  }
-  .day-cell {
-    min-height: 90px;
-    padding: 6px;
-  }
-  .day-number {
+
+  .brand-title {
     font-size: 1.25rem;
   }
-  .badge-tag {
-    font-size: 0.65rem;
-    padding: 2px 4px;
+
+  .calendar-toolbar {
+    padding: 14px 16px;
+    gap: 12px;
   }
-  .subdate-hijri, .subdate-lunar {
-    font-size: 0.65rem;
+
+  .current-month-heading h2 {
+    font-size: 1.35rem;
   }
+
+  .kuda-table {
+    min-width: 680px;
+  }
+
+  .kuda-th-corner {
+    width: 95px;
+    font-size: 0.88rem;
+    padding: 10px 4px;
+  }
+
+  .kuda-th-week {
+    font-size: 0.75rem;
+    padding: 8px 4px;
+  }
+
+  .kuda-day-cell {
+    height: 92px;
+    padding: 3px 5px;
+  }
+
+  .cell-day-num {
+    font-size: 2.1rem;
+  }
+
+  .long-weekend-grid,
+  .school-holiday-grid,
+  .user-events-grid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+
   .salary-tables-container {
     grid-template-columns: 1fr;
+    gap: 16px;
   }
 }
 
-@media (max-width: 600px) {
-  .day-cell {
-    min-height: 75px;
-    padding: 4px;
+/* TABLET PORTRAIT & LARGE PHONES (<= 768px) */
+@media (max-width: 768px) {
+  #app {
+    padding: 10px 14px 36px;
+    gap: 14px;
   }
-  .day-number {
-    font-size: 1.1rem;
+
+  .top-nav {
+    padding: 12px 14px;
+    border-radius: var(--radius-md);
   }
-  .weekday {
+
+  .brand {
+    gap: 10px;
+  }
+
+  .brand-logo {
+    width: 38px;
+    height: 38px;
+  }
+
+  .brand-title {
+    font-size: 1.15rem;
+  }
+
+  .brand-subtitle {
+    font-size: 0.74rem;
+  }
+
+  .nav-controls {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr auto;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .control-group {
+    width: 100%;
+  }
+
+  .control-group .control-label {
+    display: none; /* Hide label to maximize select width */
+  }
+
+  .select-input {
+    width: 100%;
+    padding: 8px 10px;
+    font-size: 0.82rem;
+  }
+
+  .theme-switcher {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  /* Main Navigation Tabs */
+  .main-tabs {
+    padding: 4px 2px;
+    gap: 6px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .tab-btn {
+    scroll-snap-align: start;
+    padding: 8px 14px;
+    font-size: 0.82rem;
+    gap: 6px;
+    border-radius: var(--radius-sm);
+  }
+
+  .tab-icon {
+    font-size: 1rem;
+  }
+
+  /* Toolbar */
+  .calendar-toolbar {
+    padding: 12px 14px;
+    border-radius: var(--radius-md);
+    gap: 12px;
+  }
+
+  .month-nav {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .current-month-heading h2 {
+    font-size: 1.25rem;
+  }
+
+  .hijri-badge {
+    font-size: 0.74rem;
+  }
+
+  .btn-icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .year-pills {
+    width: 100%;
+    display: flex;
+  }
+
+  .year-pill {
+    flex: 1;
+    text-align: center;
+    padding: 7px 4px;
+    font-size: 0.82rem;
+  }
+
+  .view-controls {
+    width: 100%;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  .layout-toggle-group {
+    flex: 1;
+  }
+
+  .toggle-mode-btn {
+    flex: 1;
+    text-align: center;
+    padding: 6px 8px;
+    font-size: 0.78rem;
+  }
+
+  .toggle-horse-label {
+    padding: 6px 10px;
+    font-size: 0.78rem;
+  }
+
+  .search-box {
+    width: 100%;
+  }
+
+  .search-box input {
+    width: 100%;
+    font-size: 0.84rem;
+  }
+
+  /* Quick Month Pills */
+  .month-pills {
+    padding-bottom: 6px;
+    gap: 6px;
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .month-pill {
+    padding: 6px 12px;
+    font-size: 0.78rem;
+    scroll-snap-align: center;
+  }
+
+  /* Legend */
+  .legend-bar {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    padding: 8px 12px;
+    gap: 14px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .legend-bar::-webkit-scrollbar { display: none; }
+  .legend-item {
+    font-size: 0.74rem;
+  }
+
+  /* Scroll hint for table */
+  .kuda-scroll-hint {
+    display: flex;
+  }
+
+  /* Kalendar Kuda Table */
+  .kuda-table {
+    min-width: 620px;
+  }
+
+  .kuda-th-corner {
+    width: 82px;
+    font-size: 0.8rem;
+    padding: 8px 3px;
+  }
+
+  .kuda-td-weekday {
+    padding: 3px;
+  }
+
+  .kuda-weekday-pill {
+    padding: 6px 3px;
+    border-radius: 8px;
+  }
+
+  .kuda-weekday-pill .chinese-sub {
+    font-size: 0.65rem;
+  }
+
+  .kuda-weekday-pill .main-day {
+    font-size: 1rem;
+  }
+
+  .kuda-weekday-pill .sub-days {
+    font-size: 0.62rem;
+  }
+
+  .kuda-th-week {
     font-size: 0.72rem;
+    padding: 7px 3px;
+  }
+
+  .kuda-day-cell {
+    height: 88px;
+    padding: 3px 4px;
+  }
+
+  .cell-day-num {
+    font-size: 1.85rem;
+    right: 4px;
+    bottom: 2px;
+  }
+
+  .cell-hijri {
+    font-size: 0.66rem;
+    top: 3px;
+    right: 4px;
+  }
+
+  .cell-lunar-vertical {
+    font-size: 0.64rem;
+    top: 4px;
+    left: 4px;
+  }
+
+  .cell-tamil {
+    font-size: 0.62rem;
+    bottom: 3px;
+    left: 4px;
+  }
+
+  .payday-center-img {
+    max-width: 34px;
+    max-height: 28px;
+    top: 36%;
+  }
+
+  .kuda-horse-img {
+    max-width: 40px;
+    max-height: 28px;
+    top: 36%;
+  }
+
+  .cell-fest-badge img {
+    width: 22px;
+    height: 22px;
+  }
+
+  .cell-fest-title {
+    font-size: 0.58rem;
+    padding: 1px 3px;
+    max-width: 90%;
+  }
+
+  /* Grid Moden */
+  .weekday {
+    font-size: 0.75rem;
     padding: 8px 2px;
   }
-  .day-subdates {
-    display: none; /* Hide on small screen for compact view */
+
+  .day-cell {
+    min-height: 80px;
+    padding: 4px 6px;
   }
+
+  .day-number {
+    font-size: 1.45rem;
+  }
+
+  .subdate-hijri, .subdate-lunar {
+    font-size: 0.62rem;
+  }
+
   .badge-tag {
-    font-size: 0.6rem;
+    font-size: 0.62rem;
+    padding: 1px 4px;
+  }
+}
+
+/* MOBILE PHONES (<= 540px) */
+@media (max-width: 540px) {
+  #app {
+    padding: 8px 10px calc(32px + env(safe-area-inset-bottom, 0px));
+    gap: 12px;
+  }
+
+  .top-nav {
+    padding: 10px 12px;
+    gap: 10px;
+  }
+
+  .brand-logo {
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+  }
+
+  .brand-title {
+    font-size: 1.05rem;
+    letter-spacing: -0.3px;
+  }
+
+  .badge-pro {
+    font-size: 0.65rem;
+    padding: 2px 6px;
+  }
+
+  .brand-subtitle {
+    display: none; /* Hide subtitle on mobile for sleek app feel */
+  }
+
+  .nav-controls {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+  }
+
+  .control-group {
+    width: 100%;
+  }
+
+  .control-group .select-input {
+    width: 100%;
+    padding: 7px 8px;
+    font-size: 0.78rem;
+  }
+
+  .theme-switcher {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 3px;
+    gap: 3px;
+  }
+
+  .theme-btn {
+    width: 100%;
+    text-align: center;
+    padding: 7px 2px;
+    font-size: 0.75rem;
     white-space: nowrap;
     overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .tab-btn {
+    padding: 7px 12px;
+    font-size: 0.78rem;
+  }
+
+  .tab-icon {
+    font-size: 0.95rem;
+  }
+
+  /* Calendar Toolbar */
+  .calendar-toolbar {
+    padding: 10px 12px;
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .month-nav {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  .current-month-heading {
+    text-align: center;
+    flex: 1;
+  }
+
+  .current-month-heading h2 {
+    font-size: 1.15rem;
+  }
+
+  .btn-today {
+    padding: 6px 10px;
+    font-size: 0.74rem;
+    white-space: nowrap;
+  }
+
+  .year-pills {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 3px;
+    padding: 3px;
+  }
+
+  .year-pill {
+    width: 100%;
+    text-align: center;
+    padding: 7px 2px;
+    font-size: 0.8rem;
+  }
+
+  .view-controls {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .layout-toggle-group {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3px;
+    padding: 3px;
+  }
+
+  .toggle-mode-btn {
+    width: 100%;
+    text-align: center;
+    padding: 7px 4px;
+    font-size: 0.76rem;
+    white-space: nowrap;
+  }
+
+  .toggle-horse-label {
+    width: 100%;
+    justify-content: center;
+    padding: 7px 10px;
+    font-size: 0.76rem;
+  }
+
+  /* Kuda Table on Mobile */
+  .kuda-table {
+    min-width: 560px;
+  }
+
+  .kuda-th-corner {
+    width: 74px;
+    font-size: 0.75rem;
+    padding: 7px 2px;
+  }
+
+  .kuda-th-week {
+    font-size: 0.68rem;
+    padding: 6px 2px;
+  }
+
+  .kuda-weekday-pill {
+    padding: 4px 2px;
+  }
+
+  .kuda-weekday-pill .chinese-sub {
+    font-size: 0.6rem;
+  }
+
+  .kuda-weekday-pill .main-day {
+    font-size: 0.9rem;
+  }
+
+  .kuda-weekday-pill .sub-days {
+    font-size: 0.55rem;
+  }
+
+  .kuda-day-cell {
+    height: 84px;
+    padding: 2px 3px;
+  }
+
+  .cell-day-num {
+    font-size: 1.65rem;
+    right: 3px;
+    bottom: 1px;
+  }
+
+  .cell-hijri {
+    font-size: 0.6rem;
+    top: 2px;
+    right: 3px;
+  }
+
+  .cell-lunar-vertical {
+    font-size: 0.58rem;
+    top: 3px;
+    left: 3px;
+  }
+
+  .cell-tamil {
+    font-size: 0.55rem;
+    bottom: 2px;
+    left: 3px;
+  }
+
+  .payday-center-img {
+    max-width: 28px;
+    max-height: 24px;
+    top: 38%;
+  }
+
+  .kuda-horse-img {
+    max-width: 32px;
+    max-height: 24px;
+    top: 38%;
+  }
+
+  .cell-fest-badge img {
+    width: 18px;
+    height: 18px;
+  }
+
+  .cell-fest-title {
+    font-size: 0.54rem;
+    padding: 1px 2px;
+    max-width: 95%;
+  }
+
+  /* Grid Moden on Mobile */
+  .weekday {
+    font-size: 0.68rem;
+    padding: 6px 1px;
+  }
+
+  .day-cell {
+    min-height: 68px;
+    padding: 3px 2px;
+  }
+
+  .day-number {
+    font-size: 1.25rem;
+  }
+
+  .subdate-hijri {
+    font-size: 0.56rem;
+  }
+
+  .subdate-lunar {
+    display: none; /* Hide on very small screens to avoid clutter */
+  }
+
+  .badge-tag {
+    font-size: 0.56rem;
+    padding: 1px 3px;
+  }
+
+  /* Bottom-Sheet Modal on Mobile */
+  .modal-backdrop {
+    align-items: flex-end;
+    padding: 0;
+  }
+
+  .modal-card {
+    max-width: 100%;
+    border-radius: 22px 22px 0 0;
+    max-height: 85vh;
+    animation: slideUpModal 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  @keyframes slideUpModal {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+  }
+
+  .modal-drag-indicator {
+    display: block;
+  }
+
+  .modal-header {
+    padding: 14px 18px;
+  }
+
+  .modal-date-num {
+    font-size: 2.2rem;
+  }
+
+  .modal-full-date {
+    font-size: 1rem;
+  }
+
+  .modal-body {
+    padding: 16px 18px;
+    gap: 14px;
+    max-height: calc(85vh - 160px);
+  }
+
+  .modal-footer {
+    padding: 12px 18px calc(14px + env(safe-area-inset-bottom, 0px));
+    flex-direction: column-reverse;
+    gap: 8px;
+  }
+
+  .modal-footer button {
+    width: 100%;
+    min-height: 44px;
+  }
+
+  /* Long Weekend, School Holiday & Notes on Mobile */
+  .long-weekend-grid,
+  .school-holiday-grid,
+  .user-events-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .group-switcher {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .group-btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .add-note-form .form-row {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .add-note-form .btn-primary {
+    width: 100%;
+    min-height: 44px;
+  }
+
+  /* Salary & Pension on Mobile */
+  .salary-tables-container {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .salary-card {
+    padding: 14px 12px;
+  }
+
+  .next-payday-banner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 14px 12px;
+  }
+
+  .countdown-box {
+    width: 100%;
+    justify-content: center;
+    padding: 8px 12px;
+  }
+
+  .countdown-number {
+    font-size: 1.45rem;
+  }
+
+  .data-table th, .data-table td {
+    padding: 8px 10px;
+    font-size: 0.8rem;
+  }
+
+  /* Zodiac Bar on Mobile */
+  .zodiac-section {
+    padding: 12px 10px;
+    margin-top: 16px;
+  }
+
+  .zodiac-scroll-container {
+    gap: 8px;
+    padding-bottom: 6px;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x proximity;
+  }
+
+  .zodiac-card {
+    flex: 0 0 120px;
+    padding: 8px 6px;
+    scroll-snap-align: start;
+  }
+}
+
+/* ULTRA-COMPACT MOBILE (<= 375px) */
+@media (max-width: 375px) {
+  .brand-title {
+    font-size: 0.98rem;
+  }
+
+  .kuda-table {
+    min-width: 520px;
+  }
+
+  .kuda-th-corner {
+    width: 68px;
+    font-size: 0.72rem;
+  }
+
+  .kuda-day-cell {
+    height: 80px;
+  }
+
+  .cell-day-num {
+    font-size: 1.5rem;
+  }
+
+  .day-cell {
+    min-height: 62px;
+  }
+
+  .day-number {
+    font-size: 1.15rem;
+  }
+}
+
+/* TOUCH DEVICE ERGONOMICS */
+@media (hover: none) and (pointer: coarse) {
+  /* Increase tap hit areas */
+  .btn-icon,
+  .btn-today,
+  .tab-btn,
+  .toggle-mode-btn,
+  .year-pill,
+  .month-pill,
+  .theme-btn,
+  .modal-close,
+  .select-input {
+    min-height: 42px;
+    touch-action: manipulation;
+  }
+
+  /* Micro tap feedback */
+  button:active,
+  .kuda-day-cell:active,
+  .day-cell:active {
+    transform: scale(0.98);
   }
 }

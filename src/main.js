@@ -136,8 +136,8 @@ function setupEventListeners() {
     });
   });
 
-  // Calendar Navigation
-  document.getElementById('prevMonthBtn').addEventListener('click', () => {
+  // Calendar Navigation functions
+  window.goToPrevMonth = function() {
     if (state.month === 1) {
       if (state.year > 2024) {
         changeYear(state.year - 1, 12);
@@ -146,9 +146,9 @@ function setupEventListeners() {
       state.month--;
       renderCalendar();
     }
-  });
+  };
 
-  document.getElementById('nextMonthBtn').addEventListener('click', () => {
+  window.goToNextMonth = function() {
     if (state.month === 12) {
       if (state.year < 2027) {
         changeYear(state.year + 1, 1);
@@ -156,6 +156,80 @@ function setupEventListeners() {
     } else {
       state.month++;
       renderCalendar();
+    }
+  };
+
+  document.getElementById('prevMonthBtn').addEventListener('click', window.goToPrevMonth);
+  document.getElementById('nextMonthBtn').addEventListener('click', window.goToNextMonth);
+
+  // Touch swipe support for switching months on mobile & tablet
+  const monthHeading = document.querySelector('.current-month-heading');
+  let touchStartX = 0;
+  let touchStartY = 0;
+
+  const handleTouchStart = (e) => {
+    if (e.touches && e.touches.length === 1) {
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+    }
+  };
+
+  const handleTouchEnd = (e) => {
+    if (!touchStartX) return;
+    const touchEndX = e.changedTouches[0].clientX;
+    const touchEndY = e.changedTouches[0].clientY;
+    const diffX = touchEndX - touchStartX;
+    const diffY = touchEndY - touchStartY;
+
+    // Horizontal swipe threshold: at least 45px and dominant over vertical
+    if (Math.abs(diffX) > 45 && Math.abs(diffX) > Math.abs(diffY) * 1.4) {
+      if (diffX < 0) {
+        window.goToNextMonth();
+      } else {
+        window.goToPrevMonth();
+      }
+    }
+    touchStartX = 0;
+    touchStartY = 0;
+  };
+
+  if (monthHeading) {
+    monthHeading.addEventListener('touchstart', handleTouchStart, { passive: true });
+    monthHeading.addEventListener('touchend', handleTouchEnd, { passive: true });
+  }
+
+  // Also swipe months on the calendar container in Grid mode
+  const calendarArea = document.getElementById('calendarContentArea');
+  if (calendarArea) {
+    calendarArea.addEventListener('touchstart', (e) => {
+      if (state.calendarViewMode === 'grid') {
+        handleTouchStart(e);
+      }
+    }, { passive: true });
+    calendarArea.addEventListener('touchend', (e) => {
+      if (state.calendarViewMode === 'grid') {
+        handleTouchEnd(e);
+      }
+    }, { passive: true });
+  }
+
+  // Keyboard Navigation (Left/Right arrows for months, Esc for modal)
+  document.addEventListener('keydown', (e) => {
+    const modal = document.getElementById('dayModal');
+    const isModalOpen = modal && modal.style.display !== 'none';
+
+    if (e.key === 'Escape' && isModalOpen) {
+      closeModal();
+      return;
+    }
+
+    const isTyping = ['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement?.tagName);
+    if (!isModalOpen && !isTyping) {
+      if (e.key === 'ArrowLeft') {
+        window.goToPrevMonth();
+      } else if (e.key === 'ArrowRight') {
+        window.goToNextMonth();
+      }
     }
   });
 
@@ -263,6 +337,28 @@ function setupEventListeners() {
     if (e.target.id === 'dayModal') closeModal();
   });
 
+  // Mobile touch drag-down to dismiss bottom sheet modal
+  const modalCard = document.querySelector('.modal-card');
+  let modalTouchStartY = 0;
+  if (modalCard) {
+    modalCard.addEventListener('touchstart', (e) => {
+      if (e.touches && e.touches.length === 1) {
+        modalTouchStartY = e.touches[0].clientY;
+      }
+    }, { passive: true });
+
+    modalCard.addEventListener('touchend', (e) => {
+      if (!modalTouchStartY) return;
+      const modalTouchEndY = e.changedTouches[0].clientY;
+      const diffY = modalTouchEndY - modalTouchStartY;
+      const modalBody = document.querySelector('.modal-body');
+      if (diffY > 80 && (!modalBody || modalBody.scrollTop <= 5)) {
+        closeModal();
+      }
+      modalTouchStartY = 0;
+    }, { passive: true });
+  }
+
   // Quick note from modal
   document.getElementById('modalQuickAddBtn').addEventListener('click', () => {
     const input = document.getElementById('modalQuickNoteInput');
@@ -353,9 +449,13 @@ function renderCalendar() {
   const monthName = (MONTH_NAMES[state.locale] || MONTH_NAMES.ms)[state.month - 1];
   document.getElementById('currentMonthYear').textContent = `${monthName} ${state.year}`;
 
-  // Update active month pill
+  // Update active month pill & auto-scroll into view for touch devices
   document.querySelectorAll('.month-pill').forEach((pill, idx) => {
-    pill.classList.toggle('active', idx + 1 === state.month);
+    const isActive = (idx + 1 === state.month);
+    pill.classList.toggle('active', isActive);
+    if (isActive) {
+      pill.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+    }
   });
 
   // Find month data in calendarData
@@ -496,6 +596,16 @@ function renderKudaCalendar(container, monthData) {
   table.appendChild(tbody);
   tableContainer.appendChild(table);
   container.appendChild(tableContainer);
+
+  // Fade out scroll hint when user scrolls table horizontally
+  tableContainer.addEventListener('scroll', () => {
+    const hint = document.getElementById('kudaScrollHint');
+    if (hint && tableContainer.scrollLeft > 25) {
+      hint.style.opacity = '0';
+      hint.style.pointerEvents = 'none';
+      hint.style.transition = 'opacity 0.3s ease';
+    }
+  }, { passive: true });
 }
 
 // Single Cell in Kalendar Kuda Table
