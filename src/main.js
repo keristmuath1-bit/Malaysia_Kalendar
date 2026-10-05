@@ -984,7 +984,7 @@ function createDayCell(dayNum, isOtherMonth, dayOfWeek = 0, isToday = false, cel
 }
 
 // --------------------------------------------------------------------------
-// 3. 12 CHINESE ZODIAC ANIMALS FOOTER BAR
+// 3. 12 CHINESE ZODIAC ANIMALS FOOTER BAR (MINIMALIST KALENDAR KUDA STRIP)
 // --------------------------------------------------------------------------
 function renderZodiacBar() {
   const container = document.getElementById('zodiacScrollContainer');
@@ -1013,31 +1013,46 @@ function renderZodiacBar() {
   list.forEach(z => {
     const card = document.createElement('div');
     const isActiveYear = z.isThisYearZodiac || (state.year === 2026 && z.zodiacName === 'Horse');
-    card.className = `zodiac-card ${isActiveYear ? 'is-active-year' : ''}`;
+    card.className = `zodiac-card zodiac-compact-card ${isActiveYear ? 'is-active-year' : ''}`;
 
     const iconName = z.zodiacName.toLowerCase();
 
     card.innerHTML = `
-      <div class="zodiac-card-header">
-        <img src="/icons/ic_zodiac_${iconName}.png" class="zodiac-avatar" alt="${z.zodiacName}" />
-        <div class="zodiac-names">
-          <span>${z.zodiacName}</span>
-          <span class="zodiac-name-zh">${z.zodiacChineseName}</span>
+      <img src="/icons/ic_zodiac_${iconName}.png" class="zodiac-mini-icon" alt="${z.zodiacName}" />
+      <div class="zodiac-mini-title">
+        <span class="zmt-name">${z.zodiacName}</span>
+        <span class="zmt-zh">${z.zodiacChineseName}</span>
+      </div>
+      <div class="zodiac-table-header">
+        <span>年 岁</span>
+        <span>年 岁</span>
+      </div>
+      <div class="zodiac-table-body">
+        <div class="zmt-row">
+          <span class="zmt-cell-yr">${z.year1}</span><span class="zmt-cell-age">${z.age1}</span>
+          <span class="zmt-cell-yr">${z.year4}</span><span class="zmt-cell-age">${z.age4}</span>
+        </div>
+        <div class="zmt-row">
+          <span class="zmt-cell-yr">${z.year2}</span><span class="zmt-cell-age">${z.age2}</span>
+          <span class="zmt-cell-yr">${z.year5}</span><span class="zmt-cell-age">${z.age5}</span>
+        </div>
+        <div class="zmt-row">
+          <span class="zmt-cell-yr">${z.year3}</span><span class="zmt-cell-age">${z.age3}</span>
+          <span class="zmt-cell-yr">${z.year6}</span><span class="zmt-cell-age">${z.age6}</span>
         </div>
       </div>
-      <div class="zodiac-years-grid">
-        <div class="zodiac-year-col"><span class="zy-year">${z.year1}</span><span class="zy-age">${z.age1} thn</span></div>
-        <div class="zodiac-year-col"><span class="zy-year">${z.year2}</span><span class="zy-age">${z.age2} thn</span></div>
-        <div class="zodiac-year-col"><span class="zy-year">${z.year3}</span><span class="zy-age">${z.age3} thn</span></div>
-        <div class="zodiac-year-col"><span class="zy-year">${z.year4}</span><span class="zy-age">${z.age4} thn</span></div>
-        <div class="zodiac-year-col"><span class="zy-year">${z.year5}</span><span class="zy-age">${z.age5} thn</span></div>
-        <div class="zodiac-year-col"><span class="zy-year">${z.year6}</span><span class="zy-age">${z.age6} thn</span></div>
-      </div>
-      ${isActiveYear ? `<span class="zodiac-active-badge">Tahun ${state.year} 🐴</span>` : ''}
     `;
 
     container.appendChild(card);
   });
+
+  // Auto-scroll active zodiac into view on mobile
+  const activeCard = container.querySelector('.is-active-year');
+  if (activeCard) {
+    setTimeout(() => {
+      activeCard.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+    }, 100);
+  }
 }
 
 // Calculate standard ISO Week Number
