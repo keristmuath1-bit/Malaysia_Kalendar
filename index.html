@@ -105,33 +105,44 @@
                 <span id="currentHijriTitle" class="hijri-badge">Rejab - Syaaban 1447</span>
               </div>
               <button id="nextMonthBtn" class="btn-icon" aria-label="Bulan Seterusnya">▶</button>
-              <button id="todayBtn" class="btn-today">Hari Ini</button>
-            </div>
-
-            <!-- Year Picker -->
-            <div class="year-pills">
-              <button class="year-pill" data-year="2024">2024</button>
-              <button class="year-pill" data-year="2025">2025</button>
-              <button class="year-pill active" data-year="2026">2026</button>
-              <button class="year-pill" data-year="2027">2027</button>
-            </div>
-
-            <!-- Layout & Horse Feature Controls -->
-            <div class="view-controls">
-              <div class="layout-toggle-group">
-                <button id="viewKudaBtn" class="toggle-mode-btn active" title="Paparan Tradisional Kalendar Kuda (Seperti Gambar Asal)">🐴 Kalendar Kuda</button>
-                <button id="viewGridBtn" class="toggle-mode-btn" title="Paparan Grid Bulanan Standard">📅 Grid Moden</button>
+              <div class="month-nav-actions">
+                <button id="todayBtn" class="btn-today">Hari Ini</button>
+                <button id="toggleFilterBtn" class="btn-toolbar-toggle" aria-expanded="false" title="Pilihan Paparan & Carian">
+                  <span class="toolbar-toggle-icon">⚙️</span>
+                  <span class="toolbar-toggle-text">Pilihan</span>
+                  <span id="toggleFilterArrow" class="toolbar-toggle-arrow">▾</span>
+                  <span id="filterActiveDot" class="filter-active-dot" style="display: none;"></span>
+                </button>
               </div>
-              <label class="toggle-horse-label" title="Tunjuk ikon joki lumba kuda pada hujung minggu">
-                <input type="checkbox" id="toggleHorseRace" checked />
-                <span>🏇 Lumba Kuda</span>
-              </label>
             </div>
 
-            <!-- Search Bar -->
-            <div class="search-box">
-              <input type="text" id="holidaySearchInput" placeholder="Cari cuti (contoh: Raya, Merdeka)..." />
-              <button id="searchClearBtn" class="search-clear-btn" style="display:none;">✕</button>
+            <!-- Collapsible Secondary Toolbar Controls (Auto-hidden on Mobile to Prevent Clutter) -->
+            <div class="toolbar-collapsible" id="toolbarCollapsible">
+              <!-- Year Picker -->
+              <div class="year-pills">
+                <button class="year-pill" data-year="2024">2024</button>
+                <button class="year-pill" data-year="2025">2025</button>
+                <button class="year-pill active" data-year="2026">2026</button>
+                <button class="year-pill" data-year="2027">2027</button>
+              </div>
+
+              <!-- Layout & Horse Feature Controls -->
+              <div class="view-controls">
+                <div class="layout-toggle-group">
+                  <button id="viewKudaBtn" class="toggle-mode-btn active" title="Paparan Tradisional Kalendar Kuda (Seperti Gambar Asal)">🐴 Kalendar Kuda</button>
+                  <button id="viewGridBtn" class="toggle-mode-btn" title="Paparan Grid Bulanan Standard">📅 Grid Moden</button>
+                </div>
+                <label class="toggle-horse-label" title="Tunjuk ikon joki lumba kuda pada hujung minggu">
+                  <input type="checkbox" id="toggleHorseRace" checked />
+                  <span>🏇 Lumba Kuda</span>
+                </label>
+              </div>
+
+              <!-- Search Bar -->
+              <div class="search-box">
+                <input type="text" id="holidaySearchInput" placeholder="Cari cuti (contoh: Raya, Merdeka)..." />
+                <button id="searchClearBtn" class="search-clear-btn" style="display:none;">✕</button>
+              </div>
             </div>
           </div>
 

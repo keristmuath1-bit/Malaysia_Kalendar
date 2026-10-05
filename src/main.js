@@ -260,12 +260,14 @@ function setupEventListeners() {
       state.calendarViewMode = 'kuda';
       viewKudaBtn.classList.add('active');
       viewGridBtn.classList.remove('active');
+      updateFilterIndicator();
       renderCalendar();
     });
     viewGridBtn.addEventListener('click', () => {
       state.calendarViewMode = 'grid';
       viewGridBtn.classList.add('active');
       viewKudaBtn.classList.remove('active');
+      updateFilterIndicator();
       renderCalendar();
     });
   }
@@ -275,6 +277,7 @@ function setupEventListeners() {
   if (toggleHorseRace) {
     toggleHorseRace.addEventListener('change', (e) => {
       state.showHorseRacing = e.target.checked;
+      updateFilterIndicator();
       renderCalendar();
     });
   }
@@ -285,13 +288,31 @@ function setupEventListeners() {
   searchInput.addEventListener('input', (e) => {
     const val = e.target.value.trim().toLowerCase();
     clearBtn.style.display = val ? 'block' : 'none';
+    updateFilterIndicator();
     filterCalendarSearch(val);
   });
   clearBtn.addEventListener('click', () => {
     searchInput.value = '';
     clearBtn.style.display = 'none';
+    updateFilterIndicator();
     renderCalendar();
   });
+
+  // Mobile Collapsible Toolbar Drawer Toggle (Autohide to prevent mobile clutter)
+  const toggleFilterBtn = document.getElementById('toggleFilterBtn');
+  const toolbarCollapsible = document.getElementById('toolbarCollapsible');
+  const toggleFilterArrow = document.getElementById('toggleFilterArrow');
+
+  if (toggleFilterBtn && toolbarCollapsible) {
+    toggleFilterBtn.addEventListener('click', () => {
+      const isOpen = toolbarCollapsible.classList.toggle('is-open');
+      toggleFilterBtn.classList.toggle('active', isOpen);
+      toggleFilterBtn.setAttribute('aria-expanded', String(isOpen));
+      if (toggleFilterArrow) {
+        toggleFilterArrow.textContent = isOpen ? '▴' : '▾';
+      }
+    });
+  }
 
   // School Group Buttons
   document.getElementById('btnGroupA').addEventListener('click', (e) => {
@@ -443,8 +464,23 @@ function renderMonthPills() {
   }
 }
 
+// Active Filter & Option Indicator Badge
+function updateFilterIndicator() {
+  const filterActiveDot = document.getElementById('filterActiveDot');
+  const searchInput = document.getElementById('holidaySearchInput');
+  if (!filterActiveDot) return;
+  const isYearModified = state.year !== 2026;
+  const isSearchActive = searchInput && searchInput.value.trim().length > 0;
+  const isViewModified = state.calendarViewMode !== 'kuda';
+  const isHorseModified = !state.showHorseRacing;
+  const hasActiveFilters = isYearModified || isSearchActive || isViewModified || isHorseModified;
+  filterActiveDot.style.display = hasActiveFilters ? 'inline-block' : 'none';
+}
+
 // Master Calendar Render Router
 function renderCalendar() {
+  updateFilterIndicator();
+
   // Update header text
   const monthName = (MONTH_NAMES[state.locale] || MONTH_NAMES.ms)[state.month - 1];
   document.getElementById('currentMonthYear').textContent = `${monthName} ${state.year}`;
