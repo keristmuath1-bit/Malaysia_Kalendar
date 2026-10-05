@@ -23,15 +23,20 @@ budget_tokens: 1000
 - **Column Alignment:** Sunday-to-Saturday columns matching physical Kalendar Kuda with accurate week numbering (Week 45-49 for Nov 2026).
 - **URL Params Support:** Support `?month=11&year=2026&theme=kuda` for direct navigation and testing.
 - **Responsive UI/UX Multi-Device Architecture:**
-  - **Mobile (360px–540px):**
-    - Pinned sticky left weekday column (`.kuda-td-weekday` on `left: 0`) with elevation drop shadow during horizontal table swiping.
+  - **Mobile Portrait (360px–540px) 100% Fit (Zero Horizontal Scroll):**
+    - Removed min-width constraints (`min-width: 0 !important; width: 100% !important; table-layout: fixed !important;`).
+    - Entire month (all 7 weekdays + 5/6 week columns) fits 100% of phone width without requiring horizontal scroll, matching physical Kalendar Kuda and Calendar2U reference design.
+    - Proportional cell typography: large day numbers (`1.45rem`), vertical Chinese lunar dates (`0.52rem`), Hijri dates (`0.52rem`), Tamil dates (`0.46rem`), and racing horse / festival icons (`24px`).
+    - Authentic Kalendar Kuda top header banner (`.kuda-banner-header`) showing Chinese lunar era (丙午年), English month & year (NOVEMBER 2026), and Islamic Hijri / Tamil month titles.
+    - Clean empty cells for dates outside the active month, keeping user focus exclusively on current month dates.
+    - Hidden scroll hints on portrait mobile since the view fits seamlessly without scrolling.
     - Mobile bottom-sheet drawer modal with top drag-indicator pill and touch drag-to-dismiss gesture (>80px pull down).
     - Touch swipe gesture detection for instant month-to-month navigation.
     - Symmetrical 4-column year pills (2024, 2025, 2026, 2027) and 2-column view toggles without text clipping.
     - Full-width 3-column theme switcher (🐴 Kuda, 🌙 Gelap, ☀️ Cerah).
     - Auto-centering active month pills via `scrollIntoView({ inline: 'center' })`.
-    - Horizontal scroll hint (`.kuda-scroll-hint`) with automatic fade-out upon user swipe.
   - **Tablet (601px–1024px):**
+    - Full-width fixed-layout Kalendar Kuda table fitting tablet viewport cleanly without horizontal scroll.
     - Balanced 2-column adaptive layout for secondary views (Cuti Panjang, Cuti Sekolah, Jadual Gaji & Pencen).
     - Flexible salary tables container (`minmax(320px, 1fr)`) adapting cleanly to portrait and landscape orientations.
   - **Desktop (>1024px):**

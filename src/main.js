@@ -487,6 +487,21 @@ function renderKudaCalendar(container, monthData) {
   const table = document.createElement('table');
   table.className = 'kuda-table';
 
+  // Authentic Kalendar Kuda Top Header Banner
+  const banner = document.createElement('div');
+  banner.className = 'kuda-banner-header';
+  const zhLabel = monthData?.chineseLunarLabel || '';
+  const mTitle = `${MONTH_NAMES.en[state.month - 1].toUpperCase()} ${state.year}`;
+  const hijriDesc = monthData?.hijriLabelDescription || monthData?.hijriLabelTitle || '';
+  const tamilDesc = monthData?.tamilLabelTitle || '';
+
+  banner.innerHTML = `
+    <div class="kuda-banner-zh">${zhLabel}</div>
+    <div class="kuda-banner-title">${mTitle}</div>
+    <div class="kuda-banner-hijri">${hijriDesc}${tamilDesc ? `<span class="kuda-banner-tamil">${tamilDesc}</span>` : ''}</div>
+  `;
+  tableContainer.appendChild(banner);
+
   // Calculate all weeks in the month (Sunday-to-Saturday columns matching authentic Kalendar Kuda)
   const weeks = [];
   const daysInMonth = new Date(state.year, state.month, 0).getDate();
@@ -612,7 +627,18 @@ function renderKudaCalendar(container, monthData) {
 function createKudaDayCell(dayDate, isOtherMonth, rowIdx, isToday, cellDetail) {
   const td = document.createElement('td');
   td.className = 'kuda-day-cell';
-  if (isOtherMonth) td.classList.add('other-month');
+  if (isOtherMonth) {
+    td.classList.add('other-month', 'blank-cell');
+    if (rowIdx === 6) {
+      td.innerHTML = `
+        <div class="cell-kuda-brand">
+          <img src="/logo.png" class="kuda-brand-logo" alt="Kalendar" />
+          <span class="kuda-brand-text">MALAYSIA</span>
+        </div>
+      `;
+    }
+    return td;
+  }
   if (isToday) td.classList.add('is-today');
   if (rowIdx === 0) td.classList.add('is-sun');
   if (rowIdx === 5) td.classList.add('is-fri');
