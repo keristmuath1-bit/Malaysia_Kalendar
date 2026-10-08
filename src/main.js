@@ -1012,7 +1012,7 @@ function createDayCell(dayNum, isOtherMonth, dayOfWeek = 0, isToday = false, cel
     if (isSchoolHoliday) {
       const schBadge = document.createElement('span');
       schBadge.className = 'badge-tag school-tag';
-      schBadge.textContent = '🎒 Cuti Sekolah';
+      schBadge.innerHTML = `<svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 3 3 6 3s6-1 6-3v-5"/></svg><span>Cuti Sekolah</span>`;
       indicators.appendChild(schBadge);
     }
 
@@ -1022,7 +1022,7 @@ function createDayCell(dayNum, isOtherMonth, dayOfWeek = 0, isToday = false, cel
     if (userEvents.length > 0) {
       const uBadge = document.createElement('span');
       uBadge.className = 'badge-tag user-event';
-      uBadge.textContent = `📝 ${userEvents[0].title}`;
+      uBadge.innerHTML = `<svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg><span>${userEvents[0].title}</span>`;
       indicators.appendChild(uBadge);
     }
 
@@ -1208,15 +1208,15 @@ function openDayModal(cellDetail, isPayDay = false) {
 
   // Hijri, Lunar, Tamil tags
   const hijri = cellDetail.hijriDate ? `${cellDetail.hijriDate.day} ${cellDetail.hijriDate.month} ${cellDetail.hijriDate.year}` : '-';
-  document.getElementById('modalHijriDate').textContent = `🌙 ${hijri}`;
+  document.getElementById('modalHijriDate').innerHTML = `<svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg><span>${hijri}</span>`;
 
   const lunar = cellDetail.chineseLunarDate ? `${cellDetail.chineseLunarDate.displayText} (${cellDetail.chineseLunarDate.complexYearWithAnimal || ''})` : '-';
-  document.getElementById('modalLunarDate').textContent = `🏮 ${lunar}`;
+  document.getElementById('modalLunarDate').innerHTML = `<svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v3"/><path d="M9 5h6"/><path d="M7 8a5 7 0 0 0 10 0v6a5 7 0 0 0-10 0Z"/><path d="M9 19h6"/><path d="M12 19v3"/></svg><span>${lunar}</span>`;
 
-  const tamil = cellDetail.tamilDate?.displayText ? `🪔 ${cellDetail.tamilDate.displayText}` : '';
+  const tamil = cellDetail.tamilDate?.displayText ? `<svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c-1.5 2-2 3.5-2 5a2 2 0 1 0 4 0c0-1.5-.5-3-2-5Z"/><path d="M4 14c0 3.3 3.6 6 8 6s8-2.7 8-6H4Z"/></svg><span>${cellDetail.tamilDate.displayText}</span>` : '';
   const tamilEl = document.getElementById('modalTamilDate');
   if (tamil) {
-    tamilEl.textContent = tamil;
+    tamilEl.innerHTML = tamil;
     tamilEl.style.display = 'inline-block';
   } else {
     tamilEl.style.display = 'none';
@@ -1275,7 +1275,7 @@ function renderModalUserEvents(dateStr) {
     const row = document.createElement('div');
     row.style.cssText = 'display:flex;justify-content:space-between;align-items:center;background:var(--bg-card);padding:8px 12px;border-radius:8px;margin-bottom:6px;';
     row.innerHTML = `
-      <span>📌 <strong>${ev.title}</strong></span>
+      <span style="display:inline-flex;align-items:center;gap:6px;"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" x2="12" y1="17" y2="22"/><path d="M5 17h14v-2l-2-2V5a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v8l-2 2z"/></svg><strong>${ev.title}</strong></span>
       <button class="btn-delete-event" data-id="${ev.id}" title="Padam Acara">&times;</button>
     `;
     row.querySelector('.btn-delete-event').addEventListener('click', () => {
@@ -1364,11 +1364,11 @@ function renderLongWeekends() {
           <h3 class="lw-title">${festTitle || 'Cuti Panjang'}</h3>
           <span class="lw-duration-badge">${lw.days || 3} Hari</span>
         </div>
-        <div class="lw-dates">📅 ${formatDateStr(lw.startDate)} ➔ ${formatDateStr(lw.endDate)}</div>
+        <div class="lw-dates" style="display:inline-flex;align-items:center;gap:6px;"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg><span>${formatDateStr(lw.startDate)} <svg class="ui-icon" style="width:12px;height:12px;margin:0 2px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg> ${formatDateStr(lw.endDate)}</span></div>
         <div class="lw-states">Negeri: ${lw.regionKeys || 'Seluruh Malaysia'}</div>
       </div>
       <div class="lw-tip">
-        💡 <strong>Tip Cuti:</strong> ${lw.tip || 'Sesuai untuk percutian domestik atau pulang ke kampung bersama keluarga.'}
+        <span style="display:inline-flex;align-items:center;gap:6px;vertical-align:-2px;"><svg class="ui-icon" style="color:var(--accent-gold);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-1 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6M10 22h4"/></svg><strong>Tip Cuti:</strong></span> ${lw.tip || 'Sesuai untuk percutian domestik atau pulang ke kampung bersama keluarga.'}
       </div>
     `;
 
@@ -1417,7 +1417,7 @@ function renderSchoolHolidays() {
       </div>
       <div class="school-daterange">${formatDateStr(item.startDate)} hingga ${formatDateStr(item.endDate)}</div>
       <div style="font-size:0.82rem;color:var(--text-secondary);">
-        ${state.schoolGroup === 'KA' ? '🏫 Kumpulan A (Johor, Kedah, Kelantan, Terengganu)' : '🏫 Kumpulan B (Selangor, KL, Penang dll.)'}
+        ${state.schoolGroup === 'KA' ? `<svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 3 3 6 3s6-1 6-3v-5"/></svg> <span>Kumpulan A (Johor, Kedah, Kelantan, Terengganu)</span>` : `<svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 3 3 6 3s6-1 6-3v-5"/></svg> <span>Kumpulan B (Selangor, KL, Penang dll.)</span>`}
       </div>
     `;
 
@@ -1493,7 +1493,7 @@ function renderNextPaydayCountdown(payData) {
   if (!nextPay) {
     banner.innerHTML = `
       <div class="next-payday-info">
-        <h3>💵 Jadual Gaji ${state.year}</h3>
+        <h3><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/><circle cx="12" cy="15" r="2"/></svg> Jadual Gaji ${state.year}</h3>
         <p>Sila semak jadual bulanan di bawah.</p>
       </div>
     `;
@@ -1506,7 +1506,7 @@ function renderNextPaydayCountdown(payData) {
 
   banner.innerHTML = `
     <div class="next-payday-info">
-      <h3>💵 Pembayaran Gaji Seterusnya (${monthTitle})</h3>
+      <h3><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/><circle cx="12" cy="15" r="2"/></svg> Pembayaran Gaji Seterusnya (${monthTitle})</h3>
       <p>Tarikh: <strong>${formatDateStr(nextPay.date)}</strong></p>
     </div>
     <div class="countdown-box">
@@ -1539,9 +1539,9 @@ function renderUserEvents() {
     card.innerHTML = `
       <div class="event-info">
         <h4>${ev.title}</h4>
-        <p>📅 Tarikh: ${ev.date} • Kategori: ${ev.category}</p>
+        <p style="display:inline-flex;align-items:center;gap:5px;"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg> <span>Tarikh: ${ev.date} • Kategori: ${ev.category}</span></p>
       </div>
-      <button class="btn-delete-event" data-id="${ev.id}" title="Padam Acara">🗑️</button>
+      <button class="btn-delete-event" data-id="${ev.id}" title="Padam Acara"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/><line x1="10" x2="10" y1="11" y2="17"/><line x1="14" x2="14" y1="11" y2="17"/></svg></button>
     `;
 
     card.querySelector('.btn-delete-event').addEventListener('click', () => {
