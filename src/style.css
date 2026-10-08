@@ -1889,115 +1889,130 @@ body {
 }
 
 /* ==========================================================================
-   DESKTOP & LAPTOP VIEW: ALIGN 12 CHINESE ZODIAC STRIP TO CALENDAR (100% WIDTH)
+   DYNAMIC RESPONSIVE ALIGNMENT: 12 ZODIAC & MONTH PILLS (100% WIDTH MATCHING CALENDAR)
    ========================================================================== */
 
-@media (min-width: 900px) {
+@media (min-width: 640px) {
   /* Quick Month Jump Bar Alignment (Full Width 12-Column Grid matching calendar) */
   .month-pills {
-    display: grid;
-    grid-template-columns: repeat(12, minmax(0, 1fr));
-    gap: 6px;
-    width: 100%;
-    overflow-x: visible;
-    padding: 4px 0 8px;
-    scroll-snap-type: none;
+    display: grid !important;
+    grid-template-columns: repeat(12, minmax(0, 1fr)) !important;
+    gap: clamp(3px, 0.5vw, 6px) !important;
+    width: 100% !important;
+    overflow: hidden !important;
+    padding: 4px 0 8px !important;
+    scroll-snap-type: none !important;
   }
 
   .month-pill {
-    flex: unset;
+    flex: unset !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    padding: 8px clamp(1px, 0.3vw, 3px) !important;
+    text-align: center !important;
+    font-size: clamp(0.70rem, 0.85vw, 0.84rem) !important;
+    box-sizing: border-box !important;
+  }
+
+  /* 12 Chinese Zodiac & Age Dynamic Full Width Alignment */
+  .zodiac-section {
     width: 100%;
-    min-width: 0;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    padding: 8px 2px;
-    text-align: center;
-    font-size: 0.80rem;
+    margin-top: 12px;
+    padding: 8px clamp(8px, 1.2vw, 14px) 10px;
+    border-radius: var(--radius-lg);
     box-sizing: border-box;
   }
 
-  .zodiac-section {
-    margin-top: 12px;
-    padding: 8px 12px 10px;
-    border-radius: var(--radius-lg);
-  }
-
   .zodiac-section-title {
-    font-size: 0.82rem;
+    font-size: clamp(0.74rem, 0.9vw, 0.84rem);
     margin-bottom: 8px;
     padding: 0 2px;
   }
 
   .zodiac-title-left {
-    font-size: 0.82rem;
+    font-size: clamp(0.74rem, 0.9vw, 0.84rem);
   }
 
   .zodiac-year-badge {
-    font-size: 0.72rem;
+    font-size: clamp(0.66rem, 0.75vw, 0.74rem);
     padding: 2px 10px;
   }
 
   .zodiac-scroll-container {
-    display: grid;
-    grid-template-columns: repeat(12, minmax(0, 1fr));
-    gap: 6px;
-    width: 100%;
-    overflow-x: visible;
-    padding: 2px 0 4px;
-    scroll-snap-type: none;
+    display: grid !important;
+    grid-template-columns: repeat(12, minmax(0, 1fr)) !important;
+    gap: clamp(3px, 0.6vw, 8px) !important;
+    width: 100% !important;
+    overflow: hidden !important;
+    padding: 2px 0 4px !important;
+    scroll-snap-type: none !important;
   }
 
   .zodiac-compact-card {
-    flex: unset;
-    width: 100%;
-    min-width: 0;
-    padding: 6px 3px 6px;
+    flex: unset !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    padding: 6px clamp(1px, 0.35vw, 4px) 6px !important;
     border-radius: 8px;
-    scroll-snap-align: none;
+    scroll-snap-align: none !important;
+    box-sizing: border-box !important;
   }
 
   .zodiac-mini-icon {
-    width: 26px;
-    height: 26px;
+    width: clamp(20px, 2.2vw, 26px);
+    height: clamp(20px, 2.2vw, 26px);
     margin-bottom: 2px;
   }
 
   .zodiac-mini-title {
-    font-size: 0.72rem;
-    gap: 3px;
+    font-size: clamp(0.60rem, 0.75vw, 0.72rem);
+    gap: 2px;
     margin-bottom: 3px;
+    white-space: nowrap;
+    overflow: hidden;
   }
 
   .zmt-zh {
-    font-size: 0.74rem;
+    font-size: clamp(0.62rem, 0.8vw, 0.74rem);
   }
 
   .zodiac-table-header {
-    font-size: 0.50rem;
+    font-size: clamp(0.42rem, 0.52vw, 0.50rem);
     padding-bottom: 2px;
     margin-bottom: 3px;
-    letter-spacing: 0.4px;
+    letter-spacing: -0.2px;
+    line-height: 1;
   }
 
   .zodiac-table-body {
+    width: 100%;
     gap: 2px;
   }
 
   .zmt-row {
-    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) auto;
-    font-size: 0.56rem;
-    column-gap: 2px;
-    line-height: 1.15;
-    padding: 0 1px;
+    display: grid !important;
+    grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.85fr) minmax(0, 1.3fr) minmax(0, 0.85fr) !important;
+    font-size: clamp(0.46rem, 0.6vw, 0.57rem) !important;
+    column-gap: 1px !important;
+    line-height: 1.15 !important;
+    padding: 0 !important;
+    align-items: center;
+    justify-content: center;
   }
 
   .zmt-cell-yr {
-    padding-right: 2px;
+    padding-right: 1px;
+    letter-spacing: -0.2px;
+    text-align: right;
   }
 
   .zmt-cell-age {
-    padding-right: 4px;
+    padding-left: 1px;
+    padding-right: 2px;
+    text-align: left;
   }
 
   .zmt-row span:last-child.zmt-cell-age {

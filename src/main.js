@@ -436,6 +436,16 @@ function setupEventListeners() {
     if (!state.selectedDayDetails) return;
     exportDayAsIcal(state.selectedDayDetails);
   });
+
+  // Window resize handler: maintain dynamic 100% full-width alignment without scroll offset
+  window.addEventListener('resize', () => {
+    if (window.innerWidth >= 640) {
+      const zodiacContainer = document.getElementById('zodiacScrollContainer');
+      if (zodiacContainer) zodiacContainer.scrollLeft = 0;
+      const monthContainer = document.getElementById('monthPillsContainer');
+      if (monthContainer) monthContainer.scrollLeft = 0;
+    }
+  });
 }
 
 // Change active Year
@@ -521,10 +531,14 @@ function renderCalendar() {
   document.querySelectorAll('.month-pill').forEach((pill, idx) => {
     const isActive = (idx + 1 === state.month);
     pill.classList.toggle('active', isActive);
-    if (isActive && window.innerWidth < 900) {
+    if (isActive && window.innerWidth < 640) {
       pill.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
     }
   });
+  if (window.innerWidth >= 640) {
+    const monthContainer = document.getElementById('monthPillsContainer');
+    if (monthContainer) monthContainer.scrollLeft = 0;
+  }
 
   // Find month data in calendarData
   const monthData = state.calendarData?.calMonths?.find(m => m.month === state.month && m.year === state.year);
@@ -1110,12 +1124,17 @@ function renderZodiacBar() {
     container.appendChild(card);
   });
 
-  // Auto-scroll active zodiac into view on mobile (< 900px)
-  const activeCard = container.querySelector('.is-active-year');
-  if (activeCard && window.innerWidth < 900) {
-    setTimeout(() => {
-      activeCard.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
-    }, 100);
+  // On desktop / laptop / tablet (>= 640px), keep scrollLeft at 0 so Card 1 (Rat) to Card 12 (Pig) align 100% with calendar
+  if (window.innerWidth >= 640) {
+    container.scrollLeft = 0;
+  } else {
+    // Only auto-scroll on narrow mobile viewports (< 640px)
+    const activeCard = container.querySelector('.is-active-year');
+    if (activeCard) {
+      setTimeout(() => {
+        activeCard.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+      }, 100);
+    }
   }
 }
 
