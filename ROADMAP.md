@@ -40,7 +40,17 @@
 
 ---
 
+
+---
+
+## 🚀 Milestone 3.5: Optimasi UI/UX Antislop Multi-Device (v1.3) — ✅ SELESAI
+- [x] Sokongan leret sentuhan (Touch Swipe Left/Right) pada grid kalendar untuk pertukaran bulan pada telefon pintar dan tablet.
+- [x] Navigasi papan kekunci (ArrowLeft, ArrowRight, ArrowUp, ArrowDown, Home, End, Enter/Space) dan pintasan pantas (T: Hari Ini, P: Cetak, ESC: Tutup modal).
+- [x] Mod Landskap Skrin Rendah (`@media (max-height: 540px) and (orientation: landscape)`) dengan sel padat 56px supaya kesemua 5-6 baris kalendar muat menegak tanpa skrol melampau.
+- [x] Susun atur cetakan format A4 landskap rasmi (`@media print`) dengan sifar elemen antara muka mengganggu.
+- [x] Aksesibiliti WCAG (Skip link, penanda ARIA role="gridcell", tabindex="0", cincin fokus berkontras tinggi 3px, sasaran sentuhan minimum 44px, sifar em dash).
+
 ## 🖨️ Milestone 4: Cetakan & Keupayaan Luar Talian (v2.0) — ⏳ AKAN DATANG
-- [ ] Mod Cetak Kalendar Dinding Format A4 (PDF / Gambar Resolusi Tinggi).
+- [x] Mod Cetak Kalendar Dinding Format A4 (PDF / Gambar Resolusi Tinggi).
 - [ ] PWA (Progressive Web App): Pemasangan terus ke desktop atau telefon pintar tanpa Play Store.
 - [ ] Mod Luar Talian (Offline Mode) dengan Service Worker caching.

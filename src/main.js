@@ -198,20 +198,43 @@ function setupEventListeners() {
     monthHeading.addEventListener('touchend', handleTouchEnd, { passive: true });
   }
 
-  // Also swipe months on the calendar container in Grid mode
+  // Touch swipe on calendar container in both Kuda & Grid view
   const calendarArea = document.getElementById('calendarContentArea');
-  if (calendarArea) {
-    calendarArea.addEventListener('touchstart', (e) => {
-      if (state.calendarViewMode === 'grid') {
-        handleTouchStart(e);
-      }
-    }, { passive: true });
-    calendarArea.addEventListener('touchend', (e) => {
-      if (state.calendarViewMode === 'grid') {
-        handleTouchEnd(e);
-      }
-    }, { passive: true });
-  }
+  const calendarWrapper = document.getElementById('calendarWrapper');
+  const attachSwipe = (el) => {
+    if (!el) return;
+    el.addEventListener('touchstart', handleTouchStart, { passive: true });
+    el.addEventListener('touchend', handleTouchEnd, { passive: true });
+  };
+  attachSwipe(calendarArea);
+  attachSwipe(calendarWrapper);
+
+  // Keyboard Arrow Navigation across calendar cells
+  const handleCalendarGridKeydown = (e) => {
+    const active = document.activeElement;
+    if (!active || (!active.classList.contains('cell-day') && !active.classList.contains('grid-cell') && active.tagName !== 'TD')) return;
+    const container = document.getElementById('calendarContentArea');
+    if (!container) return;
+    const cells = Array.from(container.querySelectorAll('td[tabindex="0"], .grid-cell[tabindex="0"]'));
+    const currentIndex = cells.indexOf(active);
+    if (currentIndex === -1) return;
+
+    let targetIndex = -1;
+    if (e.key === 'ArrowLeft') targetIndex = currentIndex - 1;
+    else if (e.key === 'ArrowRight') targetIndex = currentIndex + 1;
+    else if (e.key === 'ArrowUp') targetIndex = currentIndex - 7;
+    else if (e.key === 'ArrowDown') targetIndex = currentIndex + 7;
+    else if (e.key === 'Home') targetIndex = 0;
+    else if (e.key === 'End') targetIndex = cells.length - 1;
+
+    if (targetIndex >= 0 && targetIndex < cells.length) {
+      e.preventDefault();
+      cells[targetIndex].focus();
+    }
+  };
+
+  if (calendarWrapper) calendarWrapper.addEventListener('keydown', handleCalendarGridKeydown);
+  if (calendarArea) calendarArea.addEventListener('keydown', handleCalendarGridKeydown);
 
   // Keyboard Navigation (Left/Right arrows for months, Esc for modal)
   document.addEventListener('keydown', (e) => {
@@ -229,9 +252,24 @@ function setupEventListeners() {
         window.goToPrevMonth();
       } else if (e.key === 'ArrowRight') {
         window.goToNextMonth();
+      } else if (e.key === 't' || e.key === 'T') {
+        e.preventDefault();
+        const todayBtn = document.getElementById('todayBtn');
+        if (todayBtn) todayBtn.click();
+      } else if (e.key === 'p' || e.key === 'P') {
+        if (!e.ctrlKey && !e.metaKey) {
+          e.preventDefault();
+          window.print();
+        }
       }
     }
   });
+
+  // Print button listener
+  const printBtn = document.getElementById('printBtn');
+  if (printBtn) {
+    printBtn.addEventListener('click', () => window.print());
+  }
 
   document.getElementById('todayBtn').addEventListener('click', () => {
     const now = new Date();
@@ -796,10 +834,26 @@ function createKudaDayCell(dayDate, isOtherMonth, rowIdx, isToday, cellDetail) {
   numEl.textContent = dayNum;
   td.appendChild(numEl);
 
-  // Click handler to open details
+  // Accessibility & Keyboard Navigation (WCAG AA/AAA)
+  td.setAttribute('tabindex', '0');
+  td.setAttribute('role', 'gridcell');
+  if (cellDetail) {
+    const holidayStr = cellDetail.isHoliday ? `, Cuti: ${cellDetail.holidayName}` : '';
+    const payStr = isPayDay ? ', Hari Gaji Penjawat Awam' : '';
+    td.setAttribute('aria-label', `${cellDetail.day} ${MONTH_NAMES[state.locale] ? MONTH_NAMES[state.locale][state.month - 1] : ''} ${state.year}${holidayStr}${payStr}`);
+  }
+
+  // Click & Keyboard handler to open details
   td.addEventListener('click', () => {
     if (cellDetail) {
       openDayModal(cellDetail, isPayDay);
+    }
+  });
+
+  td.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      if (cellDetail) openDayModal(cellDetail, isPayDay);
     }
   });
 
@@ -974,9 +1028,25 @@ function createDayCell(dayNum, isOtherMonth, dayOfWeek = 0, isToday = false, cel
 
     cell.appendChild(indicators);
 
-    // Click handler to open details
+    // Accessibility & Keyboard Navigation (WCAG AA/AAA)
+    cell.setAttribute('tabindex', '0');
+    cell.setAttribute('role', 'gridcell');
+    if (cellDetail) {
+      const holidayStr = cellDetail.isHoliday ? `, Cuti: ${cellDetail.holidayName}` : '';
+      const payStr = isPayDay ? ', Hari Gaji Penjawat Awam' : '';
+      cell.setAttribute('aria-label', `${cellDetail.day} ${MONTH_NAMES[state.locale] ? MONTH_NAMES[state.locale][state.month - 1] : ''} ${state.year}${holidayStr}${payStr}`);
+    }
+
+    // Click & Keyboard handler to open details
     cell.addEventListener('click', () => {
       openDayModal(cellDetail, isPayDay);
+    });
+
+    cell.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openDayModal(cellDetail, isPayDay);
+      }
     });
   }
 

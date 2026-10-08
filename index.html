@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" href="/logo.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
     <meta name="description" content="Kalendar Malaysia PRO - Kalendar Kuda Digital, Cuti Umum, Cuti Sekolah, Jadual Gaji & Pencen Penjawat Awam, Tarikh Hijrah & Lunar." />
     <meta name="theme-color" content="#0f172a" />
     <title>Kalendar Malaysia PRO 2026 - Kalendar Kuda & Cuti Umum</title>
@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="/src/style.css" />
   </head>
   <body>
+    <a href="#calendarContentArea" class="skip-link">Langkau ke Kalendar</a>
     <div id="app">
       <!-- Top Navigation Bar -->
       <header class="top-nav">
@@ -106,7 +107,8 @@
               </div>
               <button id="nextMonthBtn" class="btn-icon" aria-label="Bulan Seterusnya">▶</button>
               <div class="month-nav-actions">
-                <button id="todayBtn" class="btn-today">Hari Ini</button>
+                <button id="todayBtn" class="btn-today" title="Kembali ke Hari Ini (T)"><span class="btn-text">Hari Ini</span><kbd class="kbd-hint">T</kbd></button>
+                <button id="printBtn" class="btn-today btn-print-header" title="Cetak Kalendar A4 (P)"><span class="btn-text">🖨️ Cetak</span><kbd class="kbd-hint">P</kbd></button>
                 <button id="toggleFilterBtn" class="btn-toolbar-toggle" aria-expanded="false" title="Pilihan Paparan & Carian">
                   <span class="toolbar-toggle-icon">⚙️</span>
                   <span class="toolbar-toggle-text">Pilihan</span>
