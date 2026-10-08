@@ -125,29 +125,46 @@ function setupEventListeners() {
     renderAll();
   });
 
-  // Main Tabs Switching
+  // Tab Switching Engine with Auto-Hide Dropdown
+  function switchTab(tabId) {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+
+    const targetBtn = document.querySelector(`.tab-btn[data-tab="${tabId}"]`);
+    if (targetBtn) {
+      targetBtn.classList.add('active');
+      targetBtn.scrollIntoView({ behavior: 'smooth', inline: 'nearest', block: 'nearest' });
+    }
+    state.currentTab = tabId;
+    const viewEl = document.getElementById(`${tabId}View`);
+    if (viewEl) viewEl.classList.add('active');
+
+    updateCompactBarHeading();
+
+    if (tabId === 'calendar') renderCalendar();
+    if (tabId === 'salary') renderSalaryAndPension();
+    if (tabId === 'longweekend') renderLongWeekends();
+    if (tabId === 'school') renderSchoolHolidays();
+    if (tabId === 'notes') renderUserEvents();
+  }
+  window.switchTab = switchTab;
+
   document.querySelectorAll('.tab-btn').forEach(btn => {
     btn.addEventListener('click', () => {
-      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-      document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-
-      btn.classList.add('active');
       const tabId = btn.dataset.tab;
-      state.currentTab = tabId;
-      document.getElementById(`${tabId}View`).classList.add('active');
-
-      // Auto-scroll active tab into view smoothly on touch/mobile devices
-      btn.scrollIntoView({ behavior: 'smooth', inline: 'nearest', block: 'nearest' });
-
-      if (tabId === 'salary') renderSalaryAndPension();
-      if (tabId === 'longweekend') renderLongWeekends();
-      if (tabId === 'school') renderSchoolHolidays();
-      if (tabId === 'notes') renderUserEvents();
+      switchTab(tabId);
+      // Auto-hide dropdown smoothly upon selecting a tab
+      setTimeout(() => {
+        if (window.closeUnifiedDropdown) window.closeUnifiedDropdown();
+      }, 120);
     });
   });
 
   // Calendar Navigation functions
   window.goToPrevMonth = function() {
+    if (state.currentTab !== 'calendar') {
+      switchTab('calendar');
+    }
     if (state.month === 1) {
       if (state.year > 2024) {
         changeYear(state.year - 1, 12);
@@ -159,6 +176,9 @@ function setupEventListeners() {
   };
 
   window.goToNextMonth = function() {
+    if (state.currentTab !== 'calendar') {
+      switchTab('calendar');
+    }
     if (state.month === 12) {
       if (state.year < 2027) {
         changeYear(state.year + 1, 1);
@@ -256,9 +276,9 @@ function setupEventListeners() {
         closeModal();
         return;
       }
-      const tb = document.getElementById('toolbarCollapsible');
-      if (tb && tb.classList.contains('is-open')) {
-        closeToolbarCollapsible();
+      const panel = document.getElementById('unifiedDropdownPanel');
+      if (panel && panel.classList.contains('is-open')) {
+        closeUnifiedDropdown();
         return;
       }
     }
@@ -289,6 +309,9 @@ function setupEventListeners() {
   }
 
   document.getElementById('todayBtn').addEventListener('click', () => {
+    if (state.currentTab !== 'calendar') {
+      switchTab('calendar');
+    }
     const now = new Date();
     const curYear = now.getFullYear();
     const curMonth = now.getMonth() + 1;
@@ -347,57 +370,102 @@ function setupEventListeners() {
     renderCalendar();
   });
 
-  // Secondary Toolbar Drawer Toggle & Smart Auto-Hide (Minimalist Architecture)
+  // Unified Dropdown Navigation & Controls Controller (Smart Auto-Hide)
+  const unifiedDropdownTrigger = document.getElementById('unifiedDropdownTrigger');
   const toggleFilterBtn = document.getElementById('toggleFilterBtn');
-  const toolbarCollapsible = document.getElementById('toolbarCollapsible');
+  const unifiedDropdownPanel = document.getElementById('unifiedDropdownPanel');
+  const unifiedNavCluster = document.getElementById('unifiedNavCluster');
+  const closeUnifiedDropdownBtn = document.getElementById('closeUnifiedDropdownBtn');
 
-  function closeToolbarCollapsible() {
-    const tb = document.getElementById('toolbarCollapsible');
-    const btn = document.getElementById('toggleFilterBtn');
-    if (tb && tb.classList.contains('is-open')) {
-      tb.classList.remove('is-open');
-      if (btn) {
-        btn.classList.remove('active');
-        btn.setAttribute('aria-expanded', 'false');
+  function closeUnifiedDropdown() {
+    const panel = document.getElementById('unifiedDropdownPanel');
+    const trigger = document.getElementById('unifiedDropdownTrigger');
+    const toggleBtn = document.getElementById('toggleFilterBtn');
+    const cluster = document.getElementById('unifiedNavCluster');
+    if (panel && panel.classList.contains('is-open')) {
+      panel.classList.remove('is-open');
+      panel.setAttribute('aria-hidden', 'true');
+      if (cluster) cluster.classList.remove('is-open');
+      if (trigger) trigger.setAttribute('aria-expanded', 'false');
+      if (toggleBtn) {
+        toggleBtn.classList.remove('active');
+        toggleBtn.setAttribute('aria-expanded', 'false');
       }
     }
   }
-  window.closeToolbarCollapsible = closeToolbarCollapsible;
+  window.closeUnifiedDropdown = closeUnifiedDropdown;
+  window.closeToolbarCollapsible = closeUnifiedDropdown;
 
-  if (toggleFilterBtn && toolbarCollapsible) {
-    let lastScrollY = window.scrollY;
-
-    toggleFilterBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const isOpen = toolbarCollapsible.classList.toggle('is-open');
-      toggleFilterBtn.classList.toggle('active', isOpen);
-      toggleFilterBtn.setAttribute('aria-expanded', String(isOpen));
-      if (isOpen) {
-        lastScrollY = window.scrollY;
+  function openUnifiedDropdown() {
+    const panel = document.getElementById('unifiedDropdownPanel');
+    const trigger = document.getElementById('unifiedDropdownTrigger');
+    const toggleBtn = document.getElementById('toggleFilterBtn');
+    const cluster = document.getElementById('unifiedNavCluster');
+    if (panel && !panel.classList.contains('is-open')) {
+      panel.classList.add('is-open');
+      panel.setAttribute('aria-hidden', 'false');
+      if (cluster) cluster.classList.add('is-open');
+      if (trigger) trigger.setAttribute('aria-expanded', 'true');
+      if (toggleBtn) {
+        toggleBtn.classList.add('active');
+        toggleBtn.setAttribute('aria-expanded', 'true');
       }
-    });
-
-    // Auto-hide on click outside the calendar toolbar
-    document.addEventListener('click', (e) => {
-      if (!toolbarCollapsible.classList.contains('is-open')) return;
-      const toolbar = document.querySelector('.calendar-toolbar');
-      if (toolbar && !toolbar.contains(e.target)) {
-        closeToolbarCollapsible();
-      }
-    });
-
-    // Auto-hide on page scroll to maintain uncluttered minimalist viewing
-    window.addEventListener('scroll', () => {
-      if (!toolbarCollapsible.classList.contains('is-open')) {
-        lastScrollY = window.scrollY;
-        return;
-      }
-      if (Math.abs(window.scrollY - lastScrollY) > 40) {
-        closeToolbarCollapsible();
-        lastScrollY = window.scrollY;
-      }
-    }, { passive: true });
+      lastScrollY = window.scrollY;
+    }
   }
+  window.openUnifiedDropdown = openUnifiedDropdown;
+
+  function toggleUnifiedDropdown(e) {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    const panel = document.getElementById('unifiedDropdownPanel');
+    if (!panel) return;
+    if (panel.classList.contains('is-open')) {
+      closeUnifiedDropdown();
+    } else {
+      openUnifiedDropdown();
+    }
+  }
+  window.toggleUnifiedDropdown = toggleUnifiedDropdown;
+
+  if (unifiedDropdownTrigger) {
+    unifiedDropdownTrigger.addEventListener('click', toggleUnifiedDropdown);
+  }
+  if (toggleFilterBtn) {
+    toggleFilterBtn.addEventListener('click', toggleUnifiedDropdown);
+  }
+  if (closeUnifiedDropdownBtn) {
+    closeUnifiedDropdownBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      closeUnifiedDropdown();
+    });
+  }
+
+  // Auto-hide on click outside the unified cluster
+  document.addEventListener('click', (e) => {
+    const panel = document.getElementById('unifiedDropdownPanel');
+    if (!panel || !panel.classList.contains('is-open')) return;
+    const cluster = document.getElementById('unifiedNavCluster');
+    if (cluster && !cluster.contains(e.target)) {
+      closeUnifiedDropdown();
+    }
+  });
+
+  // Auto-hide on page scroll (> 35px delta)
+  let lastScrollY = window.scrollY;
+  window.addEventListener('scroll', () => {
+    const panel = document.getElementById('unifiedDropdownPanel');
+    if (!panel || !panel.classList.contains('is-open')) {
+      lastScrollY = window.scrollY;
+      return;
+    }
+    if (Math.abs(window.scrollY - lastScrollY) > 35) {
+      closeUnifiedDropdown();
+      lastScrollY = window.scrollY;
+    }
+  }, { passive: true });
 
   // School Group Buttons
   document.getElementById('btnGroupA').addEventListener('click', (e) => {
@@ -534,6 +602,43 @@ function setTheme(theme) {
   if (btnLight) btnLight.classList.toggle('active', activeTheme === 'light');
 }
 
+
+// Sync Compact Control Bar Heading
+function updateCompactBarHeading() {
+  const mHeading = document.getElementById('currentMonthYear');
+  const hijriTitle = document.getElementById('currentHijriTitle');
+  const compactBar = document.getElementById('unifiedCompactBar');
+
+  if (state.currentTab === 'calendar') {
+    if (compactBar) compactBar.classList.remove('is-subtab');
+    const monthName = (MONTH_NAMES[state.locale] || MONTH_NAMES.ms)[state.month - 1];
+    const monthShort = (MONTH_SHORT[state.locale] || MONTH_SHORT.ms)[state.month - 1];
+    if (mHeading) {
+      mHeading.innerHTML = `<span class="month-name-full">${monthName} ${state.year}</span><span class="month-name-short">${monthShort}</span>`;
+    }
+    const monthData = state.calendarData?.calMonths?.find(m => m.month === state.month && m.year === state.year);
+    if (hijriTitle) {
+      hijriTitle.textContent = monthData?.hijriLabelTitle || monthData?.hijriLabelDescription || '';
+    }
+  } else {
+    if (compactBar) compactBar.classList.add('is-subtab');
+    if (state.currentTab === 'longweekend') {
+      if (mHeading) mHeading.innerHTML = `<span class="month-name-full">Perancang Cuti Panjang</span><span class="month-name-short">Cuti Panjang</span>`;
+      if (hijriTitle) hijriTitle.textContent = `Tahun ${state.year}`;
+    } else if (state.currentTab === 'school') {
+      if (mHeading) mHeading.innerHTML = `<span class="month-name-full">Takwim Cuti Sekolah KPM</span><span class="month-name-short">Cuti Sekolah</span>`;
+      if (hijriTitle) hijriTitle.textContent = `Tahun ${state.year}`;
+    } else if (state.currentTab === 'salary') {
+      if (mHeading) mHeading.innerHTML = `<span class="month-name-full">Jadual Gaji & Pencen</span><span class="month-name-short">Jadual Gaji</span>`;
+      if (hijriTitle) hijriTitle.textContent = `JPA ${state.year}`;
+    } else if (state.currentTab === 'notes') {
+      if (mHeading) mHeading.innerHTML = `<span class="month-name-full">Nota & Peringatan Saya</span><span class="month-name-short">Nota Saya</span>`;
+      if (hijriTitle) hijriTitle.textContent = 'Peribadi';
+    }
+  }
+}
+window.updateCompactBarHeading = updateCompactBarHeading;
+
 // Master Render Function
 function renderAll() {
   renderMonthPills();
@@ -556,7 +661,14 @@ function renderMonthPills() {
     pill.textContent = names[m - 1];
     pill.addEventListener('click', () => {
       state.month = m;
-      renderCalendar();
+      if (state.currentTab !== 'calendar') {
+        switchTab('calendar');
+      } else {
+        renderCalendar();
+      }
+      setTimeout(() => {
+        if (window.closeUnifiedDropdown) window.closeUnifiedDropdown();
+      }, 120);
     });
     container.appendChild(pill);
   }
@@ -579,12 +691,7 @@ function renderCalendar() {
   updateFilterIndicator();
 
   // Update header text
-  const monthName = (MONTH_NAMES[state.locale] || MONTH_NAMES.ms)[state.month - 1];
-  const monthShort = (MONTH_SHORT[state.locale] || MONTH_SHORT.ms)[state.month - 1];
-  const mHeading = document.getElementById('currentMonthYear');
-  if (mHeading) {
-    mHeading.innerHTML = `<span class="month-name-full">${monthName} ${state.year}</span><span class="month-name-short">${monthShort}</span>`;
-  }
+  updateCompactBarHeading();
 
   // Update active month pill & auto-scroll into view for touch devices
   document.querySelectorAll('.month-pill').forEach((pill, idx) => {

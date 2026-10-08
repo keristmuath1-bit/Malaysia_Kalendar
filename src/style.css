@@ -587,6 +587,293 @@ body {
   to { opacity: 1; transform: translateY(0); }
 }
 
+
+/* ==========================================================================
+   UNIFIED AUTOHIDE NAVIGATION & CONTROLS CLUSTER
+   ========================================================================== */
+
+.unified-nav-cluster {
+  position: relative;
+  z-index: 45;
+  margin-bottom: 12px;
+  width: 100%;
+}
+
+/* 1. The Compact Bar (Always Visible Minimalist Trigger) */
+.unified-compact-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 16px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.22);
+  transition: all var(--transition-normal);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.unified-compact-bar:hover {
+  border-color: var(--border-color-focus);
+}
+
+.unified-nav-cluster.is-open .unified-compact-bar {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom-color: transparent;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+}
+
+/* Center Interactive Trigger */
+.compact-bar-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 6px 14px;
+  border-radius: var(--radius-md);
+  color: inherit;
+  transition: all var(--transition-fast);
+  -webkit-tap-highlight-color: transparent;
+  text-align: left;
+}
+
+.compact-bar-center:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.compact-bar-center .current-month-heading {
+  display: flex;
+  flex-direction: column;
+}
+
+.compact-bar-center .current-month-heading h2 {
+  font-family: var(--font-num);
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  margin: 0;
+  line-height: 1.2;
+  color: var(--text-primary);
+}
+
+.compact-bar-center .hijri-badge {
+  font-size: 0.78rem;
+  color: var(--accent-gold);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.compact-dropdown-chevron {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  transition: all var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.compact-bar-center:hover .compact-dropdown-chevron,
+.unified-nav-cluster.is-open .compact-dropdown-chevron {
+  border-color: var(--accent-gold);
+  color: var(--accent-gold);
+  background: rgba(245, 158, 11, 0.14);
+  transform: rotate(180deg);
+}
+
+/* Actions in Compact Bar */
+.compact-bar-nav-left,
+.compact-bar-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* 2. The Dropdown Panel (Drawer with Glassmorphism) */
+.unified-dropdown-panel {
+  max-height: 0;
+  opacity: 0;
+  visibility: hidden;
+  overflow: hidden;
+  transform: translateY(-8px);
+  transition: max-height 0.38s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.25s ease,
+              transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+              visibility 0.25s;
+  will-change: max-height, opacity, transform;
+}
+
+.unified-dropdown-panel.is-open {
+  max-height: 1400px;
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdown-panel-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-top: 1px dashed rgba(255, 255, 255, 0.08);
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45);
+  padding: 16px 20px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+/* Section styling inside dropdown */
+.dropdown-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.dropdown-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dropdown-section-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--accent-gold);
+}
+
+.dropdown-section-title .ui-icon {
+  width: 13px;
+  height: 13px;
+}
+
+/* Row of controls for options & search */
+.dropdown-controls-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  padding: 10px 14px;
+  background: rgba(0, 0, 0, 0.18);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+}
+
+/* Footer Hint & Close Button */
+.dropdown-footer-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.dropdown-tip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-close-dropdown {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  color: var(--text-secondary);
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.btn-close-dropdown:hover {
+  background: var(--bg-card-hover);
+  color: var(--text-primary);
+  border-color: var(--border-color-focus);
+}
+
+/* Responsive Overrides */
+@media (max-width: 768px) {
+  .unified-compact-bar {
+    padding: 8px 10px;
+    gap: 8px;
+  }
+  .compact-bar-center {
+    padding: 4px 6px;
+    gap: 8px;
+  }
+  .compact-bar-center h2 {
+    font-size: 1.12rem;
+  }
+  .compact-dropdown-label {
+    display: none;
+  }
+  .compact-dropdown-pill {
+    padding: 4px 8px;
+  }
+  .compact-bar-actions .btn-today .kbd-hint {
+    display: none;
+  }
+  .btn-print-header {
+    display: none;
+  }
+  .dropdown-panel-card {
+    padding: 12px 14px;
+    gap: 14px;
+  }
+  .dropdown-controls-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .dropdown-footer-bar {
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .unified-compact-bar {
+    padding: 6px 8px;
+  }
+  .compact-bar-center h2 {
+    font-size: 1.02rem;
+  }
+  .compact-bar-center .hijri-badge {
+    font-size: 0.72rem;
+  }
+  .btn-icon {
+    width: 34px;
+    height: 34px;
+  }
+  .btn-today {
+    padding: 4px 8px;
+    font-size: 0.76rem;
+  }
+}
+
 /* ==========================================================================
    CALENDAR TOOLBAR
    ========================================================================== */
@@ -3979,6 +4266,10 @@ input:focus-visible,
   .kuda-scroll-hint,
   .btn-toolbar-toggle,
   .toolbar-collapsible,
+  .unified-dropdown-panel,
+  .compact-bar-nav-left,
+  .compact-bar-actions,
+  .compact-dropdown-pill,
   .month-nav button,
   .kbd-hint,
   .modal-overlay {

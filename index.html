@@ -85,96 +85,168 @@
         </div>
       </header>
 
-      <!-- Main Navigation Tabs -->
-      <!-- Main Navigation Tabs -->
-      <nav class="main-tabs" aria-label="Navigasi Utama">
-        <button class="tab-btn active" data-tab="calendar" aria-label="Kalendar">
-          <span class="tab-icon"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/></svg></span>
-          <span class="tab-text">Kalendar</span>
-        </button>
-        <button class="tab-btn" data-tab="longweekend" aria-label="Cuti Panjang">
-          <span class="tab-icon"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12a10 10 0 0 1 20 0H2Z"/><path d="M12 12a10 10 0 0 1 5-4M12 12a10 10 0 0 0-5-4"/><path d="M12 22a2 2 0 0 0 2-2"/></svg></span>
-          <span class="tab-text">Cuti Panjang</span>
-        </button>
-        <button class="tab-btn" data-tab="school" aria-label="Cuti Sekolah">
-          <span class="tab-icon"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 3 3 6 3s6-1 6-3v-5"/></svg></span>
-          <span class="tab-text">Cuti Sekolah</span>
-        </button>
-        <button class="tab-btn" data-tab="salary" aria-label="Jadual Gaji">
-          <span class="tab-icon"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/><circle cx="12" cy="15" r="2"/></svg></span>
-          <span class="tab-text">Jadual Gaji</span>
-        </button>
-        <button class="tab-btn" data-tab="notes" aria-label="Nota Saya">
-          <span class="tab-icon"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/></svg></span>
-          <span class="tab-text">Nota Saya</span>
-        </button>
-      </nav>
-
       <!-- Main Content Area -->
       <main class="content-area">
-        <!-- TAB 1: CALENDAR VIEW -->
-        <section id="calendarView" class="tab-content active">
-          <!-- Calendar Toolbar -->
-          <div class="calendar-toolbar">
-            <div class="month-nav">
-              <button id="prevMonthBtn" class="btn-icon" aria-label="Bulan Sebelumnya"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg></button>
-              <div class="current-month-heading">
-                <h2 id="currentMonthYear"><span class="month-name-full">Januari 2026</span><span class="month-name-short">JAN</span></h2>
-                <span id="currentHijriTitle" class="hijri-badge">Rejab - Syaaban 1447</span>
-              </div>
-              <button id="nextMonthBtn" class="btn-icon" aria-label="Bulan Seterusnya"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></button>
-              <div class="month-nav-actions">
-                <button id="todayBtn" class="btn-today" title="Kembali ke Hari Ini (T)"><span class="btn-text">Hari Ini</span><kbd class="kbd-hint">T</kbd></button>
-                <button id="printBtn" class="btn-today btn-print-header" title="Cetak Kalendar A4 (P)"><span class="btn-text"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect width="12" height="8" x="6" y="14"/></svg> Cetak</span><kbd class="kbd-hint">P</kbd></button>
-                <button id="toggleFilterBtn" class="btn-toolbar-toggle" aria-expanded="false" title="Pilihan Paparan & Carian">
-                  <span class="toolbar-toggle-icon"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="4" y1="21" y2="14"/><line x1="4" x2="4" y1="10" y2="3"/><line x1="12" x2="12" y1="21" y2="12"/><line x1="12" x2="12" y1="8" y2="3"/><line x1="20" x2="20" y1="21" y2="16"/><line x1="20" x2="20" y1="12" y2="3"/><line x1="1" x2="7" y1="14" y2="14"/><line x1="9" x2="15" y1="8" y2="8"/><line x1="17" x2="23" y1="16" y2="16"/></svg></span>
-                  <span class="toolbar-toggle-text">Pilihan</span>
-                  <span id="toggleFilterArrow" class="toolbar-toggle-arrow"><svg class="ui-icon" style="width:12px;height:12px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
-                  <span id="filterActiveDot" class="filter-active-dot" style="display: none;"></span>
-                </button>
-              </div>
+        <!-- Unified Autohide Navigation & Controls Cluster -->
+        <section class="unified-nav-cluster" id="unifiedNavCluster" aria-label="Kawalan Navigasi dan Kalendar">
+          <!-- 1. The Compact Bar (Always Visible Minimalist Trigger Bar) -->
+          <div class="unified-compact-bar" id="unifiedCompactBar">
+            <div class="compact-bar-nav-left">
+              <button id="prevMonthBtn" class="btn-icon" aria-label="Bulan Sebelumnya" title="Bulan Sebelumnya">
+                <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+              </button>
             </div>
 
-            <!-- Collapsible Secondary Toolbar Controls (Auto-hidden on Mobile to Prevent Clutter) -->
-            <div class="toolbar-collapsible" id="toolbarCollapsible">
-              <!-- Year Picker -->
-              <div class="year-pills">
-                <button class="year-pill" data-year="2024">2024</button>
-                <button class="year-pill" data-year="2025">2025</button>
-                <button class="year-pill active" data-year="2026">2026</button>
-                <button class="year-pill" data-year="2027">2027</button>
+            <button id="unifiedDropdownTrigger" class="compact-bar-center" aria-expanded="false" aria-controls="unifiedDropdownPanel" title="Buka / Tutup Pilihan Menu & Navigasi">
+              <div class="current-month-heading">
+                <h2 id="currentMonthYear">
+                  <span class="month-name-full">Januari 2026</span>
+                  <span class="month-name-short">JAN</span>
+                </h2>
+                <span id="currentHijriTitle" class="hijri-badge">Rejab - Syaaban 1447</span>
+              </div>
+              <span id="unifiedDropdownChevron" class="compact-dropdown-chevron" title="Buka pilihan menu">
+                <svg class="ui-icon" style="width:14px;height:14px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+              </span>
+            </button>
+
+            <div class="compact-bar-actions">
+              <button id="todayBtn" class="btn-today" title="Kembali ke Hari Ini (T)">
+                <span class="btn-text">Hari Ini</span><kbd class="kbd-hint">T</kbd>
+              </button>
+              <button id="printBtn" class="btn-today btn-print-header" title="Cetak Kalendar A4 (P)">
+                <span class="btn-text"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect width="12" height="8" x="6" y="14"/></svg> Cetak</span><kbd class="kbd-hint">P</kbd>
+              </button>
+              <button id="toggleFilterBtn" class="btn-toolbar-toggle" aria-expanded="false" title="Pilihan Paparan & Carian">
+                <span class="toolbar-toggle-icon"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="4" y1="21" y2="14"/><line x1="4" x2="4" y1="10" y2="3"/><line x1="12" x2="12" y1="21" y2="12"/><line x1="12" x2="12" y1="8" y2="3"/><line x1="20" x2="20" y1="21" y2="16"/><line x1="20" x2="20" y1="12" y2="3"/><line x1="1" x2="7" y1="14" y2="14"/><line x1="9" x2="15" y1="8" y2="8"/><line x1="17" x2="23" y1="16" y2="16"/></svg></span>
+                <span class="toolbar-toggle-text">Pilihan</span>
+                <span id="toggleFilterArrow" class="toolbar-toggle-arrow"><svg class="ui-icon" style="width:12px;height:12px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
+                <span id="filterActiveDot" class="filter-active-dot" style="display: none;"></span>
+              </button>
+              <button id="nextMonthBtn" class="btn-icon" aria-label="Bulan Seterusnya" title="Bulan Seterusnya">
+                <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- 2. The Autohide Dropdown Panel (Smooth Slide-Down) -->
+          <div class="unified-dropdown-panel" id="unifiedDropdownPanel" aria-hidden="true">
+            <div class="dropdown-panel-card">
+              <!-- Section 1: Navigasi Halaman Utama -->
+              <div class="dropdown-section">
+                <div class="dropdown-section-header">
+                  <span class="dropdown-section-title">
+                    <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+                    Navigasi Halaman
+                  </span>
+                </div>
+                <nav class="main-tabs" aria-label="Navigasi Utama">
+                  <button class="tab-btn active" data-tab="calendar" aria-label="Kalendar">
+                    <span class="tab-icon"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/></svg></span>
+                    <span class="tab-text">Kalendar</span>
+                  </button>
+                  <button class="tab-btn" data-tab="longweekend" aria-label="Cuti Panjang">
+                    <span class="tab-icon"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12a10 10 0 0 1 20 0H2Z"/><path d="M12 12a10 10 0 0 1 5-4M12 12a10 10 0 0 0-5-4"/><path d="M12 22a2 2 0 0 0 2-2"/></svg></span>
+                    <span class="tab-text">Cuti Panjang</span>
+                  </button>
+                  <button class="tab-btn" data-tab="school" aria-label="Cuti Sekolah">
+                    <span class="tab-icon"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 3 3 6 3s6-1 6-3v-5"/></svg></span>
+                    <span class="tab-text">Cuti Sekolah</span>
+                  </button>
+                  <button class="tab-btn" data-tab="salary" aria-label="Jadual Gaji">
+                    <span class="tab-icon"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/><circle cx="12" cy="15" r="2"/></svg></span>
+                    <span class="tab-text">Jadual Gaji</span>
+                  </button>
+                  <button class="tab-btn" data-tab="notes" aria-label="Nota Saya">
+                    <span class="tab-icon"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/></svg></span>
+                    <span class="tab-text">Nota Saya</span>
+                  </button>
+                </nav>
               </div>
 
-              <!-- Layout & Horse Feature Controls -->
-              <div class="view-controls">
-                <div class="layout-toggle-group">
-                  <button id="viewKudaBtn" class="toggle-mode-btn active" title="Paparan Tradisional Kalendar Kuda (Seperti Gambar Asal)"><svg class="ui-icon icon-horse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 18c-1-3-3-5-6-6 0 0 1-4-2-7-2 1-3 3-3 4-2-1-4 1-4 3 0 3 2 6 5 8l-1 2h10l-1-2z"/><circle cx="10" cy="11" r="1" fill="currentColor"/></svg><span>Kalendar Kuda</span></button>
-                  <button id="viewGridBtn" class="toggle-mode-btn" title="Paparan Grid Bulanan Standard"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="7" x="3" y="3" rx="1.5"/><rect width="7" height="7" x="14" y="3" rx="1.5"/><rect width="7" height="7" x="14" y="14" rx="1.5"/><rect width="7" height="7" x="3" y="14" rx="1.5"/></svg><span>Grid Moden</span></button>
+              <!-- Section 2: Pilihan Bulan (12 Bulan) -->
+              <div class="dropdown-section" id="dropdownMonthSection">
+                <div class="dropdown-section-header">
+                  <span class="dropdown-section-title">
+                    <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+                    Pilih Bulan
+                  </span>
+                </div>
+                <div class="month-pills" id="monthPillsContainer">
+                  <!-- Populated dynamically via JS -->
                 </div>
               </div>
 
-              <!-- Search Bar -->
-              <div class="search-box">
-                <input type="text" id="holidaySearchInput" placeholder="Cari cuti (contoh: Raya, Merdeka)..." />
-                <button id="searchClearBtn" class="search-clear-btn" style="display:none;" title="Kosongkan carian"><svg class="ui-icon" style="width:12px;height:12px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+              <!-- Section 3: Pilihan Paparan, Tahun & Carian -->
+              <div class="dropdown-section" id="dropdownSettingsSection">
+                <div class="dropdown-section-header">
+                  <span class="dropdown-section-title">
+                    <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                    Tetapan & Carian
+                  </span>
+                </div>
+                <div class="dropdown-controls-row">
+                  <!-- Year Picker -->
+                  <div class="year-pills">
+                    <button class="year-pill" data-year="2024">2024</button>
+                    <button class="year-pill" data-year="2025">2025</button>
+                    <button class="year-pill active" data-year="2026">2026</button>
+                    <button class="year-pill" data-year="2027">2027</button>
+                  </div>
+
+                  <!-- Layout Switcher -->
+                  <div class="view-controls">
+                    <div class="layout-toggle-group">
+                      <button id="viewKudaBtn" class="toggle-mode-btn active" title="Paparan Tradisional Kalendar Kuda">
+                        <svg class="ui-icon icon-horse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 18c-1-3-3-5-6-6 0 0 1-4-2-7-2 1-3 3-3 4-2-1-4 1-4 3 0 3 2 6 5 8l-1 2h10l-1-2z"/><circle cx="10" cy="11" r="1" fill="currentColor"/></svg>
+                        <span>Kalendar Kuda</span>
+                      </button>
+                      <button id="viewGridBtn" class="toggle-mode-btn" title="Paparan Grid Bulanan Standard">
+                        <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="7" x="3" y="3" rx="1.5"/><rect width="7" height="7" x="14" y="3" rx="1.5"/><rect width="7" height="7" x="14" y="14" rx="1.5"/><rect width="7" height="7" x="3" y="14" rx="1.5"/></svg>
+                        <span>Grid Moden</span>
+                      </button>
+                    </div>
+                  </div>
+
+                  <!-- Search Bar -->
+                  <div class="search-box">
+                    <input type="text" id="holidaySearchInput" placeholder="Cari cuti (contoh: Raya, Merdeka)..." />
+                    <button id="searchClearBtn" class="search-clear-btn" style="display:none;" title="Kosongkan carian"><svg class="ui-icon" style="width:12px;height:12px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Section 4: Petunjuk Warna -->
+              <div class="dropdown-section" id="dropdownLegendSection">
+                <div class="dropdown-section-header">
+                  <span class="dropdown-section-title">
+                    <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg>
+                    Petunjuk Warna Cuti
+                  </span>
+                </div>
+                <div class="legend-bar">
+                  <span class="legend-item"><span class="legend-dot national"></span> Cuti Umum Kebangsaan</span>
+                  <span class="legend-item"><span class="legend-dot state"></span> Cuti Negeri</span>
+                  <span class="legend-item"><span class="legend-dot payday"></span> Hari Gaji Penjawat Awam</span>
+                  <span class="legend-item"><span class="legend-dot school"></span> Cuti Sekolah</span>
+                  <span class="legend-item"><span class="legend-dot horse"></span> Hari Lumba Kuda (Weekend Fixtures)</span>
+                </div>
+              </div>
+
+              <!-- Dropdown Footer Tip & Close Button -->
+              <div class="dropdown-footer-bar">
+                <span class="dropdown-tip">💡 Klik di luar, tekan ESC, atau leret untuk tutup automatik</span>
+                <button id="closeUnifiedDropdownBtn" class="btn-close-dropdown">
+                  <svg class="ui-icon" style="width:14px;height:14px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
+                  Tutup Menu
+                </button>
               </div>
             </div>
           </div>
+        </section>
 
-          <!-- Quick Month Jump Bar -->
-          <div class="month-pills" id="monthPillsContainer">
-            <!-- Populated dynamically via JS -->
-          </div>
-
-          <!-- Legend Bar -->
-          <div class="legend-bar">
-            <span class="legend-item"><span class="legend-dot national"></span> Cuti Umum Kebangsaan</span>
-            <span class="legend-item"><span class="legend-dot state"></span> Cuti Negeri</span>
-            <span class="legend-item"><span class="legend-dot payday"></span> Hari Gaji Penjawat Awam</span>
-            <span class="legend-item"><span class="legend-dot school"></span> Cuti Sekolah</span>
-            <span class="legend-item"><span class="legend-dot horse"></span> Hari Lumba Kuda (Weekend Fixtures)</span>
-          </div>
-
+        <!-- TAB 1: CALENDAR VIEW -->
+        <section id="calendarView" class="tab-content active">
           <!-- Monthly Grid / Kalendar Kuda Container -->
           <div class="kuda-scroll-hint" id="kudaScrollHint">
             <span class="hint-arrow"><svg class="ui-icon" style="width:12px;height:12px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg></span>
