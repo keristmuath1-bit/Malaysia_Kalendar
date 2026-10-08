@@ -302,6 +302,39 @@ body {
   box-shadow: var(--shadow-sm);
 }
 
+/* PWA Install Button */
+.btn-pwa-install {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 6px 14px;
+  background: linear-gradient(135deg, #b91c1c, #991b1b);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-md);
+  color: #ffffff;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(185, 28, 28, 0.3);
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+.btn-pwa-install:hover {
+  background: linear-gradient(135deg, #dc2626, #b91c1c);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(185, 28, 28, 0.4);
+}
+
+.btn-pwa-install:active {
+  transform: translateY(0);
+}
+
+.btn-pwa-install .ui-icon {
+  stroke: #ffffff;
+}
+
 /* ==========================================================================
    MINIMALIST CRAFTED SVG ICON SYSTEM (ANTI-SLOP & ZERO-EMOJI CRAFTSMANSHIP)
    ========================================================================== */
@@ -2702,10 +2735,10 @@ body {
     font-size: 0.74rem;
   }
 
-  .nav-controls {
+    .nav-controls {
     width: 100%;
     display: grid;
-    grid-template-columns: 1fr 1fr auto;
+    grid-template-columns: 1fr 1fr auto auto;
     gap: 8px;
     align-items: center;
   }
@@ -3074,6 +3107,12 @@ body {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 6px;
+  }
+  .btn-pwa-install {
+    grid-column: 1 / -1;
+    width: 100%;
+    justify-content: center;
+    padding: 8px 12px;
   }
 
   .control-group {

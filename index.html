@@ -2,10 +2,21 @@
 <html lang="ms" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="/logo.png" />
+    <!-- PWA & Mobile Web App Manifest -->
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="64x64" href="/favicon.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
     <meta name="description" content="Kalendar Malaysia PRO - Kalendar Kuda Digital, Cuti Umum, Cuti Sekolah, Jadual Gaji & Pencen Penjawat Awam, Tarikh Hijrah & Lunar." />
-    <meta name="theme-color" content="#0f172a" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Kalendar MY" />
+    <meta name="application-name" content="Kalendar Malaysia PRO" />
+    <meta name="msapplication-TileColor" content="#b91c1c" />
+    <meta name="theme-color" content="#b91c1c" />
     <title>Kalendar Malaysia PRO 2026 - Kalendar Kuda & Cuti Umum</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -59,6 +70,12 @@
               <option value="zh_cn">中文 (简体)</option>
             </select>
           </div>
+
+          <!-- PWA Install Button -->
+          <button id="pwaInstallBtn" class="btn-pwa-install" style="display:none;" title="Pasang Kalendar Malaysia ke Skrin Utama / Desktop">
+            <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+            <span>Pasang App</span>
+          </button>
 
           <!-- Theme Toggle -->
           <div class="theme-switcher">

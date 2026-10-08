@@ -1,0 +1,72 @@
+{
+  "id": "my.kalendar.pro",
+  "name": "Kalendar Malaysia PRO",
+  "short_name": "Kalendar MY",
+  "description": "Kalendar Kuda Tradisional, Cuti Umum & Sekolah Malaysia, Jadual Gaji & Pencen, Tarikh Hijrah & Lunar.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone", "minimal-ui"],
+  "orientation": "any",
+  "background_color": "#fdfaf3",
+  "theme_color": "#b91c1c",
+  "lang": "ms",
+  "dir": "ltr",
+  "categories": ["utilities", "productivity", "calendar"],
+  "icons": [
+    {
+      "src": "/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/maskable-icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/maskable-icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Kalendar Kuda",
+      "short_name": "Kalendar",
+      "description": "Buka Paparan Kalendar Kuda",
+      "url": "/?tab=calendar",
+      "icons": [{ "src": "/icons/icon-192x192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Jadual Gaji",
+      "short_name": "Gaji",
+      "description": "Lihat Tarikh Gaji & Pencen Penjawat Awam",
+      "url": "/?tab=salary",
+      "icons": [{ "src": "/icons/icon-192x192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Cuti Panjang",
+      "short_name": "Cuti",
+      "description": "Perancang Cuti Panjang & Akhir Pekan",
+      "url": "/?tab=longweekend",
+      "icons": [{ "src": "/icons/icon-192x192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Nota Saya",
+      "short_name": "Nota",
+      "description": "Lihat Acara & Nota Peribadi",
+      "url": "/?tab=notes",
+      "icons": [{ "src": "/icons/icon-192x192.png", "sizes": "192x192" }]
+    }
+  ]
+}

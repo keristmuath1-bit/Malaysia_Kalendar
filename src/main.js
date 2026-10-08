@@ -1565,3 +1565,61 @@ function renderUserEvents() {
     container.appendChild(card);
   });
 }
+
+
+// ==========================================================================
+// PWA (PROGRESSIVE WEB APP) SERVICE WORKER & INSTALL PROMPT
+// ==========================================================================
+
+// Register Service Worker for PWA Offline & Installability
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js')
+      .then((reg) => {
+        console.log('[PWA] Service Worker registered with scope:', reg.scope);
+      })
+      .catch((err) => {
+        console.warn('[PWA] Service Worker registration failed:', err);
+      });
+  });
+}
+
+// PWA Install prompt handling
+let deferredInstallPrompt = null;
+const pwaInstallBtn = document.getElementById('pwaInstallBtn');
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredInstallPrompt = e;
+  if (pwaInstallBtn) {
+    pwaInstallBtn.style.display = 'inline-flex';
+  }
+});
+
+if (pwaInstallBtn) {
+  // If already installed or running in standalone mode, hide button
+  const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+  if (isStandalone) {
+    pwaInstallBtn.style.display = 'none';
+  }
+
+  pwaInstallBtn.addEventListener('click', async () => {
+    if (deferredInstallPrompt) {
+      deferredInstallPrompt.prompt();
+      const choice = await deferredInstallPrompt.userChoice;
+      if (choice && choice.outcome === 'accepted') {
+        pwaInstallBtn.style.display = 'none';
+      }
+      deferredInstallPrompt = null;
+    } else {
+      // Manual guidance fallback for iOS Safari and other platforms
+      alert(`Untuk memasang Kalendar Malaysia ke skrin utama:\n\n• Safari iOS (iPhone/iPad): Ketik ikon Kongsi (Share) di bar bawah > pilih "Tambah ke Skrin Utama" (Add to Home Screen).\n• Chrome/Edge (Komputer/Android): Ketik menu 3 titik di penjuru kanan atas > pilih "Pasang Aplikasi" (Install App).`);
+    }
+  });
+}
+
+window.addEventListener('appinstalled', () => {
+  console.log('[PWA] Aplikasi berjaya dipasang!');
+  deferredInstallPrompt = null;
+  if (pwaInstallBtn) pwaInstallBtn.style.display = 'none';
+});
