@@ -33,6 +33,12 @@ const MONTH_NAMES = {
   zh_cn: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月']
 };
 
+const MONTH_SHORT = {
+  ms: ['JAN', 'FEB', 'MAC', 'APR', 'MEI', 'JUN', 'JUL', 'OGO', 'SEP', 'OKT', 'NOV', 'DIS'],
+  en: ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'],
+  zh_cn: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月']
+};
+
 const DAY_NAMES = {
   ms: ['Ahad', 'Isnin', 'Selasa', 'Rabu', 'Khamis', 'Jumaat', 'Sabtu'],
   en: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
@@ -129,6 +135,9 @@ function setupEventListeners() {
       const tabId = btn.dataset.tab;
       state.currentTab = tabId;
       document.getElementById(`${tabId}View`).classList.add('active');
+
+      // Auto-scroll active tab into view smoothly on touch/mobile devices
+      btn.scrollIntoView({ behavior: 'smooth', inline: 'nearest', block: 'nearest' });
 
       if (tabId === 'salary') renderSalaryAndPension();
       if (tabId === 'longweekend') renderLongWeekends();
@@ -525,7 +534,11 @@ function renderCalendar() {
 
   // Update header text
   const monthName = (MONTH_NAMES[state.locale] || MONTH_NAMES.ms)[state.month - 1];
-  document.getElementById('currentMonthYear').textContent = `${monthName} ${state.year}`;
+  const monthShort = (MONTH_SHORT[state.locale] || MONTH_SHORT.ms)[state.month - 1];
+  const mHeading = document.getElementById('currentMonthYear');
+  if (mHeading) {
+    mHeading.innerHTML = `<span class="month-name-full">${monthName} ${state.year}</span><span class="month-name-short">${monthShort}</span>`;
+  }
 
   // Update active month pill & auto-scroll into view for touch devices
   document.querySelectorAll('.month-pill').forEach((pill, idx) => {

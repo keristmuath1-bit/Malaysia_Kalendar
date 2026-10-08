@@ -497,16 +497,22 @@ body {
   display: flex;
   gap: 8px;
   overflow-x: auto;
-  padding-bottom: 4px;
+  overflow-y: hidden;
+  padding-bottom: 6px;
   scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x proximity;
 }
 .main-tabs::-webkit-scrollbar { display: none; }
 
 .tab-btn {
-  display: flex;
+  display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
   padding: 10px 18px;
+  min-height: 44px; /* antislop-human: 44px min touch target */
+  flex-shrink: 0 !important; /* CRITICAL anti-slop: buttons never get squashed or clipped */
   background: var(--bg-surface);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-md);
@@ -515,7 +521,17 @@ body {
   font-weight: 600;
   cursor: pointer;
   white-space: nowrap;
+  scroll-snap-align: start;
   transition: all var(--transition-normal);
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Month Name Responsive Display (Full on Desktop, Abbreviation on Mobile) */
+.month-name-full {
+  display: inline;
+}
+.month-name-short {
+  display: none;
 }
 
 .tab-btn:hover {
@@ -2764,18 +2780,22 @@ body {
 
   /* Main Navigation Tabs */
   .main-tabs {
-    padding: 4px 2px;
-    gap: 6px;
-    scroll-snap-type: x mandatory;
+    padding: 4px 4px 6px;
+    gap: 8px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x proximity;
     -webkit-overflow-scrolling: touch;
   }
 
   .tab-btn {
     scroll-snap-align: start;
-    padding: 8px 14px;
-    font-size: 0.82rem;
-    gap: 6px;
-    border-radius: var(--radius-sm);
+    flex-shrink: 0 !important;
+    padding: 9px 16px;
+    font-size: 0.86rem;
+    min-height: 44px;
+    gap: 7px;
+    border-radius: var(--radius-md);
   }
 
   .tab-icon {
@@ -3147,9 +3167,23 @@ body {
     text-overflow: ellipsis;
   }
 
+  .main-tabs {
+    padding: 4px 2px 8px;
+    gap: 8px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+  }
+
   .tab-btn {
-    padding: 7px 12px;
-    font-size: 0.78rem;
+    flex-shrink: 0 !important;
+    padding: 9px 14px;
+    font-size: 0.84rem;
+    min-height: 44px;
+    gap: 6px;
+    border-radius: var(--radius-md);
+    white-space: nowrap;
   }
 
   .tab-icon {
@@ -3179,11 +3213,30 @@ body {
     min-width: 0;
   }
 
+  .month-name-full {
+    display: none !important;
+  }
+
+  .month-name-short {
+    display: inline-block !important;
+    font-size: 1.35rem;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    line-height: 1.15;
+  }
+
   .current-month-heading h2 {
-    font-size: 1.15rem;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    font-size: 1.35rem;
+    font-weight: 800;
+    white-space: nowrap !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+    margin: 0;
+    line-height: 1.15;
+  }
+
+  .kbd-hint {
+    display: none !important;
   }
 
   .month-nav-actions {
