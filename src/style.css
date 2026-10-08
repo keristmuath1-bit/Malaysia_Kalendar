@@ -1743,6 +1743,174 @@ body {
   font-weight: 900;
 }
 
+.zodiac-title-left {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.zodiac-title-icon {
+  font-size: 0.85rem;
+  line-height: 1;
+}
+
+.zodiac-year-badge {
+  font-size: 0.70rem;
+  font-weight: 700;
+  color: #b45309;
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.28);
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  display: inline-flex;
+  align-items: center;
+  letter-spacing: 0.02em;
+}
+
+[data-theme="dark"] .zodiac-year-badge {
+  color: #fcd34d;
+  background: rgba(251, 191, 36, 0.14);
+  border-color: rgba(251, 191, 36, 0.32);
+}
+
+/* ==========================================================================
+   DESKTOP & LAPTOP VIEW: ALIGN 12 CHINESE ZODIAC STRIP TO CALENDAR (100% WIDTH)
+   ========================================================================== */
+
+@media (min-width: 900px) {
+  .zodiac-section {
+    margin-top: 12px;
+    padding: 8px 12px 10px;
+    border-radius: var(--radius-lg);
+  }
+
+  .zodiac-section-title {
+    font-size: 0.82rem;
+    margin-bottom: 8px;
+    padding: 0 2px;
+  }
+
+  .zodiac-title-left {
+    font-size: 0.82rem;
+  }
+
+  .zodiac-year-badge {
+    font-size: 0.72rem;
+    padding: 2px 10px;
+  }
+
+  .zodiac-scroll-container {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 6px;
+    width: 100%;
+    overflow-x: visible;
+    padding: 2px 0 4px;
+    scroll-snap-type: none;
+  }
+
+  .zodiac-compact-card {
+    flex: unset;
+    width: 100%;
+    min-width: 0;
+    padding: 6px 3px 6px;
+    border-radius: 8px;
+    scroll-snap-align: none;
+  }
+
+  .zodiac-mini-icon {
+    width: 26px;
+    height: 26px;
+    margin-bottom: 2px;
+  }
+
+  .zodiac-mini-title {
+    font-size: 0.72rem;
+    gap: 3px;
+    margin-bottom: 3px;
+  }
+
+  .zmt-zh {
+    font-size: 0.74rem;
+  }
+
+  .zodiac-table-header {
+    font-size: 0.50rem;
+    padding-bottom: 2px;
+    margin-bottom: 3px;
+    letter-spacing: 0.4px;
+  }
+
+  .zodiac-table-body {
+    gap: 2px;
+  }
+
+  .zmt-row {
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) auto;
+    font-size: 0.56rem;
+    column-gap: 2px;
+    line-height: 1.15;
+    padding: 0 1px;
+  }
+
+  .zmt-cell-yr {
+    padding-right: 2px;
+  }
+
+  .zmt-cell-age {
+    padding-right: 4px;
+  }
+
+  .zmt-row span:last-child.zmt-cell-age {
+    padding-right: 0;
+  }
+}
+
+/* Widescreen Desktop / PC Optimization (>= 1200px) */
+@media (min-width: 1200px) {
+  .zodiac-section {
+    padding: 10px 14px 12px;
+  }
+
+  .zodiac-scroll-container {
+    gap: 8px;
+  }
+
+  .zodiac-compact-card {
+    padding: 8px 4px 7px;
+  }
+
+  .zodiac-mini-icon {
+    width: 28px;
+    height: 28px;
+  }
+
+  .zodiac-mini-title {
+    font-size: 0.76rem;
+  }
+
+  .zmt-zh {
+    font-size: 0.78rem;
+  }
+
+  .zodiac-table-header {
+    font-size: 0.53rem;
+  }
+
+  .zmt-row {
+    font-size: 0.59rem;
+    line-height: 1.25;
+    column-gap: 3px;
+  }
+
+  .zmt-cell-age {
+    padding-right: 6px;
+  }
+}
+
 /* ==========================================================================
    TAB 2: LONG WEEKENDS & PLANNING
    ========================================================================== */
@@ -3582,6 +3750,19 @@ input:focus-visible,
   }
   .zodiac-section {
     border: 1px solid #666666 !important;
+    page-break-inside: avoid;
+  }
+  .zodiac-scroll-container {
+    display: grid !important;
+    grid-template-columns: repeat(12, 1fr) !important;
+    gap: 4px !important;
+    overflow: visible !important;
+    width: 100% !important;
+  }
+  .zodiac-compact-card {
+    flex: unset !important;
+    width: 100% !important;
+    min-width: 0 !important;
     page-break-inside: avoid;
   }
 }

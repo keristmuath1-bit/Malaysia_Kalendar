@@ -1116,9 +1116,9 @@ function renderZodiacBar() {
     container.appendChild(card);
   });
 
-  // Auto-scroll active zodiac into view on mobile
+  // Auto-scroll active zodiac into view on mobile (< 900px)
   const activeCard = container.querySelector('.is-active-year');
-  if (activeCard) {
+  if (activeCard && window.innerWidth < 900) {
     setTimeout(() => {
       activeCard.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
     }, 100);
