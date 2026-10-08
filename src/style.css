@@ -1784,19 +1784,8 @@ body {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-md);
-  padding: 6px 8px 8px;
+  padding: 8px;
   box-shadow: var(--shadow-sm);
-}
-
-.zodiac-section-title {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 0.76rem;
-  font-weight: 700;
-  color: var(--text-secondary);
-  margin-bottom: 6px;
-  padding: 0 4px;
 }
 
 .zodiac-scroll-container {
@@ -2016,24 +2005,9 @@ body {
   .zodiac-section {
     width: 100%;
     margin-top: 12px;
-    padding: 8px clamp(8px, 1.2vw, 14px) 10px;
+    padding: 8px clamp(8px, 1.2vw, 14px);
     border-radius: var(--radius-lg);
     box-sizing: border-box;
-  }
-
-  .zodiac-section-title {
-    font-size: clamp(0.74rem, 0.9vw, 0.84rem);
-    margin-bottom: 8px;
-    padding: 0 2px;
-  }
-
-  .zodiac-title-left {
-    font-size: clamp(0.74rem, 0.9vw, 0.84rem);
-  }
-
-  .zodiac-year-badge {
-    font-size: clamp(0.66rem, 0.75vw, 0.74rem);
-    padding: 2px 10px;
   }
 
   .zodiac-scroll-container {
@@ -3671,15 +3645,9 @@ body {
 
   /* Zodiac Bar on Mobile */
   .zodiac-section {
-    padding: 6px 4px 6px;
+    padding: 6px 4px;
     margin-top: 8px;
     border-radius: var(--radius-sm);
-  }
-
-  .zodiac-section-title {
-    font-size: 0.70rem;
-    margin-bottom: 4px;
-    padding: 0 4px;
   }
 
   .zodiac-scroll-container {
