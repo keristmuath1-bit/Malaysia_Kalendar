@@ -251,9 +251,16 @@ function setupEventListeners() {
     const modal = document.getElementById('dayModal');
     const isModalOpen = modal && modal.style.display !== 'none';
 
-    if (e.key === 'Escape' && isModalOpen) {
-      closeModal();
-      return;
+    if (e.key === 'Escape') {
+      if (isModalOpen) {
+        closeModal();
+        return;
+      }
+      const tb = document.getElementById('toolbarCollapsible');
+      if (tb && tb.classList.contains('is-open')) {
+        closeToolbarCollapsible();
+        return;
+      }
     }
 
     const isTyping = ['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement?.tagName);
@@ -292,15 +299,16 @@ function setupEventListeners() {
     }
   });
 
-  // Year Pills
+  // Year Pills (Auto-hides secondary toolbar drawer after selection)
   document.querySelectorAll('.year-pill').forEach(pill => {
     pill.addEventListener('click', () => {
       const selectedYear = parseInt(pill.dataset.year);
       changeYear(selectedYear, state.month);
+      setTimeout(closeToolbarCollapsible, 250);
     });
   });
 
-  // View Mode Switcher (Kalendar Kuda vs Grid Moden)
+  // View Mode Switcher (Kalendar Kuda vs Grid Moden with auto-hide feedback)
   const viewKudaBtn = document.getElementById('viewKudaBtn');
   const viewGridBtn = document.getElementById('viewGridBtn');
   if (viewKudaBtn && viewGridBtn) {
@@ -310,6 +318,7 @@ function setupEventListeners() {
       viewGridBtn.classList.remove('active');
       updateFilterIndicator();
       renderCalendar();
+      setTimeout(closeToolbarCollapsible, 250);
     });
     viewGridBtn.addEventListener('click', () => {
       state.calendarViewMode = 'grid';
@@ -317,6 +326,7 @@ function setupEventListeners() {
       viewKudaBtn.classList.remove('active');
       updateFilterIndicator();
       renderCalendar();
+      setTimeout(closeToolbarCollapsible, 250);
     });
   }
 
@@ -337,20 +347,56 @@ function setupEventListeners() {
     renderCalendar();
   });
 
-  // Mobile Collapsible Toolbar Drawer Toggle (Autohide to prevent mobile clutter)
+  // Secondary Toolbar Drawer Toggle & Smart Auto-Hide (Minimalist Architecture)
   const toggleFilterBtn = document.getElementById('toggleFilterBtn');
   const toolbarCollapsible = document.getElementById('toolbarCollapsible');
-  const toggleFilterArrow = document.getElementById('toggleFilterArrow');
+
+  function closeToolbarCollapsible() {
+    const tb = document.getElementById('toolbarCollapsible');
+    const btn = document.getElementById('toggleFilterBtn');
+    if (tb && tb.classList.contains('is-open')) {
+      tb.classList.remove('is-open');
+      if (btn) {
+        btn.classList.remove('active');
+        btn.setAttribute('aria-expanded', 'false');
+      }
+    }
+  }
+  window.closeToolbarCollapsible = closeToolbarCollapsible;
 
   if (toggleFilterBtn && toolbarCollapsible) {
-    toggleFilterBtn.addEventListener('click', () => {
+    let lastScrollY = window.scrollY;
+
+    toggleFilterBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
       const isOpen = toolbarCollapsible.classList.toggle('is-open');
       toggleFilterBtn.classList.toggle('active', isOpen);
       toggleFilterBtn.setAttribute('aria-expanded', String(isOpen));
-      if (toggleFilterArrow) {
-        toggleFilterArrow.textContent = isOpen ? '▴' : '▾';
+      if (isOpen) {
+        lastScrollY = window.scrollY;
       }
     });
+
+    // Auto-hide on click outside the calendar toolbar
+    document.addEventListener('click', (e) => {
+      if (!toolbarCollapsible.classList.contains('is-open')) return;
+      const toolbar = document.querySelector('.calendar-toolbar');
+      if (toolbar && !toolbar.contains(e.target)) {
+        closeToolbarCollapsible();
+      }
+    });
+
+    // Auto-hide on page scroll to maintain uncluttered minimalist viewing
+    window.addEventListener('scroll', () => {
+      if (!toolbarCollapsible.classList.contains('is-open')) {
+        lastScrollY = window.scrollY;
+        return;
+      }
+      if (Math.abs(window.scrollY - lastScrollY) > 40) {
+        closeToolbarCollapsible();
+        lastScrollY = window.scrollY;
+      }
+    }, { passive: true });
   }
 
   // School Group Buttons
