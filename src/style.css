@@ -63,42 +63,8 @@
   --glass-blur: blur(16px);
 }
 
-/* LIGHT THEME */
-[data-theme="light"] {
-  --bg-app: #f1f5f9;
-  --bg-surface: #ffffff;
-  --bg-card: #ffffff;
-  --bg-card-hover: #f8fafc;
-  --border-color: #e2e8f0;
-  --border-color-focus: #3b82f6;
-
-  --text-primary: #0f172a;
-  --text-secondary: #475569;
-  --text-muted: #94a3b8;
-
-  --accent-gold: #d97706;
-  --accent-blue: #2563eb;
-  --accent-emerald: #059669;
-
-  --sun-color: #dc2626;
-  --fri-color: #059669;
-  --sat-color: #2563eb;
-
-  --holiday-national-bg: #fee2e2;
-  --holiday-national-text: #b91c1c;
-  --holiday-national-border: #fca5a5;
-
-  --holiday-state-bg: #fef3c7;
-  --holiday-state-text: #b45309;
-  --holiday-state-border: #fcd34d;
-
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 6px 18px rgba(0, 0, 0, 0.08);
-  --shadow-lg: 0 12px 30px rgba(0, 0, 0, 0.12);
-  --glass-blur: none;
-}
-
-/* VINTAGE KALENDAR KUDA THEME (Malaysian Racing Calendar) */
+/* LIGHT THEME (Mod Cerah - Paparan Kalendar Kuda Tradisional) */
+[data-theme="light"],
 [data-theme="kuda"] {
   --bg-app: #f5eedc;
   --bg-surface: #fdfaf3;
@@ -373,6 +339,7 @@ body {
   color: var(--accent-blue);
 }
 
+[data-theme="light"] .tab-btn.active .ui-icon,
 [data-theme="kuda"] .tab-btn.active .ui-icon {
   color: var(--accent-gold);
 }
@@ -411,6 +378,8 @@ body {
   margin-right: 6px;
 }
 
+[data-theme="light"] .section-header h2 .ui-icon,
+[data-theme="light"] .section-header h3 .ui-icon,
 [data-theme="kuda"] .section-header h2 .ui-icon,
 [data-theme="kuda"] .section-header h3 .ui-icon {
   color: var(--accent-gold);
@@ -424,6 +393,7 @@ body {
   margin-right: 5px;
 }
 
+[data-theme="light"] .section-subtitle .ui-icon,
 [data-theme="kuda"] .section-subtitle .ui-icon {
   color: var(--accent-gold);
 }
@@ -1146,20 +1116,24 @@ body {
   color: #38bdf8;
 }
 
+[data-theme="light"] .kuda-banner-header,
 [data-theme="kuda"] .kuda-banner-header {
   background: linear-gradient(180deg, #3c2415 0%, #2b1810 100%);
   border-color: #78350f;
   color: #fef08a;
 }
 
+[data-theme="light"] .kuda-banner-title,
 [data-theme="kuda"] .kuda-banner-title {
   color: #fef08a;
 }
 
+[data-theme="light"] .kuda-banner-zh,
 [data-theme="kuda"] .kuda-banner-zh {
   color: #fca5a5;
 }
 
+[data-theme="light"] .kuda-banner-hijri,
 [data-theme="kuda"] .kuda-banner-hijri {
   color: #a5f3fc;
 }
@@ -1217,14 +1191,10 @@ body {
   box-shadow: 3px 0 8px rgba(0, 0, 0, 0.12);
 }
 
+[data-theme="light"] .kuda-th-corner,
 [data-theme="kuda"] .kuda-th-corner {
   background: #2b1810;
   color: #fef08a;
-}
-
-[data-theme="light"] .kuda-th-corner {
-  background: #0f172a;
-  color: #ffffff;
 }
 
 .kuda-th-week {
@@ -1240,14 +1210,10 @@ body {
   border-bottom: 2px solid var(--border-color);
 }
 
+[data-theme="light"] .kuda-th-week,
 [data-theme="kuda"] .kuda-th-week {
   background: #451a03;
   color: #fcd34d;
-}
-
-[data-theme="light"] .kuda-th-week {
-  background: #e2e8f0;
-  color: #334155;
 }
 
 /* Left Weekday Header Pills (Sticky on mobile & tablet) */
@@ -1382,11 +1348,7 @@ body {
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 }
 
-[data-theme="light"] .cell-hijri {
-  color: #0284c7;
-  text-shadow: none;
-}
-
+[data-theme="light"] .cell-hijri,
 [data-theme="kuda"] .cell-hijri {
   color: #0369a1;
   text-shadow: none;
@@ -1408,10 +1370,7 @@ body {
   z-index: 2;
 }
 
-[data-theme="light"] .cell-lunar-vertical {
-  color: #dc2626;
-}
-
+[data-theme="light"] .cell-lunar-vertical,
 [data-theme="kuda"] .cell-lunar-vertical {
   color: #b91c1c;
 }
@@ -1447,12 +1406,9 @@ body {
   background-color: #fff59d !important;
 }
 
+[data-theme="light"] .kuda-day-cell.is-school-holiday,
 [data-theme="kuda"] .kuda-day-cell.is-school-holiday {
   background-color: #fff275 !important;
-}
-
-[data-theme="light"] .kuda-day-cell.is-school-holiday {
-  background-color: #fff59d !important;
 }
 
 [data-theme="dark"] .kuda-day-cell.is-school-holiday {
@@ -1503,6 +1459,7 @@ body {
   border-color: #fde047 !important;
 }
 
+[data-theme="light"] .day-cell.is-school-holiday,
 [data-theme="kuda"] .day-cell.is-school-holiday {
   background-color: #fff9c4 !important;
   border-color: #fde047 !important;
@@ -1533,10 +1490,7 @@ body {
   white-space: nowrap;
 }
 
-[data-theme="light"] .cell-tamil {
-  color: #0284c7;
-}
-
+[data-theme="light"] .cell-tamil,
 [data-theme="kuda"] .cell-tamil {
   color: #0369a1;
 }
@@ -3120,7 +3074,7 @@ body {
   .theme-switcher {
     grid-column: 1 / -1;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     width: 100%;
     background: var(--bg-card);
     border: 1px solid var(--border-color);

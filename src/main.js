@@ -101,9 +101,10 @@ async function loadYearData(year) {
 // Setup Event Listeners
 function setupEventListeners() {
   // Theme Switching
-  document.getElementById('themeDark').addEventListener('click', () => setTheme('dark'));
-  document.getElementById('themeLight').addEventListener('click', () => setTheme('light'));
-  document.getElementById('themeKuda').addEventListener('click', () => setTheme('kuda'));
+  const btnDark = document.getElementById('themeDark');
+  const btnLight = document.getElementById('themeLight');
+  if (btnDark) btnDark.addEventListener('click', () => setTheme('dark'));
+  if (btnLight) btnLight.addEventListener('click', () => setTheme('light'));
 
   // Region Filter
   document.getElementById('stateFilter').addEventListener('change', (e) => {
@@ -310,15 +311,6 @@ function setupEventListeners() {
     });
   }
 
-  // Horse Racing Graphic Toggle
-  const toggleHorseRace = document.getElementById('toggleHorseRace');
-  if (toggleHorseRace) {
-    toggleHorseRace.addEventListener('change', (e) => {
-      state.showHorseRacing = e.target.checked;
-      updateFilterIndicator();
-      renderCalendar();
-    });
-  }
 
   // Search Holiday Input
   const searchInput = document.getElementById('holidaySearchInput');
@@ -461,17 +453,20 @@ async function changeYear(year, targetMonth = 1) {
 
 // Theme handling
 function setupTheme() {
-  const saved = localStorage.getItem('cal_theme') || 'dark';
-  setTheme(saved);
+  const saved = localStorage.getItem('cal_theme');
+  const theme = (saved === 'kuda' || saved === 'light') ? 'light' : 'dark';
+  setTheme(theme);
 }
 
 function setTheme(theme) {
-  document.documentElement.setAttribute('data-theme', theme);
-  localStorage.setItem('cal_theme', theme);
+  const activeTheme = (theme === 'kuda' || theme === 'light') ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', activeTheme);
+  localStorage.setItem('cal_theme', activeTheme);
 
-  document.getElementById('themeDark').classList.toggle('active', theme === 'dark');
-  document.getElementById('themeLight').classList.toggle('active', theme === 'light');
-  document.getElementById('themeKuda').classList.toggle('active', theme === 'kuda');
+  const btnDark = document.getElementById('themeDark');
+  const btnLight = document.getElementById('themeLight');
+  if (btnDark) btnDark.classList.toggle('active', activeTheme === 'dark');
+  if (btnLight) btnLight.classList.toggle('active', activeTheme === 'light');
 }
 
 // Master Render Function
@@ -510,8 +505,7 @@ function updateFilterIndicator() {
   const isYearModified = state.year !== 2026;
   const isSearchActive = searchInput && searchInput.value.trim().length > 0;
   const isViewModified = state.calendarViewMode !== 'kuda';
-  const isHorseModified = !state.showHorseRacing;
-  const hasActiveFilters = isYearModified || isSearchActive || isViewModified || isHorseModified;
+  const hasActiveFilters = isYearModified || isSearchActive || isViewModified;
   filterActiveDot.style.display = hasActiveFilters ? 'inline-block' : 'none';
 }
 
