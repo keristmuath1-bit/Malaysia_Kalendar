@@ -1939,6 +1939,30 @@ body {
    ========================================================================== */
 
 @media (min-width: 900px) {
+  /* Quick Month Jump Bar Alignment (Full Width 12-Column Grid matching calendar) */
+  .month-pills {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 6px;
+    width: 100%;
+    overflow-x: visible;
+    padding: 4px 0 8px;
+    scroll-snap-type: none;
+  }
+
+  .month-pill {
+    flex: unset;
+    width: 100%;
+    min-width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 8px 2px;
+    text-align: center;
+    font-size: 0.80rem;
+    box-sizing: border-box;
+  }
+
   .zodiac-section {
     margin-top: 12px;
     padding: 8px 12px 10px;
@@ -2029,6 +2053,15 @@ body {
 
 /* Widescreen Desktop / PC Optimization (>= 1200px) */
 @media (min-width: 1200px) {
+  .month-pills {
+    gap: 8px;
+  }
+
+  .month-pill {
+    padding: 9px 4px;
+    font-size: 0.86rem;
+  }
+
   .zodiac-section {
     padding: 10px 14px 12px;
   }

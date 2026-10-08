@@ -527,7 +527,7 @@ function renderCalendar() {
   document.querySelectorAll('.month-pill').forEach((pill, idx) => {
     const isActive = (idx + 1 === state.month);
     pill.classList.toggle('active', isActive);
-    if (isActive) {
+    if (isActive && window.innerWidth < 900) {
       pill.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
     }
   });
