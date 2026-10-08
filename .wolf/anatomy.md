@@ -1,7 +1,7 @@
 # anatomy.md
 
-> Auto-maintained by OpenWolf. Last scanned: 2026-10-04T12:09:22.826Z
-> Files: 61 tracked | Anatomy hits: 0 | Misses: 0
+> Auto-maintained by OpenWolf. Last scanned: 2026-10-08T07:26:04.484Z
+> Files: 63 tracked | Anatomy hits: 0 | Misses: 0
 
 > Project structure index. Auto-maintained by OpenWolf hooks and daemon.
 > Run `openwolf scan` to generate, or wait for the first Claude Code session.
@@ -9,14 +9,16 @@
 
 ## ./
 
-- `.gitignore` — Git ignore rules (~68 tok)
+- `.gitignore` — Git ignore rules (~91 tok)
+- `.ignore` — graft's cards are gitignored but should stay greppable: ripgrep reads (~48 tok)
 - `AGENTS.md` — OpenWolf (~75 tok)
 - `CLAUDE.md` — OpenWolf (~99 tok)
 - `GEMINI.md` — OpenWolf (~75 tok)
-- `index.html` — Kalendar Malaysia PRO 2026 - Kalendar Kuda & Cuti Umum (~4057 tok)
+- `index.html` — Kalendar Malaysia PRO 2026 - Kalendar Kuda & Cuti Umum (~4444 tok)
 - `package.json` — Node.js package manifest (~70 tok)
-- `PROJECT_FLOW.md` — 🧭 PROJECT FLOW & LIVING ARCHITECTURE: Kalendar Malaysia Web App (~1711 tok)
-- `ROADMAP.md` — 🗺️ ROADMAP: Kalendar Malaysia Web App (~551 tok)
+- `PROJECT_FLOW.md` — 🧭 PROJECT FLOW & LIVING ARCHITECTURE: Kalendar Malaysia Web App (~2326 tok)
+- `README.md` — Project documentation (~887 tok)
+- `ROADMAP.md` — 🗺️ ROADMAP: Kalendar Malaysia Web App (~962 tok)
 
 ## public/data/
 
@@ -51,8 +53,8 @@
 ## src/
 
 - `counter.js` — Exports setupCounter (~71 tok)
-- `main.js` — KALENDAR MALAYSIA PRO - MAIN JAVASCRIPT LOGIC (~13574 tok)
-- `style.css` — Styles: 50 rules, 91 vars, 1 animations (~12414 tok)
+- `main.js` — KALENDAR MALAYSIA PRO - MAIN JAVASCRIPT LOGIC (~16330 tok)
+- `style.css` — Styles: 45 rules, 91 vars, 2 animations (~20350 tok)
 
 ## src/data/
 

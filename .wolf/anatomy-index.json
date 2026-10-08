@@ -1,22 +1,31 @@
 {
   "version": 1,
   "meta": {
-    "lastScanned": "2026-10-04T12:09:22.826Z",
-    "fileCount": 61,
+    "lastScanned": "2026-10-08T07:26:04.484Z",
+    "fileCount": 63,
     "hits": 0,
     "misses": 0,
-    "renderedHash": "bd88c8a9530207a939a97354a4b80ee11630e5ce492850d68268174bb6b64dba",
-    "storeUpdatedAt": "2026-10-04T12:09:22.827Z",
-    "rootHash": "8d718a69f76f1fd7"
+    "renderedHash": "5aae59410f8ab212cd0cc71b2192fde3342a661c05bf2e15b456cefb8bd4d59e",
+    "storeUpdatedAt": "2026-10-08T07:26:04.486Z",
+    "rootHash": "dfd6fb168c34c4a7"
   },
   "files": {
     ".gitignore": {
       "description": "Git ignore rules",
-      "tokens": 68,
-      "hash": "fe718e7babb14f3c",
-      "size": 253,
-      "mtimeMs": 1791110691131.0715,
-      "updatedAt": "2026-10-04T12:09:22.730Z",
+      "tokens": 91,
+      "hash": "b17a431f19007fc9",
+      "size": 342,
+      "mtimeMs": 1791444073013.9697,
+      "updatedAt": "2026-10-08T07:26:04.331Z",
+      "source": "scan"
+    },
+    ".ignore": {
+      "description": "graft's cards are gitignored but should stay greppable: ripgrep reads",
+      "tokens": 48,
+      "hash": "5b345696ac9daf0b",
+      "size": 180,
+      "mtimeMs": 1791436599644.6475,
+      "updatedAt": "2026-10-08T07:26:04.332Z",
       "source": "scan"
     },
     "AGENTS.md": {
@@ -24,8 +33,8 @@
       "tokens": 75,
       "hash": "e401f79554a8d796",
       "size": 297,
-      "mtimeMs": 1791115696832.3115,
-      "updatedAt": "2026-10-04T12:09:22.731Z",
+      "mtimeMs": 1791436559639.131,
+      "updatedAt": "2026-10-08T07:26:04.333Z",
       "source": "scan"
     },
     "CLAUDE.md": {
@@ -33,8 +42,8 @@
       "tokens": 99,
       "hash": "074d6b42b583729a",
       "size": 395,
-      "mtimeMs": 1791115696819.4272,
-      "updatedAt": "2026-10-04T12:09:22.731Z",
+      "mtimeMs": 1791436559626.835,
+      "updatedAt": "2026-10-08T07:26:04.333Z",
       "source": "scan"
     },
     "GEMINI.md": {
@@ -42,17 +51,17 @@
       "tokens": 75,
       "hash": "e401f79554a8d796",
       "size": 297,
-      "mtimeMs": 1791115696832.5085,
-      "updatedAt": "2026-10-04T12:09:22.731Z",
+      "mtimeMs": 1791436559639.3438,
+      "updatedAt": "2026-10-08T07:26:04.334Z",
       "source": "scan"
     },
     "index.html": {
       "description": "Kalendar Malaysia PRO 2026 - Kalendar Kuda & Cuti Umum",
-      "tokens": 4057,
-      "hash": "6dfddff25fa8d158",
-      "size": 15318,
-      "mtimeMs": 1791112162169.5376,
-      "updatedAt": "2026-10-04T12:09:22.731Z",
+      "tokens": 4444,
+      "hash": "0ab60e008d7625a5",
+      "size": 16782,
+      "mtimeMs": 1791444171032.9773,
+      "updatedAt": "2026-10-08T07:26:04.334Z",
       "source": "scan"
     },
     "package.json": {
@@ -60,17 +69,17 @@
       "tokens": 70,
       "hash": "f4af230cc9dc33b3",
       "size": 244,
-      "mtimeMs": 1791110691133.75,
-      "updatedAt": "2026-10-04T12:09:22.731Z",
+      "mtimeMs": 1791444073016.3564,
+      "updatedAt": "2026-10-08T07:26:04.334Z",
       "source": "scan"
     },
     "PROJECT_FLOW.md": {
       "description": "🧭 PROJECT FLOW & LIVING ARCHITECTURE: Kalendar Malaysia Web App",
-      "tokens": 1711,
-      "hash": "1f6792ee89d455af",
-      "size": 6888,
-      "mtimeMs": 1791115733975.7961,
-      "updatedAt": "2026-10-04T12:09:22.732Z",
+      "tokens": 2326,
+      "hash": "f3dc39ca784490c4",
+      "size": 9372,
+      "mtimeMs": 1791444073015.5762,
+      "updatedAt": "2026-10-08T07:26:04.335Z",
       "source": "scan"
     },
     "public/data/24_cal.json": {
@@ -78,8 +87,8 @@
       "tokens": 133005,
       "hash": "4101e7cb35ba630a",
       "size": 534382,
-      "mtimeMs": 1791110757883.4924,
-      "updatedAt": "2026-10-04T12:09:22.735Z",
+      "mtimeMs": 1791444073020.2915,
+      "updatedAt": "2026-10-08T07:26:04.339Z",
       "source": "scan"
     },
     "public/data/24_fest.json": {
@@ -87,8 +96,8 @@
       "tokens": 12438,
       "hash": "30c792ce212d6e61",
       "size": 45002,
-      "mtimeMs": 1791110704323.5767,
-      "updatedAt": "2026-10-04T12:09:22.735Z",
+      "mtimeMs": 1791444073020.5828,
+      "updatedAt": "2026-10-08T07:26:04.340Z",
       "source": "scan"
     },
     "public/data/24_longweekend.json": {
@@ -96,8 +105,8 @@
       "tokens": 4231,
       "hash": "862efdb6974a7b23",
       "size": 15479,
-      "mtimeMs": 1791110704324.0234,
-      "updatedAt": "2026-10-04T12:09:22.736Z",
+      "mtimeMs": 1791444073020.783,
+      "updatedAt": "2026-10-08T07:26:04.340Z",
       "source": "scan"
     },
     "public/data/24_sh_KA.json": {
@@ -105,8 +114,8 @@
       "tokens": 102,
       "hash": "981bf804e42f1de0",
       "size": 355,
-      "mtimeMs": 1791110704324.3528,
-      "updatedAt": "2026-10-04T12:09:22.736Z",
+      "mtimeMs": 1791444073020.894,
+      "updatedAt": "2026-10-08T07:26:04.340Z",
       "source": "scan"
     },
     "public/data/24_sh_KB.json": {
@@ -114,8 +123,8 @@
       "tokens": 115,
       "hash": "4c64245bb8e712fc",
       "size": 401,
-      "mtimeMs": 1791110704324.6816,
-      "updatedAt": "2026-10-04T12:09:22.736Z",
+      "mtimeMs": 1791444073020.9956,
+      "updatedAt": "2026-10-08T07:26:04.341Z",
       "source": "scan"
     },
     "public/data/24_zodiac.json": {
@@ -123,8 +132,8 @@
       "tokens": 10267,
       "hash": "d521b2296a2dd7ec",
       "size": 36220,
-      "mtimeMs": 1791112086954.505,
-      "updatedAt": "2026-10-04T12:09:22.736Z",
+      "mtimeMs": 1791444073021.1384,
+      "updatedAt": "2026-10-08T07:26:04.342Z",
       "source": "scan"
     },
     "public/data/25_cal.json": {
@@ -132,8 +141,8 @@
       "tokens": 133400,
       "hash": "be08069c84b20806",
       "size": 536738,
-      "mtimeMs": 1791110757889.561,
-      "updatedAt": "2026-10-04T12:09:22.739Z",
+      "mtimeMs": 1791444073021.6213,
+      "updatedAt": "2026-10-08T07:26:04.345Z",
       "source": "scan"
     },
     "public/data/25_fest.json": {
@@ -141,8 +150,8 @@
       "tokens": 13170,
       "hash": "48643bf07e250802",
       "size": 47680,
-      "mtimeMs": 1791110704325.0112,
-      "updatedAt": "2026-10-04T12:09:22.739Z",
+      "mtimeMs": 1791444073022.096,
+      "updatedAt": "2026-10-08T07:26:04.346Z",
       "source": "scan"
     },
     "public/data/25_longweekend.json": {
@@ -150,8 +159,8 @@
       "tokens": 5289,
       "hash": "3df1b0fae8a4b52d",
       "size": 19250,
-      "mtimeMs": 1791110704325.3628,
-      "updatedAt": "2026-10-04T12:09:22.739Z",
+      "mtimeMs": 1791444073022.2268,
+      "updatedAt": "2026-10-08T07:26:04.346Z",
       "source": "scan"
     },
     "public/data/25_sh_KA.json": {
@@ -159,8 +168,8 @@
       "tokens": 102,
       "hash": "bd575a8835b3674b",
       "size": 355,
-      "mtimeMs": 1791110704325.687,
-      "updatedAt": "2026-10-04T12:09:22.739Z",
+      "mtimeMs": 1791444073022.4783,
+      "updatedAt": "2026-10-08T07:26:04.346Z",
       "source": "scan"
     },
     "public/data/25_sh_KB.json": {
@@ -168,8 +177,8 @@
       "tokens": 102,
       "hash": "f3d4495de48e33c6",
       "size": 355,
-      "mtimeMs": 1791110704325.996,
-      "updatedAt": "2026-10-04T12:09:22.739Z",
+      "mtimeMs": 1791444073022.5803,
+      "updatedAt": "2026-10-08T07:26:04.346Z",
       "source": "scan"
     },
     "public/data/25_zodiac.json": {
@@ -177,8 +186,8 @@
       "tokens": 10267,
       "hash": "2e78c54b96659c47",
       "size": 36220,
-      "mtimeMs": 1791112086954.8948,
-      "updatedAt": "2026-10-04T12:09:22.740Z",
+      "mtimeMs": 1791444073022.7034,
+      "updatedAt": "2026-10-08T07:26:04.347Z",
       "source": "scan"
     },
     "public/data/26_cal.json": {
@@ -186,8 +195,8 @@
       "tokens": 133986,
       "hash": "fa39cbcf8aa38a99",
       "size": 536961,
-      "mtimeMs": 1791110757895.4758,
-      "updatedAt": "2026-10-04T12:09:22.742Z",
+      "mtimeMs": 1791444073023.2534,
+      "updatedAt": "2026-10-08T07:26:04.351Z",
       "source": "scan"
     },
     "public/data/26_fest.json": {
@@ -195,8 +204,8 @@
       "tokens": 13711,
       "hash": "61a80dd756180860",
       "size": 49651,
-      "mtimeMs": 1791110704326.3354,
-      "updatedAt": "2026-10-04T12:09:22.743Z",
+      "mtimeMs": 1791444073023.408,
+      "updatedAt": "2026-10-08T07:26:04.352Z",
       "source": "scan"
     },
     "public/data/26_longweekend.json": {
@@ -204,8 +213,8 @@
       "tokens": 4749,
       "hash": "91ae369a05dfc39a",
       "size": 17520,
-      "mtimeMs": 1791110704326.6702,
-      "updatedAt": "2026-10-04T12:09:22.743Z",
+      "mtimeMs": 1791444073023.608,
+      "updatedAt": "2026-10-08T07:26:04.352Z",
       "source": "scan"
     },
     "public/data/26_sh_KA.json": {
@@ -213,8 +222,8 @@
       "tokens": 141,
       "hash": "03c2d42c6939e190",
       "size": 493,
-      "mtimeMs": 1791110704326.9775,
-      "updatedAt": "2026-10-04T12:09:22.743Z",
+      "mtimeMs": 1791444073023.751,
+      "updatedAt": "2026-10-08T07:26:04.352Z",
       "source": "scan"
     },
     "public/data/26_sh_KB.json": {
@@ -222,8 +231,8 @@
       "tokens": 128,
       "hash": "42cd66ce0277da68",
       "size": 447,
-      "mtimeMs": 1791110704327.293,
-      "updatedAt": "2026-10-04T12:09:22.743Z",
+      "mtimeMs": 1791444073025.1604,
+      "updatedAt": "2026-10-08T07:26:04.352Z",
       "source": "scan"
     },
     "public/data/26_zodiac.json": {
@@ -231,8 +240,8 @@
       "tokens": 10267,
       "hash": "3687e3e573e3c09d",
       "size": 36220,
-      "mtimeMs": 1791112086955.4224,
-      "updatedAt": "2026-10-04T12:09:22.743Z",
+      "mtimeMs": 1791444073025.3235,
+      "updatedAt": "2026-10-08T07:26:04.353Z",
       "source": "scan"
     },
     "public/data/27_cal.json": {
@@ -240,8 +249,8 @@
       "tokens": 132969,
       "hash": "079c820791b6c5da",
       "size": 533635,
-      "mtimeMs": 1791110757901.7915,
-      "updatedAt": "2026-10-04T12:09:22.746Z",
+      "mtimeMs": 1791444073025.7993,
+      "updatedAt": "2026-10-08T07:26:04.356Z",
       "source": "scan"
     },
     "public/data/27_fest.json": {
@@ -249,8 +258,8 @@
       "tokens": 12821,
       "hash": "6a95c6209effb5b1",
       "size": 46392,
-      "mtimeMs": 1791110704327.6184,
-      "updatedAt": "2026-10-04T12:09:22.746Z",
+      "mtimeMs": 1791444073025.9392,
+      "updatedAt": "2026-10-08T07:26:04.357Z",
       "source": "scan"
     },
     "public/data/27_longweekend.json": {
@@ -258,8 +267,8 @@
       "tokens": 4515,
       "hash": "df40f16f95144f35",
       "size": 16406,
-      "mtimeMs": 1791110704327.9492,
-      "updatedAt": "2026-10-04T12:09:22.746Z",
+      "mtimeMs": 1791444073026.084,
+      "updatedAt": "2026-10-08T07:26:04.357Z",
       "source": "scan"
     },
     "public/data/27_sh_KA.json": {
@@ -267,8 +276,8 @@
       "tokens": 128,
       "hash": "f7c985ba508314c7",
       "size": 447,
-      "mtimeMs": 1791110704328.2686,
-      "updatedAt": "2026-10-04T12:09:22.746Z",
+      "mtimeMs": 1791444073026.7463,
+      "updatedAt": "2026-10-08T07:26:04.357Z",
       "source": "scan"
     },
     "public/data/27_sh_KB.json": {
@@ -276,8 +285,8 @@
       "tokens": 115,
       "hash": "10e062a6f58738ec",
       "size": 401,
-      "mtimeMs": 1791110704328.5742,
-      "updatedAt": "2026-10-04T12:09:22.746Z",
+      "mtimeMs": 1791444073026.8628,
+      "updatedAt": "2026-10-08T07:26:04.358Z",
       "source": "scan"
     },
     "public/data/27_zodiac.json": {
@@ -285,8 +294,8 @@
       "tokens": 10267,
       "hash": "cd4086b9dbd1c095",
       "size": 36220,
-      "mtimeMs": 1791112086955.7224,
-      "updatedAt": "2026-10-04T12:09:22.746Z",
+      "mtimeMs": 1791444073027.019,
+      "updatedAt": "2026-10-08T07:26:04.358Z",
       "source": "scan"
     },
     "public/data/payschedule.json": {
@@ -294,8 +303,8 @@
       "tokens": 2808,
       "hash": "e24bf855fbf73c3f",
       "size": 10460,
-      "mtimeMs": 1791110704328.9526,
-      "updatedAt": "2026-10-04T12:09:22.747Z",
+      "mtimeMs": 1791444073027.1838,
+      "updatedAt": "2026-10-08T07:26:04.358Z",
       "source": "scan"
     },
     "public/data/pensionschedule.json": {
@@ -303,8 +312,8 @@
       "tokens": 2942,
       "hash": "f8d890fb4a5522bc",
       "size": 11002,
-      "mtimeMs": 1791110704329.3008,
-      "updatedAt": "2026-10-04T12:09:22.747Z",
+      "mtimeMs": 1791444073027.3271,
+      "updatedAt": "2026-10-08T07:26:04.358Z",
       "source": "scan"
     },
     "public/data/regions.json": {
@@ -312,17 +321,26 @@
       "tokens": 945,
       "hash": "08120331e640da03",
       "size": 3474,
-      "mtimeMs": 1791110704329.6064,
-      "updatedAt": "2026-10-04T12:09:22.747Z",
+      "mtimeMs": 1791444073027.5662,
+      "updatedAt": "2026-10-08T07:26:04.359Z",
+      "source": "scan"
+    },
+    "README.md": {
+      "description": "Project documentation",
+      "tokens": 887,
+      "hash": "2ebe4d3ffc958f11",
+      "size": 3663,
+      "mtimeMs": 1791444073015.7131,
+      "updatedAt": "2026-10-08T07:26:04.361Z",
       "source": "scan"
     },
     "ROADMAP.md": {
       "description": "🗺️ ROADMAP: Kalendar Malaysia Web App",
-      "tokens": 551,
-      "hash": "ab6bfff38b429aac",
-      "size": 2231,
-      "mtimeMs": 1791115741961.466,
-      "updatedAt": "2026-10-04T12:09:22.749Z",
+      "tokens": 962,
+      "hash": "62cf7d0945c6efcf",
+      "size": 3895,
+      "mtimeMs": 1791444280669.9885,
+      "updatedAt": "2026-10-08T07:26:04.361Z",
       "source": "scan"
     },
     "src/counter.js": {
@@ -330,8 +348,8 @@
       "tokens": 71,
       "hash": "7291271b8a096881",
       "size": 247,
-      "mtimeMs": 1791110691133.1003,
-      "updatedAt": "2026-10-04T12:09:22.749Z",
+      "mtimeMs": 1791444073066.1667,
+      "updatedAt": "2026-10-08T07:26:04.362Z",
       "source": "scan"
     },
     "src/data/24_cal.json": {
@@ -339,8 +357,8 @@
       "tokens": 133005,
       "hash": "4101e7cb35ba630a",
       "size": 534382,
-      "mtimeMs": 1791110757879.8987,
-      "updatedAt": "2026-10-04T12:09:22.753Z",
+      "mtimeMs": 1791444073067.1292,
+      "updatedAt": "2026-10-08T07:26:04.365Z",
       "source": "scan"
     },
     "src/data/24_fest.json": {
@@ -348,8 +366,8 @@
       "tokens": 12438,
       "hash": "30c792ce212d6e61",
       "size": 45002,
-      "mtimeMs": 1791110746507.792,
-      "updatedAt": "2026-10-04T12:09:22.753Z",
+      "mtimeMs": 1791444073067.2805,
+      "updatedAt": "2026-10-08T07:26:04.366Z",
       "source": "scan"
     },
     "src/data/24_longweekend.json": {
@@ -357,8 +375,8 @@
       "tokens": 4231,
       "hash": "862efdb6974a7b23",
       "size": 15479,
-      "mtimeMs": 1791110746508.4788,
-      "updatedAt": "2026-10-04T12:09:22.753Z",
+      "mtimeMs": 1791444073067.428,
+      "updatedAt": "2026-10-08T07:26:04.367Z",
       "source": "scan"
     },
     "src/data/24_sh_KA.json": {
@@ -366,8 +384,8 @@
       "tokens": 102,
       "hash": "981bf804e42f1de0",
       "size": 355,
-      "mtimeMs": 1791110746508.971,
-      "updatedAt": "2026-10-04T12:09:22.754Z",
+      "mtimeMs": 1791444073067.5212,
+      "updatedAt": "2026-10-08T07:26:04.367Z",
       "source": "scan"
     },
     "src/data/24_sh_KB.json": {
@@ -375,8 +393,8 @@
       "tokens": 115,
       "hash": "4c64245bb8e712fc",
       "size": 401,
-      "mtimeMs": 1791110746509.5015,
-      "updatedAt": "2026-10-04T12:09:22.754Z",
+      "mtimeMs": 1791444073067.7576,
+      "updatedAt": "2026-10-08T07:26:04.367Z",
       "source": "scan"
     },
     "src/data/25_cal.json": {
@@ -384,8 +402,8 @@
       "tokens": 133400,
       "hash": "be08069c84b20806",
       "size": 536738,
-      "mtimeMs": 1791110757886.7637,
-      "updatedAt": "2026-10-04T12:09:22.756Z",
+      "mtimeMs": 1791444073068.224,
+      "updatedAt": "2026-10-08T07:26:04.370Z",
       "source": "scan"
     },
     "src/data/25_fest.json": {
@@ -393,8 +411,8 @@
       "tokens": 13170,
       "hash": "48643bf07e250802",
       "size": 47680,
-      "mtimeMs": 1791110746510.1604,
-      "updatedAt": "2026-10-04T12:09:22.756Z",
+      "mtimeMs": 1791444073068.3794,
+      "updatedAt": "2026-10-08T07:26:04.371Z",
       "source": "scan"
     },
     "src/data/25_longweekend.json": {
@@ -402,8 +420,8 @@
       "tokens": 5289,
       "hash": "3df1b0fae8a4b52d",
       "size": 19250,
-      "mtimeMs": 1791110746510.6938,
-      "updatedAt": "2026-10-04T12:09:22.757Z",
+      "mtimeMs": 1791444073068.4978,
+      "updatedAt": "2026-10-08T07:26:04.372Z",
       "source": "scan"
     },
     "src/data/25_sh_KA.json": {
@@ -411,8 +429,8 @@
       "tokens": 102,
       "hash": "bd575a8835b3674b",
       "size": 355,
-      "mtimeMs": 1791110746511.1248,
-      "updatedAt": "2026-10-04T12:09:22.757Z",
+      "mtimeMs": 1791444073068.5962,
+      "updatedAt": "2026-10-08T07:26:04.372Z",
       "source": "scan"
     },
     "src/data/25_sh_KB.json": {
@@ -420,8 +438,8 @@
       "tokens": 102,
       "hash": "f3d4495de48e33c6",
       "size": 355,
-      "mtimeMs": 1791110746511.5466,
-      "updatedAt": "2026-10-04T12:09:22.757Z",
+      "mtimeMs": 1791444073068.6873,
+      "updatedAt": "2026-10-08T07:26:04.372Z",
       "source": "scan"
     },
     "src/data/26_cal.json": {
@@ -429,8 +447,8 @@
       "tokens": 133986,
       "hash": "fa39cbcf8aa38a99",
       "size": 536961,
-      "mtimeMs": 1791110757892.755,
-      "updatedAt": "2026-10-04T12:09:22.759Z",
+      "mtimeMs": 1791444073069.1426,
+      "updatedAt": "2026-10-08T07:26:04.376Z",
       "source": "scan"
     },
     "src/data/26_fest.json": {
@@ -438,8 +456,8 @@
       "tokens": 13711,
       "hash": "61a80dd756180860",
       "size": 49651,
-      "mtimeMs": 1791110746512.093,
-      "updatedAt": "2026-10-04T12:09:22.760Z",
+      "mtimeMs": 1791444073071.9456,
+      "updatedAt": "2026-10-08T07:26:04.377Z",
       "source": "scan"
     },
     "src/data/26_longweekend.json": {
@@ -447,8 +465,8 @@
       "tokens": 4749,
       "hash": "91ae369a05dfc39a",
       "size": 17520,
-      "mtimeMs": 1791110746512.558,
-      "updatedAt": "2026-10-04T12:09:22.760Z",
+      "mtimeMs": 1791444073072.1042,
+      "updatedAt": "2026-10-08T07:26:04.377Z",
       "source": "scan"
     },
     "src/data/26_sh_KA.json": {
@@ -456,8 +474,8 @@
       "tokens": 141,
       "hash": "03c2d42c6939e190",
       "size": 493,
-      "mtimeMs": 1791110746512.9888,
-      "updatedAt": "2026-10-04T12:09:22.760Z",
+      "mtimeMs": 1791444073072.2104,
+      "updatedAt": "2026-10-08T07:26:04.377Z",
       "source": "scan"
     },
     "src/data/26_sh_KB.json": {
@@ -465,8 +483,8 @@
       "tokens": 128,
       "hash": "42cd66ce0277da68",
       "size": 447,
-      "mtimeMs": 1791110746513.4375,
-      "updatedAt": "2026-10-04T12:09:22.760Z",
+      "mtimeMs": 1791444073072.2983,
+      "updatedAt": "2026-10-08T07:26:04.377Z",
       "source": "scan"
     },
     "src/data/27_cal.json": {
@@ -474,8 +492,8 @@
       "tokens": 132969,
       "hash": "079c820791b6c5da",
       "size": 533635,
-      "mtimeMs": 1791110757899.2249,
-      "updatedAt": "2026-10-04T12:09:22.762Z",
+      "mtimeMs": 1791444073072.7622,
+      "updatedAt": "2026-10-08T07:26:04.381Z",
       "source": "scan"
     },
     "src/data/27_fest.json": {
@@ -483,8 +501,8 @@
       "tokens": 12821,
       "hash": "6a95c6209effb5b1",
       "size": 46392,
-      "mtimeMs": 1791110746513.9805,
-      "updatedAt": "2026-10-04T12:09:22.763Z",
+      "mtimeMs": 1791444073072.9087,
+      "updatedAt": "2026-10-08T07:26:04.382Z",
       "source": "scan"
     },
     "src/data/27_longweekend.json": {
@@ -492,8 +510,8 @@
       "tokens": 4515,
       "hash": "df40f16f95144f35",
       "size": 16406,
-      "mtimeMs": 1791110746514.488,
-      "updatedAt": "2026-10-04T12:09:22.763Z",
+      "mtimeMs": 1791444073073.0557,
+      "updatedAt": "2026-10-08T07:26:04.382Z",
       "source": "scan"
     },
     "src/data/27_sh_KA.json": {
@@ -501,8 +519,8 @@
       "tokens": 128,
       "hash": "f7c985ba508314c7",
       "size": 447,
-      "mtimeMs": 1791110746514.9084,
-      "updatedAt": "2026-10-04T12:09:22.763Z",
+      "mtimeMs": 1791444073074.3967,
+      "updatedAt": "2026-10-08T07:26:04.382Z",
       "source": "scan"
     },
     "src/data/27_sh_KB.json": {
@@ -510,8 +528,8 @@
       "tokens": 115,
       "hash": "10e062a6f58738ec",
       "size": 401,
-      "mtimeMs": 1791110746515.363,
-      "updatedAt": "2026-10-04T12:09:22.763Z",
+      "mtimeMs": 1791444073074.4983,
+      "updatedAt": "2026-10-08T07:26:04.382Z",
       "source": "scan"
     },
     "src/data/payschedule.json": {
@@ -519,8 +537,8 @@
       "tokens": 2808,
       "hash": "e24bf855fbf73c3f",
       "size": 10460,
-      "mtimeMs": 1791110746515.821,
-      "updatedAt": "2026-10-04T12:09:22.763Z",
+      "mtimeMs": 1791444073074.6016,
+      "updatedAt": "2026-10-08T07:26:04.383Z",
       "source": "scan"
     },
     "src/data/pensionschedule.json": {
@@ -528,8 +546,8 @@
       "tokens": 2942,
       "hash": "f8d890fb4a5522bc",
       "size": 11002,
-      "mtimeMs": 1791110746516.313,
-      "updatedAt": "2026-10-04T12:09:22.763Z",
+      "mtimeMs": 1791444073074.729,
+      "updatedAt": "2026-10-08T07:26:04.383Z",
       "source": "scan"
     },
     "src/data/regions.json": {
@@ -537,17 +555,17 @@
       "tokens": 945,
       "hash": "08120331e640da03",
       "size": 3474,
-      "mtimeMs": 1791110746516.743,
-      "updatedAt": "2026-10-04T12:09:22.763Z",
+      "mtimeMs": 1791444073074.8455,
+      "updatedAt": "2026-10-08T07:26:04.383Z",
       "source": "scan"
     },
     "src/main.js": {
       "description": "KALENDAR MALAYSIA PRO - MAIN JAVASCRIPT LOGIC",
-      "tokens": 13574,
-      "hash": "7033d897b77d39b5",
-      "size": 47734,
-      "mtimeMs": 1791114666133.9922,
-      "updatedAt": "2026-10-04T12:09:22.765Z",
+      "tokens": 16330,
+      "hash": "cfa1d130efeb4ae9",
+      "size": 57393,
+      "mtimeMs": 1791444222444.5007,
+      "updatedAt": "2026-10-08T07:26:04.385Z",
       "source": "scan",
       "symbols": [
         {
@@ -568,209 +586,209 @@
           "name": "setupEventListeners",
           "kind": "fn",
           "startLine": 102,
-          "endLine": 292,
-          "tokens": 1802
+          "endLine": 447,
+          "tokens": 3450
         },
         {
           "name": "changeYear",
           "kind": "fn",
-          "startLine": 295,
-          "endLine": 305,
+          "startLine": 450,
+          "endLine": 460,
           "tokens": 80
         },
         {
           "name": "setupTheme",
           "kind": "fn",
-          "startLine": 308,
-          "endLine": 311,
+          "startLine": 463,
+          "endLine": 466,
           "tokens": 30
         },
         {
           "name": "setTheme",
           "kind": "fn",
-          "startLine": 313,
-          "endLine": 320,
+          "startLine": 468,
+          "endLine": 475,
           "tokens": 112
         },
         {
           "name": "renderAll",
           "kind": "fn",
-          "startLine": 323,
-          "endLine": 330,
+          "startLine": 478,
+          "endLine": 485,
           "tokens": 48
         },
         {
           "name": "renderMonthPills",
           "kind": "fn",
-          "startLine": 333,
-          "endLine": 348,
+          "startLine": 488,
+          "endLine": 503,
           "tokens": 148
+        },
+        {
+          "name": "updateFilterIndicator",
+          "kind": "fn",
+          "startLine": 506,
+          "endLine": 516,
+          "tokens": 176
         },
         {
           "name": "renderCalendar",
           "kind": "fn",
-          "startLine": 351,
-          "endLine": 378,
-          "tokens": 284
+          "startLine": 519,
+          "endLine": 552,
+          "tokens": 346
         },
         {
           "name": "renderKudaCalendar",
           "kind": "fn",
-          "startLine": 383,
-          "endLine": 499,
-          "tokens": 1326
+          "startLine": 557,
+          "endLine": 698,
+          "tokens": 1638
         },
         {
           "name": "createKudaDayCell",
           "kind": "fn",
-          "startLine": 502,
-          "endLine": 635,
-          "tokens": 1516
+          "startLine": 701,
+          "endLine": 861,
+          "tokens": 1790
         },
         {
           "name": "renderGridCalendar",
           "kind": "fn",
-          "startLine": 640,
-          "endLine": 697,
+          "startLine": 866,
+          "endLine": 923,
           "tokens": 592
         },
         {
           "name": "createDayCell",
           "kind": "fn",
-          "startLine": 700,
-          "endLine": 812,
-          "tokens": 1218
+          "startLine": 926,
+          "endLine": 1054,
+          "tokens": 1416
         },
         {
           "name": "renderZodiacBar",
           "kind": "fn",
-          "startLine": 817,
-          "endLine": 869,
-          "tokens": 707
+          "startLine": 1059,
+          "endLine": 1126,
+          "tokens": 772
         },
         {
           "name": "getISOWeekNumber",
           "kind": "fn",
-          "startLine": 872,
-          "endLine": 878,
+          "startLine": 1129,
+          "endLine": 1135,
           "tokens": 96
         },
         {
           "name": "getKudaWeekNumber",
           "kind": "fn",
-          "startLine": 881,
-          "endLine": 886,
+          "startLine": 1138,
+          "endLine": 1143,
           "tokens": 82
         },
         {
           "name": "isHolidayApplicable",
           "kind": "fn",
-          "startLine": 889,
-          "endLine": 895,
+          "startLine": 1146,
+          "endLine": 1152,
           "tokens": 77
         },
         {
           "name": "getLocalizedFestTitle",
           "kind": "fn",
-          "startLine": 898,
-          "endLine": 902,
+          "startLine": 1155,
+          "endLine": 1159,
           "tokens": 78
         },
         {
           "name": "checkIsPayday",
           "kind": "fn",
-          "startLine": 905,
-          "endLine": 910,
+          "startLine": 1162,
+          "endLine": 1167,
           "tokens": 66
         },
         {
           "name": "checkIsSchoolHoliday",
           "kind": "fn",
-          "startLine": 913,
-          "endLine": 917,
+          "startLine": 1170,
+          "endLine": 1174,
           "tokens": 70
         },
         {
           "name": "filterCalendarSearch",
           "kind": "fn",
-          "startLine": 920,
-          "endLine": 935,
+          "startLine": 1177,
+          "endLine": 1192,
           "tokens": 136
         },
         {
           "name": "openDayModal",
           "kind": "fn",
-          "startLine": 941,
-          "endLine": 1005,
+          "startLine": 1198,
+          "endLine": 1262,
           "tokens": 801
         },
         {
           "name": "renderModalUserEvents",
           "kind": "fn",
-          "startLine": 1007,
-          "endLine": 1031,
+          "startLine": 1264,
+          "endLine": 1288,
           "tokens": 291
         },
         {
           "name": "closeModal",
           "kind": "fn",
-          "startLine": 1033,
-          "endLine": 1036,
+          "startLine": 1290,
+          "endLine": 1293,
           "tokens": 35
         },
         {
           "name": "deleteUserEvent",
           "kind": "fn",
-          "startLine": 1039,
-          "endLine": 1043,
+          "startLine": 1296,
+          "endLine": 1300,
           "tokens": 56
         },
         {
           "name": "exportDayAsIcal",
           "kind": "fn",
-          "startLine": 1046,
-          "endLine": 1075,
+          "startLine": 1303,
+          "endLine": 1332,
           "tokens": 293
         },
         {
           "name": "renderLongWeekends",
           "kind": "fn",
-          "startLine": 1081,
-          "endLine": 1120,
+          "startLine": 1338,
+          "endLine": 1377,
           "tokens": 424
         },
         {
           "name": "formatDateStr",
           "kind": "fn",
-          "startLine": 1122,
-          "endLine": 1128,
+          "startLine": 1379,
+          "endLine": 1385,
           "tokens": 54
         },
         {
           "name": "renderSchoolHolidays",
           "kind": "fn",
-          "startLine": 1134,
-          "endLine": 1169,
+          "startLine": 1391,
+          "endLine": 1426,
           "tokens": 392
-        },
-        {
-          "name": "parseDate",
-          "kind": "fn",
-          "startLine": 1171,
-          "endLine": 1176,
-          "tokens": 51
         }
       ],
       "symbolSource": "ts",
-      "skeleton": "async function loadGlobalData() {\nasync function loadYearData(year) {\nfunction setupEventListeners() {\nasync function changeYear(year, targetMonth = 1) {\nfunction setupTheme() {\nfunction setTheme(theme) {\nfunction renderAll() {\nfunction renderMonthPills() {\nfunction renderCalendar() {\nfunction renderKudaCalendar(container, monthData) {\nfunction createKudaDayCell(dayDate, isOtherMonth, rowIdx, isToday, cellDetail) {\nfunction renderGridCalendar(container, monthData) {\nfunction createDayCell(dayNum, isOtherMonth, dayOfWeek = 0, isToday = false, cellDetail = null) {\nfunction renderZodiacBar() {\nfunction getISOWeekNumber(d) {\nfunction getKudaWeekNumber(d) {\nfunction isHolidayApplicable(fest, regionKey) {\nfunction getLocalizedFestTitle(fest) {\nfunction checkIsPayday(dateKey) {\nfunction checkIsSchoolHoliday(dateKey, group) {\nfunction filterCalendarSearch(keyword) {\nfunction openDayModal(cellDetail, isPayDay = false) {\nfunction renderModalUserEvents(dateStr) {\nfunction closeModal() {\nfunction deleteUserEvent(id) {\nfunction exportDayAsIcal(dayData) {\nfunction renderLongWeekends() {\nfunction formatDateStr(str) {\nfunction renderSchoolHolidays() {\nfunction parseDate(str) {"
+      "skeleton": "async function loadGlobalData() {\nasync function loadYearData(year) {\nfunction setupEventListeners() {\nasync function changeYear(year, targetMonth = 1) {\nfunction setupTheme() {\nfunction setTheme(theme) {\nfunction renderAll() {\nfunction renderMonthPills() {\nfunction updateFilterIndicator() {\nfunction renderCalendar() {\nfunction renderKudaCalendar(container, monthData) {\nfunction createKudaDayCell(dayDate, isOtherMonth, rowIdx, isToday, cellDetail) {\nfunction renderGridCalendar(container, monthData) {\nfunction createDayCell(dayNum, isOtherMonth, dayOfWeek = 0, isToday = false, cellDetail = null) {\nfunction renderZodiacBar() {\nfunction getISOWeekNumber(d) {\nfunction getKudaWeekNumber(d) {\nfunction isHolidayApplicable(fest, regionKey) {\nfunction getLocalizedFestTitle(fest) {\nfunction checkIsPayday(dateKey) {\nfunction checkIsSchoolHoliday(dateKey, group) {\nfunction filterCalendarSearch(keyword) {\nfunction openDayModal(cellDetail, isPayDay = false) {\nfunction renderModalUserEvents(dateStr) {\nfunction closeModal() {\nfunction deleteUserEvent(id) {\nfunction exportDayAsIcal(dayData) {\nfunction renderLongWeekends() {\nfunction formatDateStr(str) {\nfunction renderSchoolHolidays() {"
     },
     "src/style.css": {
-      "description": "Styles: 50 rules, 91 vars, 1 animations",
-      "tokens": 12414,
-      "hash": "06bfccc14357a3a4",
-      "size": 43449,
-      "mtimeMs": 1791114422750.3706,
-      "updatedAt": "2026-10-04T12:09:22.765Z",
+      "description": "Styles: 45 rules, 91 vars, 2 animations",
+      "tokens": 20350,
+      "hash": "87e6cde30adc6f59",
+      "size": 71224,
+      "mtimeMs": 1791444250454.4714,
+      "updatedAt": "2026-10-08T07:26:04.386Z",
       "source": "scan"
     }
   },
